@@ -28,71 +28,70 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Grid.Column="1" Width="65" Height="65"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Grid.Column="3" Width="65" Height="65"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Grid.Row="1" Width="65" Height="65"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Grid.Column="7" Width="65" Height="65"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Grid.Column="6" Grid.Row="1" Width="65" Height="65"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Grid.Column="5" Width="65" Height="65"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Grid.Column="4" Grid.Row="1" Width="65" Height="65"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1" Width="65" Height="65"/>
-            <Rectangle x:Name="white" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0"/>
-            <Rectangle x:Name="white_Copy" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0" Grid.Column="2"/>
-            <Rectangle x:Name="white_Copy1" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0" Grid.Column="4"/>
-            <Rectangle x:Name="white_Copy2" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0" Grid.Column="6"/>
-            <Rectangle x:Name="white_Copy4" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0" Grid.Column="7" Grid.Row="1"/>
-            <Rectangle x:Name="white_Copy5" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0" Grid.Column="5" Grid.Row="1"/>
-            <Rectangle x:Name="white_Copy7" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0" Grid.Column="1" Grid.Row="1"/>
-            <Rectangle x:Name="white_Copy8" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0" Grid.Column="3" Grid.Row="1"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="60,1,0,59" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="60,1,0,59" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="-3,1,62,58" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="60,1,0,59" Grid.Column="6" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="61,1,0,58" Grid.ColumnSpan="2" Grid.Column="5" Grid.Row="3" Grid.RowSpan="2"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="60,1,0,59" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="2" Grid.RowSpan="2"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="60,1,62,58" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="3" Grid.RowSpan="2"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="61,1,0,58" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2"/>
-            <Rectangle x:Name="white_Copy3" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="-1,1,0,59" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2"/>
-            <Rectangle x:Name="white_Copy6" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="62,1,0,59" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2"/>
-            <Rectangle x:Name="white_Copy9" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="62,1,0,59" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2"/>
-            <Rectangle x:Name="white_Copy10" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="62,1,0,58" Grid.ColumnSpan="3" Grid.Column="5" Grid.Row="2" Grid.RowSpan="2"/>
-            <Rectangle x:Name="white_Copy11" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="61,1,-2,58" Grid.Column="6" Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-            <Rectangle x:Name="white_Copy12" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="61,1,0,58" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="3" Grid.RowSpan="2"/>
-            <Rectangle x:Name="white_Copy13" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="61,1,0,58" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="2"/>
-            <Rectangle x:Name="white_Copy14" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="61,2,0,59" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="3" Grid.RowSpan="2"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="61.963,61,61.796,62" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="3" Grid.RowSpan="3"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="-2,60,61.037,61" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="3"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="62.204,61,-2.204,62" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="3" Grid.RowSpan="3"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0.204,60,60.796,61" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="4" Grid.RowSpan="3"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="61.204,61,62.296,62" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="3" Grid.RowSpan="3"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="61.963,60,60.796,61" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="4" Grid.RowSpan="3"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="61.5,60,0.037,61" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4" Grid.RowSpan="3"/>
-            <Rectangle x:Name="white_Copy15" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0,61,0,62" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="3"/>
-            <Rectangle x:Name="white_Copy16" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="62.5,61,0,62" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="3" Grid.RowSpan="3"/>
-            <Rectangle x:Name="white_Copy17" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0.204,61,0,62" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="3" Grid.RowSpan="3"/>
-            <Rectangle x:Name="white_Copy18" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0.204,61,0,61" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="3" Grid.RowSpan="3"/>
-            <Rectangle x:Name="white_Copy19" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="62.204,60,-3.204,61" Grid.Column="6" Grid.Row="4" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
-            <Rectangle x:Name="white_Copy20" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="62.204,60,0,61" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="4" Grid.RowSpan="3"/>
-            <Rectangle x:Name="white_Copy21" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="62,60,0,61" Grid.ColumnSpan="3" Grid.Row="4" Grid.RowSpan="3"/>
-            <Rectangle x:Name="white_Copy22" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="62.963,61,0,0" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="-573,14,571.5,47" Grid.RowSpan="2"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0,61,60.778,60" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="5" Grid.RowSpan="3"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="-2,60,61,-2" Grid.Row="6" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="61.611,61,-1.5,60" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="5" Grid.RowSpan="3"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0.611,60,60.5,-2" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="6" Grid.RowSpan="2"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="61,61,62,60" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="5" Grid.RowSpan="3"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0,60,59.389,-2" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="6" Grid.RowSpan="2"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="60.5,60,1,-2" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="6" Grid.RowSpan="2"/>
-            <Rectangle x:Name="white_Copy23" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0,61,0,60" Grid.Row="5" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
-            <Rectangle x:Name="white_Copy24" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="61.5,61,0,60" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="5" Grid.RowSpan="3"/>
-            <Rectangle x:Name="white_Copy25" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0,61,0,60" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="5" Grid.RowSpan="3"/>
-            <Rectangle x:Name="white_Copy26" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0.611,61,0,60" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="5" Grid.RowSpan="3"/>
-            <Rectangle x:Name="white_Copy27" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="61.611,60,-2.5,-2" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="6" Grid.RowSpan="2"/>
-            <Rectangle x:Name="white_Copy28" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0.222,60,0,-2" Grid.ColumnSpan="2" Grid.Column="5" Grid.Row="6" Grid.RowSpan="2"/>
-            <Rectangle x:Name="white_Copy29" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="62,60,0,-2" Grid.ColumnSpan="3" Grid.Row="6" Grid.RowSpan="2"/>
-            <Rectangle x:Name="white_Copy30" Fill="White" HorizontalAlignment="Left" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0,0,0,-2" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="7"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0" Grid.Row="4" Grid.Column="1"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center" Width="65" Height="65" Margin="0" Grid.Row="6" Grid.Column="1"/>
+            <Rectangle Fill="Black" Stroke="Black" Grid.Column="1" Width="65" Height="65"/>
+            <Rectangle Fill="Black" Stroke="Black" Grid.Column="3" Width="65" Height="65"/>
+            <Rectangle Fill="Black" Stroke="Black" Grid.Row="1" Width="65" Height="65"/>
+            <Rectangle Fill="Black" Stroke="Black" Grid.Column="7" Width="65" Height="65"/>
+            <Rectangle Fill="Black" Stroke="Black" Grid.Column="6" Grid.Row="1" Width="65" Height="65"/>
+            <Rectangle Fill="Black" Stroke="Black" Grid.Column="5" Width="65" Height="65"/>
+            <Rectangle Fill="Black" Stroke="Black" Grid.Column="4" Grid.Row="1" Width="65" Height="65"/>
+            <Rectangle Fill="Black" Stroke="Black" Grid.Column="2" Grid.Row="1" Width="65" Height="65"/>
+            <Rectangle x:Name="white" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0"/>
+            <Rectangle x:Name="white_Copy" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="2"/>
+            <Rectangle x:Name="white_Copy1" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="4"/>
+            <Rectangle x:Name="white_Copy2" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="6"/>
+            <Rectangle x:Name="white_Copy4" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="7" Grid.Row="1"/>
+            <Rectangle x:Name="white_Copy5" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="5" Grid.Row="1"/>
+            <Rectangle x:Name="white_Copy7" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="1" Grid.Row="1"/>
+            <Rectangle x:Name="white_Copy8" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="3" Grid.Row="1"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="61,62,61,61" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="61,62,61,61" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="1" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="-1,61,61,61" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="61,62,-1,61" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="1" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="62,61,61,61" Grid.ColumnSpan="3" Grid.Column="5" Grid.Row="2" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="61,62,61,61" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="1" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="62,61,61,61" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="2" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="62,61,61,61" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3"/>
+            <Rectangle x:Name="white_Copy3" Fill="White" Stroke="Black" Width="65" Height="65" Margin="-1,62,61,61" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="3"/>
+            <Rectangle x:Name="white_Copy6" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,62,61,61" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"/>
+            <Rectangle x:Name="white_Copy9" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,62,61,61" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="1" Grid.RowSpan="3"/>
+            <Rectangle x:Name="white_Copy10" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,62,61,61" Grid.ColumnSpan="3" Grid.Column="5" Grid.Row="1" Grid.RowSpan="3"/>
+            <Rectangle x:Name="white_Copy11" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61,61,-1,61" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="2" Grid.RowSpan="3"/>
+            <Rectangle x:Name="white_Copy12" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="2" Grid.RowSpan="3"/>
+            <Rectangle x:Name="white_Copy13" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3"/>
+            <Rectangle x:Name="white_Copy14" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="2" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="62,0,62,59" Grid.ColumnSpan="3" Grid.Row="4" Grid.RowSpan="2"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="60.704,0,0,59" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="-1,0,61.296,59" Grid.ColumnSpan="2" Grid.Row="5" Grid.RowSpan="2"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="60.556,0,-0.333,59" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="4" Grid.RowSpan="2"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="61.333,0,61.667,59" Grid.ColumnSpan="3" Grid.Column="5" Grid.Row="5" Grid.RowSpan="2"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="61,0,62.056,59" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="4" Grid.RowSpan="2"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="62,0,61.444,59" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="5" Grid.RowSpan="2"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="61.407,0,61,59" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="5" Grid.RowSpan="2"/>
+            <Rectangle x:Name="white_Copy15" Fill="White" Stroke="Black" Width="65" Height="65" Margin="-1,0,61.296,59" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="2"/>
+            <Rectangle x:Name="white_Copy16" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61.407,0,61,59" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="4" Grid.RowSpan="2"/>
+            <Rectangle x:Name="white_Copy17" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,0,61.444,59" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="4" Grid.RowSpan="2"/>
+            <Rectangle x:Name="white_Copy18" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61.333,0,61.667,59" Grid.ColumnSpan="3" Grid.Column="5" Grid.Row="4" Grid.RowSpan="2"/>
+            <Rectangle x:Name="white_Copy19" Fill="White" Stroke="Black" Width="65" Height="65" Margin="60.556,0,-0.333,59" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="5" Grid.RowSpan="2"/>
+            <Rectangle x:Name="white_Copy20" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61,0,62.056,59" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="5" Grid.RowSpan="2"/>
+            <Rectangle x:Name="white_Copy21" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,0,61,59" Grid.ColumnSpan="3" Grid.Row="5" Grid.RowSpan="2"/>
+            <Rectangle x:Name="white_Copy22" Fill="White" Stroke="Black" Width="65" Height="65" Margin="60.704,0,0,59" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="5" Grid.RowSpan="2"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="62,60,61,62" Grid.ColumnSpan="3" Grid.Row="5" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="60.704,60,0,62" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="5" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="-1,60,61.296,0" Grid.ColumnSpan="2" Grid.Row="6" Grid.RowSpan="2"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="60.556,60,-0.333,62" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="5" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="61.333,60,61.667,0" Grid.ColumnSpan="3" Grid.Column="5" Grid.Row="6" Grid.RowSpan="2"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="61,60,62.056,62" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="5" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="62,60,61.444,0" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="6" Grid.RowSpan="2"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="62.407,60,61,0" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="6" Grid.RowSpan="2"/>
+            <Rectangle x:Name="white_Copy23" Fill="White" Stroke="Black" Width="65" Height="65" Margin="-1,60,61.296,62" Grid.ColumnSpan="2" Grid.Row="5" Grid.RowSpan="3"/>
+            <Rectangle x:Name="white_Copy24" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62.407,60,61,62" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="5" Grid.RowSpan="3"/>
+            <Rectangle x:Name="white_Copy25" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,60,61.444,62" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="5" Grid.RowSpan="3"/>
+            <Rectangle x:Name="white_Copy26" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61.333,60,61.667,62" Grid.ColumnSpan="3" Grid.Column="5" Grid.Row="5" Grid.RowSpan="3"/>
+            <Rectangle x:Name="white_Copy27" Fill="White" Stroke="Black" Width="65" Height="65" Margin="60.556,60,-0.333,0" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="6" Grid.RowSpan="2"/>
+            <Rectangle x:Name="white_Copy28" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61,60,62.056,0" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="6" Grid.RowSpan="2"/>
+            <Rectangle x:Name="white_Copy29" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,60,61,0" Grid.ColumnSpan="3" Grid.Row="6" Grid.RowSpan="2"/>
+            <Rectangle x:Name="white_Copy30" Fill="White" Stroke="Black" Width="65" Height="65" Margin="60.704,60,0,0" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="6" Grid.RowSpan="2"/>
         </Grid>
 
     </Grid>

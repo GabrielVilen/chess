@@ -35,9 +35,9 @@ namespace Chess
             foreach (var child in ChessGrid.Children)
             {
                 Rectangle rec = new Rectangle();
-                child.
+                //child.
            
-                Debug.WriteLine(child.ToString());
+               // Debug.WriteLine(child.ToString());
             }
         }
     }
