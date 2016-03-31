@@ -93,6 +93,9 @@
             <Rectangle x:Name="white_Copy29" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,60,61,0" Grid.ColumnSpan="3" Grid.Row="6" Grid.RowSpan="2"/>
             <Rectangle x:Name="white_Copy30" Fill="White" Stroke="Black" Width="65" Height="65" Margin="60.704,60,0,0" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="6" Grid.RowSpan="2"/>
         </Grid>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="635,490,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="602,70,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.263,-0.385"/>
+        <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" Margin="620,125,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
