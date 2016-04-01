@@ -63,7 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Board\Square.cs" />
+    <Compile Include="Game\Player.cs" />
+    <Compile Include="Game\Square.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -71,7 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pieces\Bishop.cs" />
-    <Compile Include="Board\Board.cs" />
+    <Compile Include="Game\Board.cs" />
     <Compile Include="Util\Enums.cs" />
     <Compile Include="Pieces\King.cs" />
     <Compile Include="Pieces\Knight.cs" />

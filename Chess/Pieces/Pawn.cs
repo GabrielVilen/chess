@@ -9,7 +9,7 @@ namespace Chess.Pieces
 {
     class Pawn : Piece
     {
-        private Pawn(bool isWhite) : base(Enums.PieceType.Pawn, isWhite)
+        private Pawn(bool color) : base(Enums.PieceType.Pawn, color)
         {
             throw new NotImplementedException();
         }
@@ -19,7 +19,7 @@ namespace Chess.Pieces
             throw new NotImplementedException();
         }
 
-        public override int Kill()
+        public override int Capture()
         {
             throw new NotImplementedException();
         }

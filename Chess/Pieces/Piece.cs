@@ -1,38 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Chess.Board;
 using Chess.Util;
 
 namespace Chess.Pieces
 {
     public abstract class Piece
     {
-        protected int[][] Position { get; set; }
+        protected Square Square { get; set; }
         protected bool IsClicked { get; set; }
-        protected bool IsWhite { get;  }
-        protected Enums.PieceType PieceType { get; set; }
+        public Enums.Color Color { get; set; }
+        public Enums.PieceType PieceType { get; set; }
 
 
-        protected Piece(Enums.PieceType pieceType, bool isWhite)
+        protected Piece(Enums.PieceType pieceType, Enums.Color color)
         {
             PieceType = pieceType;
-            IsWhite = isWhite;
+            Color = color;
         }
 
-        public bool MoveTo(int[][] position)
+        public void TryMoveTo(Square square)
         {
-            // todo: check if position is free (valid)
-            if (Board.Board.IsValid(this, position))
+            if (IsLegalMove(square) && square.IsValid(this))
             {
-                Position = position;
-                return true;
+                Piece destPiece = square.Move(this);
+
+                if ((destPiece != null) && (destPiece.Color != Color))
+                {
+                    destPiece.Capture();
+                    Board.Board.Score(destPiece, Color);
+                }
+
+                Square = square;
             }
-            return false;
         }
-        public abstract void Click();
-        public abstract int Kill();
-      //  public abstract string ToString();
+
+        internal abstract bool IsLegalMove(Square square);
+        internal abstract void Click();
+        internal abstract int Capture();
+        //  public abstract string ToString();
     }
 }

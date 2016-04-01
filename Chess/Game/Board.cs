@@ -5,7 +5,8 @@ namespace Chess.Board
 {
     public class Board
     {
-        private Square[,] squares = new Square[8, 8];
+        public static readonly int ROWS = 8, COLS = 8;
+        private Square[,] squares = new Square[COLS, ROWS];
         public Square[,] Squares => squares;
 
         public Board()
@@ -15,10 +16,10 @@ namespace Chess.Board
 
         private void InitSquares()
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < COLS; i++)
             {
                 bool evenCol = (i%2 == 0);
-                for (int j = 0; j < 8; j++)
+                for (int j = 0; j < ROWS; j++)
                 {
                     bool evenRow = (j%2 == 0);
 
@@ -28,14 +29,17 @@ namespace Chess.Board
                     else
                         color = Enums.Color.Black;
 
-                    squares[i, j] = new Square(Enums.PieceType.None, color);
+                    squares[i, j] = new Square(null, color);
                 }
             }
         }
 
-        public static bool IsValid(Piece piece, int[][] position)
+        public static void Score(Piece destPiece, Enums.Color color)
         {
-            return false;
+            // todo 
+
+
+            throw new System.NotImplementedException();
         }
     }
 }
