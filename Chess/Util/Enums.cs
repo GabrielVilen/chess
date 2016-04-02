@@ -11,7 +11,7 @@
             Rook = 5,
             Queen = 9
         }
-
+        
         public enum Color
         {
             Black,

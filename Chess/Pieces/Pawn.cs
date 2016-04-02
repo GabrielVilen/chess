@@ -1,32 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Chess.Game;
 using Chess.Util;
 
 namespace Chess.Pieces
 {
-    class Pawn : Piece
+    public class Pawn : Piece
     {
-        private Pawn(bool color) : base(Enums.PieceType.Pawn, color)
+        private bool isFirstMove;
+
+        public Pawn(Enums.Color color) : base(Enums.PieceType.Pawn, color)
         {
-            throw new NotImplementedException();
+            isFirstMove = true;
         }
 
-        public override void Click()
+        // todo: check capture
+        public override bool CanCapture(Piece destPiece)
         {
-            throw new NotImplementedException();
+            if ((destPiece.PieceType == Enums.PieceType.None) || (destPiece.Color == Color)) return false;
+
+            int destRow = destPiece.CurrSquare.Row;
+            int destColumn = destPiece.CurrSquare.Column;
+            int currRow = CurrSquare.Row;
+            int currColumn = CurrSquare.Column;
+
+            return (currRow + next == destRow) && (currColumn + next == destColumn || currColumn - next == destColumn);
         }
 
-        public override int Capture()
+        public override bool IsLegalMove(Square toSquare)
         {
-            throw new NotImplementedException();
-        }
-        public override string ToString()
-        {
-            throw new NotImplementedException();
+            if (currSquare == toSquare) return false;
+            if (isFirstMove)
+            {
+                if ((Math.Abs(currSquare.Row - toSquare.Row) > 2) ||
+                    !Board.GetInstance().GetSquareByRow(currSquare.Row + next).IsEmpty())
+                    return false;
+            }
+            else if (Math.Abs(currSquare.Row - toSquare.Row) > 1) return false;
+
+            return true;
         }
     }
-
 }

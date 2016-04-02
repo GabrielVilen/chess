@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Chess.Pieces;
+﻿using Chess.Pieces;
 using Chess.Util;
 
-namespace Chess.Board
+namespace Chess.Game
 {
     public class Square
     {
         public Enums.Color Color { get; }
         public Piece CurrPiece { get; set; }
+        public int Row { get; set; }
+        public int Column { get; set; }
+        
 
-        public Square(Piece currPiece, Enums.Color color)
+        public Square(int row, int column, Enums.Color color)
         {
+            Row = row;
+            Column = column;
             Color = color;
-            CurrPiece = currPiece;
         }
 
         public bool IsValid(Piece piece)
@@ -30,6 +29,11 @@ namespace Chess.Board
             CurrPiece = piece;
 
             return oldPiece;
+        }
+
+        public bool IsEmpty()
+        {
+            return CurrPiece == null || CurrPiece.PieceType == Enums.PieceType.None;
         }
     }
 }
