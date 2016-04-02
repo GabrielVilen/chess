@@ -42,5 +42,10 @@ namespace Chess.Game
             if (CurrPiece == null) return true;
             return CurrPiece.PieceType == Enums.PieceType.None;
         }
+
+        public bool IsSame(Square toSquare)
+        {
+            return (Row == toSquare.Row) && (Column == toSquare.Column);
+        }
     }
 }

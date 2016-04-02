@@ -14,7 +14,7 @@ namespace Chess.Pieces
         {
         }
 
-        public override bool IsLegalMove(Square toSquare)
+        public override bool CanMoveTo(Square toSquare)
         {
             return (Math.Abs(currRow - toSquare.Row) < 2) && (Math.Abs(currColumn - toSquare.Column) < 2);
         }

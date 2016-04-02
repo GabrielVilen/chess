@@ -10,7 +10,7 @@ namespace Chess.Pieces
         {
         }
 
-        public override bool IsLegalMove(Square toSquare)
+        public override bool CanMoveTo(Square toSquare)
         {
             if (Color == Enums.Color.White && currRow <= toSquare.Row ||
                 Color == Enums.Color.Black && currRow >= toSquare.Row) // must be right direction  

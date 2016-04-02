@@ -31,28 +31,34 @@ namespace Chess.Pieces
         }
 
         // todo: prevent move if will be placed in check
-        public void TryMoveTo(Square toSquare)
+        public bool TryMoveTo(Square toSquare)
         {
-            if (!IsSameSquare(toSquare) && IsLegalMove(toSquare) && toSquare.IsMovable(this))
+            if (IsSameSquare(toSquare) || !CanMoveTo(toSquare) || !toSquare.IsMovable(this)) return false;
+
+            Piece destPiece = toSquare.Move(this);
+
+            if ((destPiece != null) && !IsSameColor(destPiece) && CanCapture(destPiece))
             {
-                Piece destPiece = toSquare.Move(this);
+                destPiece.Capture();
+                Board.Score(destPiece, Color);
 
-                if ((destPiece != null) && CanCapture(destPiece))
-                {
-                    destPiece.Capture();
-                    Board.Score(destPiece, Color);
-
-                    destPiece = null; // to invoke GC
-                }
-                isFirstMove = false;
-                currSquare = toSquare;
+                destPiece = null; // to invoke GC
             }
+            isFirstMove = false;
+            currSquare = toSquare;
+
+            return true;
         }
 
-        public abstract bool IsLegalMove(Square toSquare);
+        private bool IsSameColor(Piece destPiece)
+        {
+            return Color == destPiece.Color;
+        }
+
+        public abstract bool CanMoveTo(Square toSquare);
 
         /// <summary>
-        ///     Should be overridden by pieces that has a different capturing pattern (eg. Pawn, that captures diagonal)
+        ///     Should only be overridden by pieces that has a different capturing pattern (eg. Pawn; captures diagonal)
         /// </summary>
         public virtual bool CanCapture(Piece destPiece)
         {
