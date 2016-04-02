@@ -42,8 +42,8 @@ namespace Chess.Game
                         color = Enums.Color.White;
                     else
                         color = Enums.Color.Black;
-                    
-                    squares[row, column] = new Square(row, column, color);
+
+                    squares[row, column] = new Square(row + 1, column + 1, color); // start at row and column 1
                 }
             }
         }

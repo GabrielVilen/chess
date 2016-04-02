@@ -9,7 +9,12 @@ namespace Chess.Game
         public Piece CurrPiece { get; set; }
         public int Row { get; set; }
         public int Column { get; set; }
-        
+
+        public Square(int row, int column)
+        {
+            Row = row;
+            Column = column;
+        }
 
         public Square(int row, int column, Enums.Color color)
         {
@@ -17,10 +22,11 @@ namespace Chess.Game
             Column = column;
             Color = color;
         }
-
-        public bool IsValid(Piece piece)
+ 
+        public bool IsMovable(Piece piece)
         {
-            return CurrPiece == null || CurrPiece.Color != piece.Color;
+            if (CurrPiece == null) return true;
+            return CurrPiece.Color != piece.Color || CurrPiece.PieceType == Enums.PieceType.None;
         }
 
         public Piece Move(Piece piece)
@@ -33,7 +39,8 @@ namespace Chess.Game
 
         public bool IsEmpty()
         {
-            return CurrPiece == null || CurrPiece.PieceType == Enums.PieceType.None;
+            if (CurrPiece == null) return true;
+            return CurrPiece.PieceType == Enums.PieceType.None;
         }
     }
 }

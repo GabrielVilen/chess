@@ -26,11 +26,11 @@ namespace Chess.Board.Tests
         [TestMethod()]
         public void SquareColorTest()
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < Game.Board.Rows; i++)
             {
                 Debug.WriteLine("");
-                Debug.Write("row: " + i + "  ");
-                for (int j = 0; j < 8; j++)
+                Debug.Write("row: " + s[i, 0].Row + "  ");
+                for (int j = 0; j < Game.Board.Columns; j++)
                 {
                     Debug.Write(" " + s[i, j].Color);
                 }

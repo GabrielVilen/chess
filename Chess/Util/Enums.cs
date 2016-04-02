@@ -9,7 +9,8 @@
             Knight = 3,
             Bishop = 3,
             Rook = 5,
-            Queen = 9
+            Queen = 9,
+            King
         }
         
         public enum Color

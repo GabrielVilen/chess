@@ -15,7 +15,7 @@ namespace Chess.Game.Tests
     {
         private Square s;
 
-        [TestMethod()]
+      //  [TestMethod()]
         public void SquareTest()
         {
             s = new Square(10, 10, Enums.Color.Black);
