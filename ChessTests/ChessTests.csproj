@@ -55,6 +55,7 @@
     <Compile Include="Game\SquareTests.cs" />
     <Compile Include="Pieces\BishopTests.cs" />
     <Compile Include="Pieces\KingTests.cs" />
+    <Compile Include="Pieces\KnightTests.cs" />
     <Compile Include="Pieces\PawnTests.cs" />
     <Compile Include="Pieces\PieceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
