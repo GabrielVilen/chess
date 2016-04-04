@@ -1,4 +1,5 @@
-﻿using Chess.Game;
+﻿using System.Diagnostics;
+using Chess.Game;
 using Chess.Util;
 
 namespace Chess.Pieces
@@ -10,26 +11,29 @@ namespace Chess.Pieces
         {
         }
 
+        // todo unit test if piece in between
         public override bool CanMoveTo(Square toSquare)
         {
             if (toSquare.Color != Color) return false;
-            if (Loop(toSquare, 1, 1)) return true;
-            if (Loop(toSquare, 1, -1)) return true;
-            if (Loop(toSquare, -1, 1)) return true;
-            if (Loop(toSquare, -1, -1)) return true;
+            if (LoopTest(toSquare, 1, 1)) return true;
+            if (LoopTest(toSquare, 1, -1)) return true;
+            if (LoopTest(toSquare, -1, 1)) return true;
+            if (LoopTest(toSquare, -1, -1)) return true;
 
             return false;
         }
 
-        private bool Loop(Square toSquare, int row, int col)
+        private bool LoopTest(Square toSquare, int row, int column)
         {
-            Square tmpSquare = new Square(currRow, currColumn);
+            Square testSquare = board.GetSquare(currRow, currColumn);
 
             for (int i = 1; i < Board.Columns; i++)
             {
-                if (tmpSquare.IsSame(toSquare)) return true;
-                tmpSquare.Column += row;
-                tmpSquare.Row += col;
+                if (testSquare == null) break;          // todo why null ?
+                if (testSquare.IsSame(toSquare)) return true;
+                if (!testSquare.IsEmpty()) return false;
+                
+                testSquare = board.GetSquare(testSquare.Row + row, testSquare.Column + column);
             }
             return false;
         }

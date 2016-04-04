@@ -7,8 +7,8 @@ namespace Chess.Game
     {
         public Enums.Color Color { get; }
         public Piece CurrPiece { get; set; }
-        public int Row { get; set; }
-        public int Column { get; set; }
+        public int Row { get; }
+        public int Column { get; }
 
         public Square(int row, int column)
         {
@@ -22,7 +22,7 @@ namespace Chess.Game
             Column = column;
             Color = color;
         }
- 
+
         public bool IsMovable(Piece piece)
         {
             if (CurrPiece == null) return true;
@@ -46,6 +46,11 @@ namespace Chess.Game
         public bool IsSame(Square toSquare)
         {
             return (Row == toSquare.Row) && (Column == toSquare.Column);
+        }
+
+        public override string ToString()
+        {
+            return "Square [" + Row + ", " + Column + "]" + " Color: " + Color + " Piece: " + CurrPiece + ": ";
         }
     }
 }

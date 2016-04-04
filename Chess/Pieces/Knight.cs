@@ -9,8 +9,7 @@ namespace Chess.Pieces
         public Knight(Enums.Color color) : base(Enums.PieceType.Knight, color)
         {
         }
-
-        // todo: unit test
+        
         public override bool CanMoveTo(Square toSquare)
         {
             return TestSquares(2, 1, toSquare) || TestSquares(1, 2, toSquare);

@@ -15,6 +15,7 @@ namespace Chess.Pieces
         protected int currColumn => CurrSquare.Column;
         protected int currRow => CurrSquare.Row;
 
+        protected Board board;
         protected Square currSquare;
 
         public Square CurrSquare
@@ -28,6 +29,7 @@ namespace Chess.Pieces
             PieceType = pieceType;
             Color = color;
             next = (color == Enums.Color.White ? -1 : 1); // next square is positive or negative 
+            board = Board.GetInstance();
         }
 
         // todo: prevent move if will be placed in check
@@ -40,7 +42,7 @@ namespace Chess.Pieces
             if ((destPiece != null) && !IsSameColor(destPiece) && CanCapture(destPiece))
             {
                 destPiece.Capture();
-                Board.Score(destPiece, Color);
+                board.Score(destPiece, Color);
 
                 destPiece = null; // to invoke GC
             }

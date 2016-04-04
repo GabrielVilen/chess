@@ -13,20 +13,18 @@ namespace Chess.Pieces
         public override bool CanMoveTo(Square toSquare)
         {
             if (Color == Enums.Color.White && currRow <= toSquare.Row ||
-                Color == Enums.Color.Black && currRow >= toSquare.Row) // must be right direction  
-                return false; 
-
-            if (Math.Abs(currColumn - toSquare.Column) != 0) // must be same column
+                Color == Enums.Color.Black && currRow >= toSquare.Row) // check direction 
                 return false;
+
+            if (Math.Abs(currColumn - toSquare.Column) != 0) return false;
 
             if (isFirstMove)
             {
                 if ((Math.Abs(currRow - toSquare.Row) > 2) ||
-                    !Board.GetInstance().GetSquareByRow(currRow + next).IsEmpty())
+                    !board.GetSquare(currRow + next, currColumn).IsEmpty())
                     return false;
             }
-            else if (Math.Abs(currRow - toSquare.Row) > 1)
-                return false;
+            else if (Math.Abs(currRow - toSquare.Row) > 1) return false;
 
             return true;
         }

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using Chess.Pieces;
 using Chess.Util;
 
@@ -48,26 +50,21 @@ namespace Chess.Game
             }
         }
 
-        public static void Score(Piece destPiece, Enums.Color color)
+        public void Score(Piece destPiece, Enums.Color color)
         {
             // todo
             throw new System.NotImplementedException();
         }
 
-        public Square GetSquareByColumn(int column)
+        public void AddPieceToSquare(Piece piece, int row, int column)
         {
-            return squares.Cast<Square>().FirstOrDefault(square => square.Column == column);
+            Square square = GetSquare(row, column);
+            if (square != null) square.CurrPiece = piece;
         }
 
-/*        public int[,] GetCellByColumn(int column)
+        public Square GetSquare(int row, int column)
         {
-            return squares.Cast<Square>().FirstOrDefault(square => square.C == column);
-        }*/
-
-
-        public Square GetSquareByRow(int row)
-        {
-            return squares.Cast<Square>().FirstOrDefault(square => square.Row == row);
+            return squares.Cast<Square>().FirstOrDefault(square => square.Row == row && square.Column == column);
         }
     }
 }
