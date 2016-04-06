@@ -26,6 +26,10 @@ namespace Chess.Pieces.Tests
             if (!knight.CanMoveTo(new Square(6, 5))) Assert.Fail();
 
             if (knight.CanMoveTo(new Square(6, 6))) Assert.Fail();
+
+/*            Piece pawn = new Pawn(Enums.Color.Black);
+            Game.Board.GetInstance().AddPieceToSquare(pawn, 6, 5);
+            if (knight.CanMoveTo(new Square(6, 5))) Assert.Fail();*/
         }
     }
 }

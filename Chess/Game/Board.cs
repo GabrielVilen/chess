@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using Chess.Pieces;
+﻿using Chess.Pieces;
 using Chess.Util;
 
 namespace Chess.Game
@@ -9,8 +6,8 @@ namespace Chess.Game
     public class Board
     {
         private static Board instance;
-        public static readonly int Rows = 8, Columns = 8;
-        private Square[,] squares = new Square[Rows, Columns];
+        public static readonly int TotalRows = 8, TotalColumns = 8;
+        private Square[,] squares = new Square[TotalRows, TotalColumns];
         public Square[,] Squares => squares;
 
         private Board()
@@ -32,10 +29,10 @@ namespace Chess.Game
 
         private void InitSquares()
         {
-            for (int row = 0; row < Rows; row++)
+            for (int row = 0; row < TotalRows; row++)
             {
                 bool evenRow = (row%2 == 0);
-                for (int column = 0; column < Columns; column++)
+                for (int column = 0; column < TotalColumns; column++)
                 {
                     bool evenColumn = (column%2 == 0);
 
@@ -52,7 +49,7 @@ namespace Chess.Game
 
         public void Score(Piece destPiece, Enums.Color color)
         {
-            // todo
+            // todo Score functionality
             throw new System.NotImplementedException();
         }
 
@@ -64,7 +61,13 @@ namespace Chess.Game
 
         public Square GetSquare(int row, int column)
         {
-            return squares.Cast<Square>().FirstOrDefault(square => square.Row == row && square.Column == column);
+            int i = row - 1;
+            int j = column - 1;
+
+            if (i >= 0 && j >= 0 && i < TotalRows && j < TotalColumns)
+                return squares[i, j];
+
+            return null;
         }
     }
 }

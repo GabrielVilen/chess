@@ -4,14 +4,12 @@ using Chess.Util;
 
 namespace Chess.Pieces
 {
-    // todo Bishop
     public class Bishop : Piece
     {
         public Bishop(Enums.Color color) : base(Enums.PieceType.Bishop, color)
         {
         }
-
-        // todo unit test if piece in between
+        
         public override bool CanMoveTo(Square toSquare)
         {
             if (toSquare.Color != Color) return false;
@@ -25,15 +23,15 @@ namespace Chess.Pieces
 
         private bool LoopTest(Square toSquare, int row, int column)
         {
-            Square testSquare = board.GetSquare(currRow, currColumn);
+            Square square = currSquare;
 
-            for (int i = 1; i < Board.Columns; i++)
+            for (int i = 1; i < Board.TotalColumns; i++)
             {
-                if (testSquare == null) break;          // todo why null ?
-                if (testSquare.IsSame(toSquare)) return true;
-                if (!testSquare.IsEmpty()) return false;
+                if (square == null) break;          
+                if (square.IsSame(toSquare)) return true;
+                if (!square.IsEmpty()) return false;
                 
-                testSquare = board.GetSquare(testSquare.Row + row, testSquare.Column + column);
+                square = board.GetSquare(square.Row + row, square.Column + column);
             }
             return false;
         }

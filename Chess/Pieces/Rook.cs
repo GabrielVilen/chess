@@ -8,8 +8,7 @@ using Chess.Util;
 
 namespace Chess.Pieces
 {
-    // todo Rook
-    class Rook : Piece
+    public class Rook : Piece
     {
         public Rook(Enums.Color color) : base(Enums.PieceType.Rook, color)
         {
@@ -17,21 +16,39 @@ namespace Chess.Pieces
 
         public override bool CanMoveTo(Square toSquare)
         {
-            if (toSquare.Row != currRow || toSquare.Column != currColumn) return false;
+            int toColumn = toSquare.Column;
+            int toRow = toSquare.Row;
 
-            if (toSquare.Column > currColumn)
+            if (toColumn == currColumn)
+                return toRow > currRow ? LoopRows(currRow, toRow, toSquare) : LoopRows(0, currRow, toSquare);
+            
+            if (toRow == currRow)
+                return toColumn > currColumn ? LoopColumns(currColumn, toColumn, toSquare) : LoopColumns(0, currColumn, toSquare);
+
+            return false;
+        }
+        
+        // todo unit test
+        private bool LoopColumns(int start, int end, Square toSquare)
+        {
+            for (int i = start; i < end; i++)
             {
-                if(LoopColumns(currColumn, toSquare.Column)) return true;
+                Square square = board.GetSquare(currRow, i);
+                if (square == null) break;
+                if (square.IsSame(toSquare)) return true;
+                if (!square.IsEmpty()) return false;
             }
             return false;
         }
 
-        // todo complete
-        private bool LoopColumns(int start, int end)
+        private bool LoopRows(int start, int end, Square toSquare)
         {
             for (int i = start; i < end; i++)
             {
-                if (board.Squares[currRow, i] == currSquare) return true; 
+                Square square = board.GetSquare(i, currColumn);
+                if (square == null) break;
+                if (square.IsSame(toSquare)) return true;
+                if (!square.IsEmpty()) return false;
             }
             return false;
         }

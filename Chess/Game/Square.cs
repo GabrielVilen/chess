@@ -23,7 +23,7 @@ namespace Chess.Game
             Color = color;
         }
 
-        public bool IsMovable(Piece piece)
+        public bool CanPlace(Piece piece)
         {
             if (CurrPiece == null) return true;
             return CurrPiece.Color != piece.Color || CurrPiece.PieceType == Enums.PieceType.None;

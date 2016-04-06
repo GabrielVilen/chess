@@ -35,7 +35,7 @@ namespace Chess.Pieces
         // todo: prevent move if will be placed in check
         public bool TryMoveTo(Square toSquare)
         {
-            if (IsSameSquare(toSquare) || !CanMoveTo(toSquare) || !toSquare.IsMovable(this)) return false;
+            if (IsSameSquare(toSquare) || !CanMoveTo(toSquare) || !toSquare.CanPlace(this)) return false;
 
             Piece destPiece = toSquare.Move(this);
 

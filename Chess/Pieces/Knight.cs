@@ -3,7 +3,6 @@ using Chess.Util;
 
 namespace Chess.Pieces
 {
-    // todo Knight
     public class Knight : Piece
     {
         public Knight(Enums.Color color) : base(Enums.PieceType.Knight, color)
@@ -12,10 +11,10 @@ namespace Chess.Pieces
         
         public override bool CanMoveTo(Square toSquare)
         {
-            return TestSquares(2, 1, toSquare) || TestSquares(1, 2, toSquare);
+            return TestMoves(2, 1, toSquare) || TestMoves(1, 2, toSquare);
         }
 
-        private bool TestSquares(int row, int col, Square toSquare)
+        private bool TestMoves(int row, int col, Square toSquare)
         {
             int toRow = toSquare.Row;
             int toCol = toSquare.Column;
