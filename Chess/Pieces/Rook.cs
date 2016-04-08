@@ -20,35 +20,27 @@ namespace Chess.Pieces
             int toRow = toSquare.Row;
 
             if (toColumn == currColumn)
-                return toRow > currRow ? LoopRows(currRow, toRow, toSquare) : LoopRows(0, currRow, toSquare);
-            
-            if (toRow == currRow)
-                return toColumn > currColumn ? LoopColumns(currColumn, toColumn, toSquare) : LoopColumns(0, currColumn, toSquare);
-
-            return false;
-        }
-        
-        // todo unit test
-        private bool LoopColumns(int start, int end, Square toSquare)
-        {
-            for (int i = start; i < end; i++)
             {
-                Square square = board.GetSquare(currRow, i);
-                if (square == null) break;
-                if (square.IsSame(toSquare)) return true;
-                if (!square.IsEmpty()) return false;
+                if (toRow > currRow) return Loop(currRow, toRow, toSquare, true);
+                if (toRow < currRow) return Loop(1, currRow, toSquare, true);
             }
+            else if (toRow == currRow)
+            {
+                if (toColumn > currColumn) return Loop(currColumn, toColumn, toSquare, false);
+                if (toColumn < currColumn) return Loop(1, currColumn, toSquare, false);
+            }
+
             return false;
         }
 
-        private bool LoopRows(int start, int end, Square toSquare)
+        private bool Loop(int start, int end, Square toSquare, bool loopRows)
         {
-            for (int i = start; i < end; i++)
+            for (int i = start; i <= end; i++)
             {
-                Square square = board.GetSquare(i, currColumn);
-                if (square == null) break;
-                if (square.IsSame(toSquare)) return true;
+                Square square = loopRows ? board.GetSquare(i, currColumn) : board.GetSquare(currRow, i);
+                if (square == null) continue;
                 if (!square.IsEmpty()) return false;
+                if (square.IsSame(toSquare)) return true;
             }
             return false;
         }
