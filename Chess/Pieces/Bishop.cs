@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Chess.Game;
+﻿using Chess.Game;
 using Chess.Util;
 
 namespace Chess.Pieces
@@ -9,30 +8,13 @@ namespace Chess.Pieces
         public Bishop(Enums.Color color) : base(Enums.PieceType.Bishop, color)
         {
         }
-        
-        public override bool CanMoveTo(Square toSquare)
+
+        public override bool CanMoveTo(Square destSquare)
         {
-            if (toSquare.Color != Color) return false;
-            if (LoopTest(toSquare, 1, 1)) return true;
-            if (LoopTest(toSquare, 1, -1)) return true;
-            if (LoopTest(toSquare, -1, 1)) return true;
-            if (LoopTest(toSquare, -1, -1)) return true;
+            if (destSquare.Color != Color) return false;
+            if (destSquare.Row > currRow) return IsMatch(destSquare, 1, 1)  || IsMatch(destSquare, 1, -1);
+            if (destSquare.Row < currRow) return IsMatch(destSquare, -1, 1) || IsMatch(destSquare, -1, -1);
 
-            return false;
-        }
-
-        private bool LoopTest(Square toSquare, int row, int column)
-        {
-            Square square = currSquare;
-
-            for (int i = 1; i < Board.TotalColumns; i++)
-            {
-                if (square == null) break;          
-                if (square.IsSame(toSquare)) return true;
-                if (!square.IsEmpty()) return false;
-                
-                square = board.GetSquare(square.Row + row, square.Column + column);
-            }
             return false;
         }
     }

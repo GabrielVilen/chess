@@ -10,21 +10,20 @@ namespace Chess.Pieces
         {
         }
 
-        public override bool CanMoveTo(Square toSquare)
+        public override bool CanMoveTo(Square destSquare)
         {
-            if (Color == Enums.Color.White && currRow <= toSquare.Row ||
-                Color == Enums.Color.Black && currRow >= toSquare.Row) // check direction 
+            if (Color == Enums.Color.White && currRow <= destSquare.Row ||
+                Color == Enums.Color.Black && currRow >= destSquare.Row) // check direction 
                 return false;
 
-            if (Math.Abs(currColumn - toSquare.Column) != 0) return false;
+            if (Math.Abs(currColumn - destSquare.Column) != 0) return false;
 
             if (isFirstMove)
             {
-                if ((Math.Abs(currRow - toSquare.Row) > 2) ||
-                    !board.GetSquare(currRow + next, currColumn).IsEmpty())
+                if ((Math.Abs(currRow - destSquare.Row) > 2) || !board.GetSquare(currRow + next, currColumn).IsEmpty())
                     return false;
             }
-            else if (Math.Abs(currRow - toSquare.Row) > 1) return false;
+            else if (Math.Abs(currRow - destSquare.Row) > 1) return false;
 
             return true;
         }

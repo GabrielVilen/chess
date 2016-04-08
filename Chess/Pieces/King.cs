@@ -14,9 +14,9 @@ namespace Chess.Pieces
         {
         }
 
-        public override bool CanMoveTo(Square toSquare)
+        public override bool CanMoveTo(Square destSquare)
         {
-            return (Math.Abs(currRow - toSquare.Row) < 2) && (Math.Abs(currColumn - toSquare.Column) < 2);
+            return (Math.Abs(currRow - destSquare.Row) < 2) && (Math.Abs(currColumn - destSquare.Column) < 2);
         }
     }
 }

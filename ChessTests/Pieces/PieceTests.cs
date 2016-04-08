@@ -20,13 +20,13 @@ namespace Chess.Pieces.Tests
             Piece piece = new Pawn(Enums.Color.White);
             piece.CurrSquare = new Square(4, 4);
 
-            Square toSquare = new Square(3,4);
-            toSquare.CurrPiece = new Pawn(Enums.Color.White);
+            Square destSquare = new Square(3,4);
+            destSquare.CurrPiece = new Pawn(Enums.Color.White);
 
-            if(piece.TryMoveTo(toSquare)) Assert.Fail();
+            if(piece.TryMoveTo(destSquare)) Assert.Fail();
 
-            toSquare.CurrPiece = null;
-            if (!piece.TryMoveTo(toSquare)) Assert.Fail();
+            destSquare.CurrPiece = null;
+            if (!piece.TryMoveTo(destSquare)) Assert.Fail();
         }
     }
 }

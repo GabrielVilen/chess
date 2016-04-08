@@ -9,20 +9,20 @@ namespace Chess.Pieces
         {
         }
         
-        public override bool CanMoveTo(Square toSquare)
+        public override bool CanMoveTo(Square destSquare)
         {
-            return TestMoves(2, 1, toSquare) || TestMoves(1, 2, toSquare);
+            return IsMatch(destSquare, 2, 1) || IsMatch(destSquare, 1, 2);
         }
 
-        private bool TestMoves(int row, int col, Square toSquare)
+        protected override bool IsMatch(Square destSquare, int row, int column)
         {
-            int toRow = toSquare.Row;
-            int toCol = toSquare.Column;
+            int destRow = destSquare.Row;
+            int toCol = destSquare.Column;
 
-            if ((toRow == currRow + row) && (toCol == currColumn + col)) return true;
-            if ((toRow == currRow + row) && (toCol == currColumn - col)) return true;
-            if ((toRow == currRow - row) && (toCol == currColumn + col)) return true;
-            if ((toRow == currRow - row) && (toCol == currColumn - col)) return true;
+            if ((destRow == currRow + row) && (toCol == currColumn + column)) return true;
+            if ((destRow == currRow + row) && (toCol == currColumn - column)) return true;
+            if ((destRow == currRow - row) && (toCol == currColumn + column)) return true;
+            if ((destRow == currRow - row) && (toCol == currColumn - column)) return true;
 
             return false;
         }

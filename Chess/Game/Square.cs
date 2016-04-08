@@ -43,9 +43,9 @@ namespace Chess.Game
             return CurrPiece.PieceType == Enums.PieceType.None;
         }
 
-        public bool IsSame(Square toSquare)
+        public bool IsSame(Square destSquare)
         {
-            return (Row == toSquare.Row) && (Column == toSquare.Column);
+            return (Row == destSquare.Row) && (Column == destSquare.Column);
         }
 
         public override string ToString()

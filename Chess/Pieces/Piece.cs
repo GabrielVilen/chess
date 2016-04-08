@@ -33,11 +33,11 @@ namespace Chess.Pieces
         }
 
         // todo: prevent move if will be placed in check
-        public bool TryMoveTo(Square toSquare)
+        public bool TryMoveTo(Square destSquare)
         {
-            if (IsSameSquare(toSquare) || !CanMoveTo(toSquare) || !toSquare.CanPlace(this)) return false;
+            if (IsSameSquare(destSquare) || !CanMoveTo(destSquare) || !destSquare.CanPlace(this)) return false;
 
-            Piece destPiece = toSquare.Move(this);
+            Piece destPiece = destSquare.Move(this);
 
             if ((destPiece != null) && !IsSameColor(destPiece) && CanCapture(destPiece))
             {
@@ -47,9 +47,29 @@ namespace Chess.Pieces
                 destPiece = null; // to invoke GC
             }
             isFirstMove = false;
-            currSquare = toSquare;
+            currSquare = destSquare;
 
             return true;
+        }
+
+        /// <summary>
+        ///     Loops the board by increasing by the given row and column offset.
+        ///     Returns true if the piece can move to the destination square, and no pieces are blocking the path.
+        ///     Can be overridden to replace with unique match pattern.
+        /// </summary>
+        protected virtual bool IsMatch(Square destSquare, int row, int column)
+        {
+            Square testSquare = currSquare;
+
+            for (int i = 1; i < Board.TotalColumns; i++)
+            {
+                if (testSquare == null) continue;
+                if (testSquare.IsSame(destSquare)) return true;
+                if (!testSquare.IsEmpty()) return false;
+
+                testSquare = board.GetSquare(testSquare.Row + row, testSquare.Column + column);
+            }
+            return false;
         }
 
         private bool IsSameColor(Piece destPiece)
@@ -57,7 +77,11 @@ namespace Chess.Pieces
             return Color == destPiece.Color;
         }
 
-        public abstract bool CanMoveTo(Square toSquare);
+        /// <summary>
+        ///     Checks if the piece can move to the given destination square given the pice's movement pattern.
+        ///     Override to implement movement pattern.
+        /// </summary>
+        public abstract bool CanMoveTo(Square destSquare);
 
         /// <summary>
         ///     Should only be overridden by pieces that has a different capturing pattern (eg. Pawn; captures diagonal)
@@ -67,9 +91,9 @@ namespace Chess.Pieces
             return true;
         }
 
-        protected bool IsSameSquare(Square toSquare)
+        protected bool IsSameSquare(Square destSquare)
         {
-            return currSquare == toSquare;
+            return currSquare == destSquare;
         }
 
         public void Click()

@@ -58,6 +58,8 @@
     <Compile Include="Pieces\KnightTests.cs" />
     <Compile Include="Pieces\PawnTests.cs" />
     <Compile Include="Pieces\PieceTests.cs" />
+    <Compile Include="Pieces\QueenTests.cs" />
+    <Compile Include="Pieces\RookTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

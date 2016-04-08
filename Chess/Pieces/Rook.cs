@@ -14,35 +14,24 @@ namespace Chess.Pieces
         {
         }
 
-        public override bool CanMoveTo(Square toSquare)
+        public override bool CanMoveTo(Square destSquare)
         {
-            int toColumn = toSquare.Column;
-            int toRow = toSquare.Row;
+            int destColumn = destSquare.Column;
+            int destRow = destSquare.Row;
 
-            if (toColumn == currColumn)
+            if (destColumn == currColumn)
             {
-                if (toRow > currRow) return Loop(currRow, toRow, toSquare, true);
-                if (toRow < currRow) return Loop(1, currRow, toSquare, true);
+                if (destRow > currRow) return IsMatch(destSquare, 1, 0);
+                if (destRow < currRow) return IsMatch(destSquare, -1, 0);
             }
-            else if (toRow == currRow)
+            else if (destRow == currRow)
             {
-                if (toColumn > currColumn) return Loop(currColumn, toColumn, toSquare, false);
-                if (toColumn < currColumn) return Loop(1, currColumn, toSquare, false);
+                if (destColumn > currColumn) return IsMatch(destSquare, 0, 1);
+                if (destColumn < currColumn) return IsMatch(destSquare, 0, -1);
             }
 
             return false;
         }
-
-        private bool Loop(int start, int end, Square toSquare, bool loopRows)
-        {
-            for (int i = start; i <= end; i++)
-            {
-                Square square = loopRows ? board.GetSquare(i, currColumn) : board.GetSquare(currRow, i);
-                if (square == null) continue;
-                if (!square.IsEmpty()) return false;
-                if (square.IsSame(toSquare)) return true;
-            }
-            return false;
-        }
+        
     }
 }
