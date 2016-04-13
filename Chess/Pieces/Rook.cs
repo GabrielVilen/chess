@@ -8,7 +8,7 @@ using Chess.Util;
 
 namespace Chess.Pieces
 {
-    public class Rook : Piece
+    internal class Rook : Piece
     {
         public Rook(Enums.Color color) : base(Enums.PieceType.Rook, color)
         {

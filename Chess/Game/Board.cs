@@ -3,28 +3,16 @@ using Chess.Util;
 
 namespace Chess.Game
 {
-    public class Board
+    internal class Board
     {
         private static Board instance;
         public static readonly int TotalRows = 8, TotalColumns = 8;
         private Square[,] squares = new Square[TotalRows, TotalColumns];
         public Square[,] Squares => squares;
 
-        private Board()
+        public Board()
         {
             InitSquares();
-        }
-
-        /// <summary>
-        ///     Singleton that creates new instance if current is null
-        /// </summary>
-        /// <returns>Get singleton</returns>
-        public static Board GetInstance()
-        {
-            if (instance == null)
-                instance = new Board();
-
-            return instance;
         }
 
         private void InitSquares()
@@ -45,12 +33,6 @@ namespace Chess.Game
                     squares[row, column] = new Square(row + 1, column + 1, color); // start at row and column 1
                 }
             }
-        }
-
-        public void Score(Piece destPiece, Enums.Color color)
-        {
-            // todo Score functionality
-            throw new System.NotImplementedException();
         }
 
         public void AddPieceToSquare(Piece piece, int row, int column)

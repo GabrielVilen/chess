@@ -4,7 +4,7 @@ using Chess.Util;
 
 namespace Chess.Pieces
 {
-    public class Pawn : Piece
+    internal class Pawn : Piece
     {
         public Pawn(Enums.Color color) : base(Enums.PieceType.Pawn, color)
         {

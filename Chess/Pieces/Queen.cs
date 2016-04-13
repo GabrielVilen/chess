@@ -8,13 +8,12 @@ using Chess.Util;
 
 namespace Chess.Pieces
 {
-    public class Queen : Piece
+    internal class Queen : Piece
     {
         public Queen(Enums.Color color) : base(Enums.PieceType.Queen, color)
         {
         }
-
-        // todo unit test
+        
         public override bool CanMoveTo(Square destSquare)
         {
             int destColumn = destSquare.Column;

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Chess.Pieces;
 using Chess.Util;
 
 namespace Chess.Game
 {
-    class Player
+    internal class Player
     {
         public int Score { get; set; }
         public string Name { get; private set; }
@@ -18,6 +19,12 @@ namespace Chess.Game
         {
             Name = name;
             Color = color;
+        }
+
+        public void RemovePiece(Piece destPiece)
+        {
+            // todo  implement RemovePiece
+            throw new NotImplementedException();
         }
     }
 }

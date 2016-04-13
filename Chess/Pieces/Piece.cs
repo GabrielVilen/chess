@@ -3,7 +3,7 @@ using Chess.Util;
 
 namespace Chess.Pieces
 {
-    public abstract class Piece
+    internal abstract class Piece
     {
         protected int next;
         protected bool IsClicked { get; set; }
@@ -17,6 +17,7 @@ namespace Chess.Pieces
 
         protected Board board;
         protected Square currSquare;
+        private Game.Game game;
 
         public Square CurrSquare
         {
@@ -29,7 +30,9 @@ namespace Chess.Pieces
             PieceType = pieceType;
             Color = color;
             next = (color == Enums.Color.White ? -1 : 1); // next square is positive or negative 
-            board = Board.GetInstance();
+
+            game = Game.Game.GetInstance();
+            board = game.Board;
         }
 
         // todo: prevent move if will be placed in check
@@ -42,9 +45,7 @@ namespace Chess.Pieces
             if ((destPiece != null) && !IsSameColor(destPiece) && CanCapture(destPiece))
             {
                 destPiece.Capture();
-                board.Score(destPiece, Color);
-
-                destPiece = null; // to invoke GC
+                game.Score(destPiece);
             }
             isFirstMove = false;
             currSquare = destSquare;
