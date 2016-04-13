@@ -6,6 +6,8 @@ namespace Chess.Pieces
 {
     internal class Pawn : Piece
     {
+        private bool isFirstMove = true;
+
         public Pawn(Enums.Color color) : base(Enums.PieceType.Pawn, color)
         {
         }
@@ -13,17 +15,18 @@ namespace Chess.Pieces
         public override bool CanMoveTo(Square destSquare)
         {
             if (Color == Enums.Color.White && currRow <= destSquare.Row ||
-                Color == Enums.Color.Black && currRow >= destSquare.Row) // check direction 
+                Color == Enums.Color.Black && currRow >= destSquare.Row) // checks direction 
                 return false;
 
             if (Math.Abs(currColumn - destSquare.Column) != 0) return false;
-
             if (isFirstMove)
             {
                 if ((Math.Abs(currRow - destSquare.Row) > 2) || !board.GetSquare(currRow + next, currColumn).IsEmpty())
                     return false;
             }
             else if (Math.Abs(currRow - destSquare.Row) > 1) return false;
+
+            isFirstMove = false;
 
             return true;
         }

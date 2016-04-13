@@ -7,7 +7,6 @@ namespace Chess.Pieces
     {
         protected int next;
         protected bool IsClicked { get; set; }
-        protected bool isFirstMove = true;
 
         public Enums.Color Color { get; set; }
         public Enums.PieceType PieceType { get; set; }
@@ -29,16 +28,19 @@ namespace Chess.Pieces
         {
             PieceType = pieceType;
             Color = color;
-            next = (color == Enums.Color.White ? -1 : 1); // next square is positive or negative 
+            next = (color == Enums.Color.White ? -1 : 1); // sets next square to positive or negative 
 
             game = Game.Game.GetInstance();
             board = game.Board;
         }
 
-        // todo: prevent move if will be placed in check
+        // todo: prevent move if will be placed in check 
+        // todo: transform pawn to queen
+        // todo: implement castling (sv. rockad)
         public bool TryMoveTo(Square destSquare)
         {
-            if (IsSameSquare(destSquare) || !CanMoveTo(destSquare) || !destSquare.CanPlace(this)) return false;
+            if (!IsValidSquare(destSquare) || !CanMoveTo(destSquare) || !destSquare.CanPlace(this))
+                return false;
 
             Piece destPiece = destSquare.Move(this);
 
@@ -47,7 +49,6 @@ namespace Chess.Pieces
                 destPiece.Capture();
                 game.Score(destPiece);
             }
-            isFirstMove = false;
             currSquare = destSquare;
 
             return true;
@@ -92,8 +93,9 @@ namespace Chess.Pieces
             return true;
         }
 
-        protected bool IsSameSquare(Square destSquare)
+        protected bool IsValidSquare(Square destSquare)
         {
+            if (game.InCheck(Color)) return false;
             return currSquare == destSquare;
         }
 

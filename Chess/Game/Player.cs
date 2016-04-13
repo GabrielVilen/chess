@@ -13,7 +13,8 @@ namespace Chess.Game
         public int Score { get; set; }
         public string Name { get; private set; }
         public Enums.Color Color { get; private set; }
-
+        private List<Piece> pieces = new List<Piece>();
+        private bool isCheck;
 
         public Player(string name, Enums.Color color)
         {
@@ -21,9 +22,28 @@ namespace Chess.Game
             Color = color;
         }
 
-        public void RemovePiece(Piece destPiece)
+        public void AddPiece(Piece piece)
         {
-            // todo  implement RemovePiece
+            pieces.Add(piece);
+        }
+
+        public void RemovePiece(Piece piece)
+        {
+            if (pieces.Contains(piece))
+                pieces.Remove(piece);
+
+            piece = null;
+        }
+
+        public bool InCheck()
+        {
+            return isCheck;
+        }
+
+        // todo WillBeInCheck
+        public bool WillBeInCheck(Square destSquare)
+        {
+            //pieces.Find()
             throw new NotImplementedException();
         }
     }

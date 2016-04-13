@@ -1,4 +1,5 @@
 ﻿using Chess.Pieces;
+using Chess.Util;
 
 namespace Chess.Game
 {
@@ -29,8 +30,10 @@ namespace Chess.Game
         {
         }
 
-        public void StartNew(Player playerOne, Player playerTwo)
+        public void NewGame(Player playerOne, Player playerTwo)
         {
+            GetInstance();
+
             this.playerOne = playerOne;
             this.playerTwo = playerTwo;
 
@@ -55,9 +58,11 @@ namespace Chess.Game
             loser.RemovePiece(destPiece);
         }
 
-        public void Reset()
+        public bool InCheck(Enums.Color color, Square destSquare)
         {
-            instance = new Game();
+            Player checkPlayer = (playerOne.Color == color) ? playerOne : playerTwo;
+
+            return !checkPlayer.InCheck() && !checkPlayer.WillBeInCheck(destSquare);
         }
     }
 }
