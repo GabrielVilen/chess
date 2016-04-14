@@ -3,7 +3,7 @@ using Chess.Util;
 
 namespace Chess.Game
 {
-    internal class Board
+    public class Board
     {
         private static Board instance;
         public static readonly int TotalRows = 8, TotalColumns = 8;

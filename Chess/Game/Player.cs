@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Chess.Pieces;
 using Chess.Util;
 
 namespace Chess.Game
 {
-    internal class Player
+    public class Player
     {
         public int Score { get; set; }
         public string Name { get; private set; }
         public Enums.Color Color { get; private set; }
         private List<Piece> pieces = new List<Piece>();
-        private bool isCheck;
+        public bool inCheck { get; set; } 
 
         public Player(string name, Enums.Color color)
         {
@@ -32,19 +29,15 @@ namespace Chess.Game
             if (pieces.Contains(piece))
                 pieces.Remove(piece);
 
-            piece = null;
+            piece = null; // invoke GC
         }
 
-        public bool InCheck()
+ 
+        // todo test
+        public bool CanCheck(Square destSquare)
         {
-            return isCheck;
-        }
-
-        // todo WillBeInCheck
-        public bool WillBeInCheck(Square destSquare)
-        {
-            //pieces.Find()
-            throw new NotImplementedException();
+            Piece king = pieces.Find(p => p.PieceType == Enums.PieceType.King);
+            return king.CanMoveTo(destSquare);
         }
     }
 }

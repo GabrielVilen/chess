@@ -3,13 +3,13 @@ using Chess.Util;
 
 namespace Chess.Game
 {
-    internal class Game
+    public class Game
     {
         private static Game instance;
 
-        private Player playerOne, playerTwo;
-        public Player PlayerOne => playerOne;
-        public Player PlayerTwo => playerTwo;
+        private Player white, black;
+        public Player White => white;
+        public Player Black => black;
 
         private Board board;
         public Board Board => board;
@@ -30,12 +30,12 @@ namespace Chess.Game
         {
         }
 
-        public void NewGame(Player playerOne, Player playerTwo)
+        public void NewGame(Player white, Player black)
         {
             GetInstance();
 
-            this.playerOne = playerOne;
-            this.playerTwo = playerTwo;
+            this.white = white;
+            this.black = black;
 
             board = new Board();
         }
@@ -43,15 +43,15 @@ namespace Chess.Game
         public void Score(Piece destPiece)
         {
             Player scorer, loser;
-            if (playerOne.Color == destPiece.Color)
+            if (white.Color == destPiece.Color)
             {
-                scorer = playerTwo;
-                loser = playerOne;
+                scorer = black;
+                loser = white;
             }
             else
             {
-                scorer = playerOne;
-                loser = playerTwo;
+                scorer = white;
+                loser = black;
             }
 
             scorer.Score += (int) destPiece.PieceType;
@@ -60,9 +60,9 @@ namespace Chess.Game
 
         public bool InCheck(Enums.Color color, Square destSquare)
         {
-            Player checkPlayer = (playerOne.Color == color) ? playerOne : playerTwo;
+            Player checkPlayer = (white.Color == color) ? white : black;
 
-            return !checkPlayer.InCheck() && !checkPlayer.WillBeInCheck(destSquare);
+            return !checkPlayer.inCheck && !checkPlayer.CanCheck(destSquare);
         }
     }
 }

@@ -3,11 +3,12 @@ using Chess.Util;
 
 namespace Chess.Pieces
 {
-    internal abstract class Piece
+    public abstract class Piece
     {
         protected int next;
         protected bool IsClicked { get; set; }
 
+        public string Unicode { get; set; }
         public Enums.Color Color { get; set; }
         public Enums.PieceType PieceType { get; set; }
 
@@ -33,8 +34,7 @@ namespace Chess.Pieces
             game = Game.Game.GetInstance();
             board = game.Board;
         }
-
-        // todo: prevent move if will be placed in check 
+        
         // todo: transform pawn to queen
         // todo: implement castling (sv. rockad)
         public bool TryMoveTo(Square destSquare)
@@ -95,7 +95,7 @@ namespace Chess.Pieces
 
         protected bool IsValidSquare(Square destSquare)
         {
-            if (game.InCheck(Color)) return false;
+            if (game.InCheck(Color, destSquare)) return false;
             return currSquare == destSquare;
         }
 

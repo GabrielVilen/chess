@@ -1,24 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Chess.Game;
+﻿using Chess.Game;
 using Chess.Util;
 
 namespace Chess.Pieces
 {
-    internal class Queen : Piece
+    public class Queen : Piece
     {
         public Queen(Enums.Color color) : base(Enums.PieceType.Queen, color)
         {
         }
-        
+
         public override bool CanMoveTo(Square destSquare)
         {
             int destColumn = destSquare.Column;
             int destRow = destSquare.Row;
-            
+
             // loop horizontal or vertical
             if (destColumn == currColumn)
             {

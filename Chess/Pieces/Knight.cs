@@ -3,7 +3,7 @@ using Chess.Util;
 
 namespace Chess.Pieces
 {
-    internal class Knight : Piece
+    public class Knight : Piece
     {
         public Knight(Enums.Color color) : base(Enums.PieceType.Knight, color)
         {

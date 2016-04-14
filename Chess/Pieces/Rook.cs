@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Chess.Game;
+﻿using Chess.Game;
 using Chess.Util;
 
 namespace Chess.Pieces
 {
-    internal class Rook : Piece
+    public class Rook : Piece
     {
         public Rook(Enums.Color color) : base(Enums.PieceType.Rook, color)
         {
@@ -32,6 +27,5 @@ namespace Chess.Pieces
 
             return false;
         }
-        
     }
 }

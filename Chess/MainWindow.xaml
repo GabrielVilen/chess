@@ -93,9 +93,12 @@
             <Rectangle x:Name="white_Copy29" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,60,61,0" Grid.ColumnSpan="3" Grid.Row="6" Grid.RowSpan="2"/>
             <Rectangle x:Name="white_Copy30" Fill="White" Stroke="Black" Width="65" Height="65" Margin="60.704,60,0,0" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="6" Grid.RowSpan="2"/>
         </Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="620,490,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="575,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.263,-0.385"/>
-        <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" Margin="575,120,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="new_game_button" Content="New game!" HorizontalAlignment="Left" Margin="585,450,0,0" VerticalAlignment="Top" Width="145" Height="50" FontSize="16" Click="newGameButton_Click"/>
+        <Label Content="White name:" HorizontalAlignment="Left" Margin="546,194,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.263,-0.385" FontSize="18.667" Foreground="White"/>
+        <Label x:Name="label1" Content="Black name:" HorizontalAlignment="Left" Margin="546,255,0,0" VerticalAlignment="Top" FontSize="18.667" Foreground="White"/>
+        <TextBox x:Name="black_textBox" HorizontalAlignment="Left" Height="30" Margin="669,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" FontSize="16"/>
+        <TextBox x:Name="white_textBox" HorizontalAlignment="Left" Height="30" Margin="669,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" FontSize="16"/>
+        <Grid Margin="735,207,0,268"/>
 
     </Grid>
 </Window>

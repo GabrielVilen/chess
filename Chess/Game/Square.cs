@@ -3,7 +3,7 @@ using Chess.Util;
 
 namespace Chess.Game
 {
-    internal class Square
+    public class Square
     {
         public Enums.Color Color { get; }
         public Piece CurrPiece { get; set; }

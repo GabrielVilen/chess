@@ -4,7 +4,7 @@ using Chess.Util;
 
 namespace Chess.Pieces
 {
-    internal class Pawn : Piece
+    public class Pawn : Piece
     {
         private bool isFirstMove = true;
 
