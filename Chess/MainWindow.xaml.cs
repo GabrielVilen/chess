@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Chess.Game;
 using Chess.Util;
+using System.Data;
+using Chess.Pieces;
 
 namespace Chess
 {
@@ -26,10 +28,13 @@ namespace Chess
         public static readonly int TotalRows = 8, TotalColumns = 8;
         private Player playerWhite, playerBlack;
         private Game.Game game = Game.Game.GetInstance();
+        private DataTable table;
 
         public MainWindow()
         {
+            //  this.DataContext = this;
             InitializeComponent();
+            InitSquares();
         }
 
         private void NewGame()
@@ -44,7 +49,9 @@ namespace Chess
 
         private void InitSquares()
         {
-            var squares = game.Board.Squares;
+            InitDataTable();
+
+            //var squares = game.Board.Squares;
             for (int row = 0; row < TotalRows; row++)
             {
                 bool evenRow = (row % 2 == 0);
@@ -58,31 +65,100 @@ namespace Chess
                     else
                         color = Enums.Color.Black;
 
-                    squares[row, column] = new Square(row + 1, column + 1, color); // start at row and column 1
+                    Square square = new Square(row + 1, column + 1, color); // start at row and column 1
+                    //squares[row, column] = square; 
+                    table.Rows[row][column] = square;
                 }
             }
+           
+            chessGrid.DataContext = table;   // todo: datacontext is not set
+            this.DataContext = table;
+            //dataGrid.DataContext = table;
+
+            Refresh();
+            PrintTable();
+
+            TestDataContext();
+        } 
+
+        private void TestDataContext()
+        {
+            Debug.WriteLine("chessGrid.DataContext = " +  chessGrid.DataContext);
+            for (int i = 0; i < 5; i++)
+            {
+                Debug.WriteLine("TestDataContext");
+                ((Square)table.Rows[i][i]).CurrPiece = new King(Enums.Color.Black);
+            }
+
+            Debug.WriteLine("this.DataContext = " + this.DataContext);
+        }
+
+        private void Refresh()
+        {
+            dataGrid.Items.Refresh();
+            dataGrid.UpdateLayout();
+        }
+
+        private void PrintTable()
+        {
+            for (int i = 0; i < TotalRows; i++)
+            {
+                Debug.WriteLine("");
+                for (int j = 0; j < TotalColumns; j++)
+                {
+                    Debug.Write(" " + ((Square)table.Rows[i][j]).Color);
+                }
+            }
+            Debug.WriteLine("\n");
+        }
+
+        private void InitDataTable()
+        {
+            table = new DataTable();
+            for (int row = 0; row < TotalRows; row++)
+            {
+                table.Columns.Add(row.ToString(), typeof(Square));
+            }
+            for (int column = 0; column < TotalColumns; column++)
+            {
+                table.Rows.Add();
+            }
+        }
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ChessGrid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            Debug.WriteLine("ChessGrid_DataContextChanged");
+        }
+
+        // todo: continue chessGrid_MouseDown
+        private void chessGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var element = (UIElement)e.Source;
+
+            int c = Grid.GetColumn(element);
+            int r = Grid.GetRow(element);
+
+            Debug.WriteLine("c = " + c + " r = " + r);
+            game.Board.GetSquare(r, c);
         }
 
         private void CreateRectangle()
         {
-           // ChessGrid.
-
-            for (int i = 0; i < ChessGrid.Children.; i++)
+            foreach (var child in chessGrid.Children)
             {
-               // Debug.WriteLine(rec);
-            }
-            foreach (var child in ChessGrid.Children)
-            {
-                Rectangle rec = (Rectangle) child;
-                Debug.WriteLine(rec);
-                //child.
-
+                Rectangle rec = (Rectangle)child;
             }
         }
 
         private void newGameButton_Click(object sender, RoutedEventArgs e)
         {
-            CreateRectangle();
+            Refresh();
+            // CreateRectangle();
             //NewGame();
         }
     }
