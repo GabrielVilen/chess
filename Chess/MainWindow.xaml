@@ -9,29 +9,6 @@
         Title="MainWindow" Height="582" Width="800">
     <Grid Background="#7C2D2D">
 
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="510" Width="516" Margin="30,31,0,0" FrozenColumnCount="8" SelectionChanged="dataGrid_SelectionChanged" RowHeight="50" MinRowHeight="50" CanUserResizeRows="False" MinColumnWidth="50" CanUserResizeColumns="False" HorizontalGridLinesBrush="Black" VerticalGridLinesBrush="Black" CanUserReorderColumns="False" AutoGenerateColumns="True" SelectionUnit="Cell" MaxColumnWidth="50" CanUserSortColumns="False" AlternationCount="1" AlternatingRowBackground="Black" d:IsHidden="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Foreground="Black"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-            </DataGrid.Columns>
-            <Button/>
-            <Button/>
-            <Button/>
-            <Button/>
-            <Button/>
-            <Button/>
-            <Button/>
-            <Button/>
-            <Button/>
-        </DataGrid>
-
         <Grid x:Name="chessGrid" HorizontalAlignment="Left" Width="500" Cursor="Hand" Margin="30,30,0,0" Height="500" VerticalAlignment="Top" UseLayoutRounding="False" DataContextChanged="ChessGrid_DataContextChanged" MouseDown="chessGrid_MouseDown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -117,6 +94,19 @@
             <Rectangle x:Name="white_Copy28" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61,60,62.056,0" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="6" Grid.RowSpan="2"/>
             <Rectangle x:Name="white_Copy29" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,60,61,0" Grid.ColumnSpan="3" Grid.Row="6" Grid.RowSpan="2"/>
             <Rectangle x:Name="white_Copy30" Fill="White" Stroke="Black" Width="65" Height="65" Margin="60.704,60,0,0" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="6" Grid.RowSpan="2"/>
+                   
+            <DataGrid x:Name="pieceDataGrid" Margin="-1,-10,-2.333,0" FrozenColumnCount="8" SelectionChanged="pieceDataGrid_SelectionChanged" RowHeight="62" MinRowHeight="50" CanUserResizeRows="False" MinColumnWidth="62" CanUserReorderColumns="False" MaxColumnWidth="62" AlternationCount="1" Opacity="0.5" SelectionUnit="Cell" Grid.ColumnSpan="8" Grid.RowSpan="8" ColumnWidth="65" Height="510" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="505" CanUserSortColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding CurrUnicode}" FontSize="40" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            
         </Grid>
         <Button x:Name="new_game_button" Content="New game!" HorizontalAlignment="Left" Margin="585,450,0,0" VerticalAlignment="Top" Width="145" Height="50" FontSize="16" Click="newGameButton_Click"/>
         <Label Content="White name:" HorizontalAlignment="Left" Margin="546,194,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.263,-0.385" FontSize="18.667" Foreground="White"/>

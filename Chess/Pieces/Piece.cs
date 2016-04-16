@@ -1,5 +1,7 @@
 ﻿using Chess.Game;
 using Chess.Util;
+using System;
+using System.Windows.Controls;
 
 namespace Chess.Pieces
 {
@@ -7,8 +9,10 @@ namespace Chess.Pieces
     {
         protected int next;
         protected bool IsClicked { get; set; }
-
-        public string Unicode { get; set; }
+        
+        public Uri ImageFilePath { get; internal set; }
+        public string PieceUnicode { get; set; }
+        public Image PieceImage { get; set; }
         public Enums.Color Color { get; set; }
         public Enums.PieceType PieceType { get; set; }
 
@@ -99,9 +103,9 @@ namespace Chess.Pieces
             return currSquare == destSquare;
         }
 
-        public void Click()
+        public bool Click()
         {
-            IsClicked = !IsClicked;
+            return IsClicked = !IsClicked;
         }
 
         public Enums.PieceType Capture()

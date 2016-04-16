@@ -1,11 +1,11 @@
-﻿using Chess.Pieces;
+﻿using System;
+using Chess.Pieces;
 using Chess.Util;
 
 namespace Chess.Game
 {
     public class Board
     {
-        private static Board instance;
         public static readonly int TotalRows = 8, TotalColumns = 8;
         private Square[,] squares = new Square[TotalRows, TotalColumns];
         public Square[,] Squares => squares;
@@ -31,6 +31,7 @@ namespace Chess.Game
                         color = Enums.Color.Black;
 
                     squares[row, column] = new Square(row + 1, column + 1, color); // start at row and column 1
+                    squares[row, column].CurrUnicode = "t";
                 }
             }
         }
@@ -50,6 +51,11 @@ namespace Chess.Game
                 return squares[i, j];
 
             return null;
+        }
+
+        internal bool ClickSquare(int row, int column)
+        {
+            return squares[row, column].CurrPiece.Click();
         }
     }
 }

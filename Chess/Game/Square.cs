@@ -7,8 +7,9 @@ namespace Chess.Game
     {
         public Enums.Color Color { get; }
         public Piece CurrPiece { get; set; }
+        public string CurrUnicode { get; set; }
         public int Row { get; }
-        public int Column { get; }
+        public int Column { get; }        
 
         public Square(int row, int column)
         {
@@ -48,9 +49,6 @@ namespace Chess.Game
             return (Row == destSquare.Row) && (Column == destSquare.Column);
         }
 
-        public override string ToString()
-        {
-            return "Square [" + Row + ", " + Column + "]" + " Color: " + Color + " Piece: " + CurrPiece + ": ";
-        }
+   
     }
 }

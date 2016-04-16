@@ -27,14 +27,15 @@ namespace Chess
     {
         public static readonly int TotalRows = 8, TotalColumns = 8;
         private Player playerWhite, playerBlack;
-        private Game.Game game = Game.Game.GetInstance();
+        private Game.Game game;
         private DataTable table;
 
         public MainWindow()
         {
             //  this.DataContext = this;
             InitializeComponent();
-            InitSquares();
+            InitDataTable();
+            //InitSquares();
         }
 
         private void NewGame()
@@ -45,11 +46,27 @@ namespace Chess
             playerBlack = new Player(black_textBox.Text, Enums.Color.Black);
 
             game.NewGame(playerWhite, playerBlack);
+
+            pieceDataGrid.ItemsSource = game.Board.Squares;  // todo: cannot set to 2-dimenstinal array
+        }
+
+        private void InitDataTable()
+        {
+            table = new DataTable();
+            for (int row = 0; row < TotalRows; row++)
+            {
+                table.Columns.Add(row.ToString(), typeof(Square));
+            }
+            for (int column = 0; column < TotalColumns; column++)
+            {
+                table.Rows.Add();
+            }
         }
 
         private void InitSquares()
         {
-            InitDataTable();
+
+            List<Square> list = new List<Square>();
 
             //var squares = game.Board.Squares;
             for (int row = 0; row < TotalRows; row++)
@@ -68,36 +85,18 @@ namespace Chess
                     Square square = new Square(row + 1, column + 1, color); // start at row and column 1
                     //squares[row, column] = square; 
                     table.Rows[row][column] = square;
+
+                    square.CurrUnicode = "♔";
+                    list.Add(square);
                 }
             }
-           
-            chessGrid.DataContext = table;   // todo: datacontext is not set
-            this.DataContext = table;
-            //dataGrid.DataContext = table;
+            
 
-            Refresh();
+            pieceDataGrid.ItemsSource = game.Board.Squares; 
+
             PrintTable();
-
-            TestDataContext();
         } 
-
-        private void TestDataContext()
-        {
-            Debug.WriteLine("chessGrid.DataContext = " +  chessGrid.DataContext);
-            for (int i = 0; i < 5; i++)
-            {
-                Debug.WriteLine("TestDataContext");
-                ((Square)table.Rows[i][i]).CurrPiece = new King(Enums.Color.Black);
-            }
-
-            Debug.WriteLine("this.DataContext = " + this.DataContext);
-        }
-
-        private void Refresh()
-        {
-            dataGrid.Items.Refresh();
-            dataGrid.UpdateLayout();
-        }
+        
 
         private void PrintTable()
         {
@@ -109,25 +108,13 @@ namespace Chess
                     Debug.Write(" " + ((Square)table.Rows[i][j]).Color);
                 }
             }
+            
             Debug.WriteLine("\n");
+
         }
 
-        private void InitDataTable()
+        private void pieceDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            table = new DataTable();
-            for (int row = 0; row < TotalRows; row++)
-            {
-                table.Columns.Add(row.ToString(), typeof(Square));
-            }
-            for (int column = 0; column < TotalColumns; column++)
-            {
-                table.Rows.Add();
-            }
-        }
-
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         private void ChessGrid_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -140,26 +127,20 @@ namespace Chess
         {
             var element = (UIElement)e.Source;
 
-            int c = Grid.GetColumn(element);
-            int r = Grid.GetRow(element);
+            int column = Grid.GetColumn(element);
+            int row = Grid.GetRow(element);
 
-            Debug.WriteLine("c = " + c + " r = " + r);
-            game.Board.GetSquare(r, c);
-        }
+            Debug.WriteLine("column = " + column + " row = " + row);
 
-        private void CreateRectangle()
-        {
-            foreach (var child in chessGrid.Children)
-            {
-                Rectangle rec = (Rectangle)child;
+            if (game.ClickSquare(row + 1, column + 1))
+            {                
+                // todo: mark piece on gui
             }
         }
-
+   
         private void newGameButton_Click(object sender, RoutedEventArgs e)
-        {
-            Refresh();
-            // CreateRectangle();
-            //NewGame();
+        {            
+            NewGame();
         }
     }
 }

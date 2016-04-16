@@ -1,4 +1,5 @@
-﻿using Chess.Pieces;
+﻿using System;
+using Chess.Pieces;
 using Chess.Util;
 
 namespace Chess.Game
@@ -63,6 +64,11 @@ namespace Chess.Game
             Player checkPlayer = (white.Color == color) ? white : black;
 
             return !checkPlayer.inCheck && !checkPlayer.CanCheck(destSquare);
+        }
+
+        internal bool ClickSquare(int row, int column)
+        {
+            return board.ClickSquare(row, column);
         }
     }
 }
