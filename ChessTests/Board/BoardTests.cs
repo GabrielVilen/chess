@@ -12,7 +12,7 @@ namespace Chess.Board.Tests
 
         public BoardTests()
         {
-            b = Game.Board.GetInstance();
+            b = Game.Game.GetInstance().Board;
             s = b.Squares;
         }
 

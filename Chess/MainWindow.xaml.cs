@@ -32,10 +32,9 @@ namespace Chess
 
         public MainWindow()
         {
-            //  this.DataContext = this;
             InitializeComponent();
             InitDataTable();
-            //InitSquares();
+            InitSquares();
         }
 
         private void NewGame()
@@ -46,8 +45,7 @@ namespace Chess
             playerBlack = new Player(black_textBox.Text, Enums.Color.Black);
 
             game.NewGame(playerWhite, playerBlack);
-
-            pieceDataGrid.ItemsSource = game.Board.Squares;  // todo: cannot set to 2-dimenstinal array
+            
         }
 
         private void InitDataTable()
@@ -65,13 +63,12 @@ namespace Chess
 
         private void InitSquares()
         {
-
             List<Square> list = new List<Square>();
-
             //var squares = game.Board.Squares;
             for (int row = 0; row < TotalRows; row++)
             {
-                bool evenRow = (row % 2 == 0);
+                bool evenRow = (row % 2 == 0);                
+
                 for (int column = 0; column < TotalColumns; column++)
                 {
                     bool evenColumn = (column % 2 == 0);
@@ -84,19 +81,23 @@ namespace Chess
 
                     Square square = new Square(row + 1, column + 1, color); // start at row and column 1
                     //squares[row, column] = square; 
+
+                    square.CurrUnicode = ("♔"); //♔
                     table.Rows[row][column] = square;
 
-                    square.CurrUnicode = "♔";
-                    list.Add(square);
+                    list.Add(square);                   
+
                 }
             }
             
+            pieceDataGrid.ItemsSource = table.DefaultView;
 
-            pieceDataGrid.ItemsSource = game.Board.Squares; 
+            ((Square)table.Rows[3][3]).CurrUnicode = "TEST";
+
 
             PrintTable();
-        } 
-        
+        }
+
 
         private void PrintTable()
         {
@@ -108,8 +109,13 @@ namespace Chess
                     Debug.Write(" " + ((Square)table.Rows[i][j]).Color);
                 }
             }
-            
+
             Debug.WriteLine("\n");
+
+        }
+
+        private void pieceDataGrid_MouseDown(object sender, SelectionChangedEventArgs e)
+        {
 
         }
 
@@ -122,6 +128,11 @@ namespace Chess
             Debug.WriteLine("ChessGrid_DataContextChanged");
         }
 
+        private void pieceDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Debug.WriteLine("pieceDataGrid_MouseDown");
+        }
+
         // todo: continue chessGrid_MouseDown
         private void chessGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -132,14 +143,15 @@ namespace Chess
 
             Debug.WriteLine("column = " + column + " row = " + row);
 
-            if (game.ClickSquare(row + 1, column + 1))
-            {                
+            if (game.ClickSquare(row, column))
+            {
+
                 // todo: mark piece on gui
             }
         }
-   
+
         private void newGameButton_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             NewGame();
         }
     }

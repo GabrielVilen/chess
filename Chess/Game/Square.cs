@@ -49,6 +49,11 @@ namespace Chess.Game
             return (Row == destSquare.Row) && (Column == destSquare.Column);
         }
 
-   
+        public override string ToString()
+        {
+            return CurrUnicode;
+        }
+
+
     }
 }

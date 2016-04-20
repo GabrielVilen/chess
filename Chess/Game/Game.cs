@@ -68,7 +68,7 @@ namespace Chess.Game
 
         internal bool ClickSquare(int row, int column)
         {
-            return board.ClickSquare(row, column);
+            return board == null ? false : board.ClickSquare(row, column);
         }
     }
 }

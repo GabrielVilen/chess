@@ -8,8 +8,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="582" Width="800">
     <Grid Background="#7C2D2D">
-
-        <Grid x:Name="chessGrid" HorizontalAlignment="Left" Width="500" Cursor="Hand" Margin="30,30,0,0" Height="500" VerticalAlignment="Top" UseLayoutRounding="False" DataContextChanged="ChessGrid_DataContextChanged" MouseDown="chessGrid_MouseDown">
+        <Button x:Name="new_game_button" Content="New game!" HorizontalAlignment="Left" Margin="585,450,0,0" VerticalAlignment="Top" Width="145" Height="50" FontSize="16" Click="newGameButton_Click"/>
+        <Label Content="White name:" HorizontalAlignment="Left" Margin="546,194,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.263,-0.385" FontSize="18.667" Foreground="White"/>
+        <Label x:Name="label1" Content="Black name:" HorizontalAlignment="Left" Margin="546,255,0,0" VerticalAlignment="Top" FontSize="18.667" Foreground="White"/>
+        <TextBox x:Name="black_textBox" HorizontalAlignment="Left" Height="30" Margin="669,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" FontSize="16"/>
+        <TextBox x:Name="white_textBox" HorizontalAlignment="Left" Height="30" Margin="669,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" FontSize="16"/>
+        <Grid x:Name="chessGrid" HorizontalAlignment="Left" Width="500" Cursor="Hand" Margin="30,30,0,0" Height="500" VerticalAlignment="Top" UseLayoutRounding="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -30,6 +34,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+
             <Rectangle Stroke="Black" Grid.Column="1" Width="65" Height="65" Fill="Black"/>
             <Rectangle Fill="Black" Stroke="Black" Grid.Column="3" Width="65" Height="65"/>
             <Rectangle Fill="Black" Stroke="Black" Grid.Row="1" Width="65" Height="65"/>
@@ -46,18 +51,18 @@
             <Rectangle x:Name="white_Copy5" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="5" Grid.Row="1"/>
             <Rectangle x:Name="white_Copy7" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="1" Grid.Row="1"/>
             <Rectangle x:Name="white_Copy8" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="3" Grid.Row="1"/>
-            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="61,62,61,61" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="3"/>
-            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="61,62,61,61" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="1" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="61,62,61,61" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3" Grid.Column="1"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="3" Grid.Row="2"/>
             <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="-1,61,61,61" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="3"/>
             <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="61,62,-1,61" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="1" Grid.RowSpan="3"/>
             <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="62,61,61,61" Grid.ColumnSpan="3" Grid.Column="5" Grid.Row="2" Grid.RowSpan="3"/>
-            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="61,62,61,61" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="1" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="5" Grid.Row="2"/>
             <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="62,61,61,61" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="2" Grid.RowSpan="3"/>
-            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="62,61,61,61" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3"/>
-            <Rectangle x:Name="white_Copy3" Fill="White" Stroke="Black" Width="65" Height="65" Margin="-1,62,61,61" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="3"/>
-            <Rectangle x:Name="white_Copy6" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,62,61,61" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"/>
-            <Rectangle x:Name="white_Copy9" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,62,61,61" Grid.ColumnSpan="3" Grid.Column="3" Grid.Row="1" Grid.RowSpan="3"/>
-            <Rectangle x:Name="white_Copy10" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,62,61,61" Grid.ColumnSpan="3" Grid.Column="5" Grid.Row="1" Grid.RowSpan="3"/>
+            <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="1" Grid.Row="2"/>
+            <Rectangle x:Name="white_Copy3" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Row="2"/>
+            <Rectangle x:Name="white_Copy6" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="2" Grid.Row="2"/>
+            <Rectangle x:Name="white_Copy9" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="4" Grid.Row="2"/>
+            <Rectangle x:Name="white_Copy10" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0" Grid.Column="6" Grid.Row="2"/>
             <Rectangle x:Name="white_Copy11" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61,61,-1,61" Grid.ColumnSpan="2" Grid.Column="6" Grid.Row="2" Grid.RowSpan="3"/>
             <Rectangle x:Name="white_Copy12" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="2" Grid.RowSpan="3"/>
             <Rectangle x:Name="white_Copy13" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3"/>
@@ -94,25 +99,20 @@
             <Rectangle x:Name="white_Copy28" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61,60,62.056,0" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="6" Grid.RowSpan="2"/>
             <Rectangle x:Name="white_Copy29" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,60,61,0" Grid.ColumnSpan="3" Grid.Row="6" Grid.RowSpan="2"/>
             <Rectangle x:Name="white_Copy30" Fill="White" Stroke="Black" Width="65" Height="65" Margin="60.704,60,0,0" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="6" Grid.RowSpan="2"/>
-                   
-            <DataGrid x:Name="pieceDataGrid" Margin="-1,-10,-2.333,0" FrozenColumnCount="8" SelectionChanged="pieceDataGrid_SelectionChanged" RowHeight="62" MinRowHeight="50" CanUserResizeRows="False" MinColumnWidth="62" CanUserReorderColumns="False" MaxColumnWidth="62" AlternationCount="1" Opacity="0.5" SelectionUnit="Cell" Grid.ColumnSpan="8" Grid.RowSpan="8" ColumnWidth="65" Height="510" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="505" CanUserSortColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn>
+            <DataGrid x:Name="pieceDataGrid" ItemsSource="{Binding CurrUnicode}" Margin="-1,0,-2.333,0" FrozenColumnCount="8" RowHeight="65" MinRowHeight="50" CanUserResizeRows="False" MinColumnWidth="62" CanUserReorderColumns="False" MaxColumnWidth="62" AlternationCount="1" Opacity="0.5" SelectionUnit="Cell" Grid.ColumnSpan="8" Grid.RowSpan="8" ColumnWidth="65" Height="500" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="505" CanUserSortColumns="False" MouseDown="pieceDataGrid_MouseDown">
+           <!--     <DataGrid.Columns>
+                    <DataGridTemplateColumn CanUserResize="False">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Label Content="{Binding CurrUnicode}" FontSize="40" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    </DataGridTemplateColumn>                   
                 </DataGrid.Columns>
+                -->
             </DataGrid>
-            
+
         </Grid>
-        <Button x:Name="new_game_button" Content="New game!" HorizontalAlignment="Left" Margin="585,450,0,0" VerticalAlignment="Top" Width="145" Height="50" FontSize="16" Click="newGameButton_Click"/>
-        <Label Content="White name:" HorizontalAlignment="Left" Margin="546,194,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.263,-0.385" FontSize="18.667" Foreground="White"/>
-        <Label x:Name="label1" Content="Black name:" HorizontalAlignment="Left" Margin="546,255,0,0" VerticalAlignment="Top" FontSize="18.667" Foreground="White"/>
-        <TextBox x:Name="black_textBox" HorizontalAlignment="Left" Height="30" Margin="669,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" FontSize="16"/>
-        <TextBox x:Name="white_textBox" HorizontalAlignment="Left" Height="30" Margin="669,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" FontSize="16"/>
 
     </Grid>
 </Window>
