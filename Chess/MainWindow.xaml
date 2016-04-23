@@ -99,8 +99,8 @@
             <Rectangle x:Name="white_Copy28" Fill="White" Stroke="Black" Width="65" Height="65" Margin="61,60,62.056,0" Grid.ColumnSpan="3" Grid.Column="4" Grid.Row="6" Grid.RowSpan="2"/>
             <Rectangle x:Name="white_Copy29" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,60,61,0" Grid.ColumnSpan="3" Grid.Row="6" Grid.RowSpan="2"/>
             <Rectangle x:Name="white_Copy30" Fill="White" Stroke="Black" Width="65" Height="65" Margin="60.704,60,0,0" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="6" Grid.RowSpan="2"/>
-            <DataGrid x:Name="pieceDataGrid" ItemsSource="{Binding CurrUnicode}" Margin="-1,0,-2.333,0" FrozenColumnCount="8" RowHeight="65" MinRowHeight="50" CanUserResizeRows="False" MinColumnWidth="62" CanUserReorderColumns="False" MaxColumnWidth="62" AlternationCount="1" Opacity="0.5" SelectionUnit="Cell" Grid.ColumnSpan="8" Grid.RowSpan="8" ColumnWidth="65" Height="500" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="505" CanUserSortColumns="False" MouseDown="pieceDataGrid_MouseDown">
-           <!--     <DataGrid.Columns>
+            <DataGrid x:Name="pieceDataGrid" HeadersVisibility="None" ItemsSource="{Binding CurrUnicode}" Margin="0"  RowHeight="65" CanUserResizeRows="False" CanUserReorderColumns="False" Opacity="0.6" SelectionUnit="Cell" ColumnWidth="65" Height="500" Width="500" CanUserSortColumns="False" MouseDown="pieceDataGrid_MouseDown" FontSize="48" Grid.ColumnSpan="8" Grid.RowSpan="8" IsReadOnly="True" IsSynchronizedWithCurrentItem="True" HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" VerticalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" AreRowDetailsFrozen="True" RowBackground="White" CanUserResizeColumns="False" Background="#FFF0F0F0">
+                <!--     <DataGrid.Columns>
                     <DataGridTemplateColumn CanUserResize="False">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

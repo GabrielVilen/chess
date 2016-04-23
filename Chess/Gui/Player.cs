@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using Chess.Pieces;
 using Chess.Util;
 
-namespace Chess.Game
+namespace Chess.Gui
 {
     public class Player
     {
-        public int Score { get; set; }
+        public int Score { get; set; }      
+        public bool inCheck { get; set; }
+
         public string Name { get; private set; }
         public Enums.Color Color { get; private set; }
+
         private List<Piece> pieces = new List<Piece>();
-        public bool inCheck { get; set; } 
 
         public Player(string name, Enums.Color color)
         {

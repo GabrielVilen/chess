@@ -26,7 +26,7 @@ namespace Chess.Pieces.Tests
 
             if (rook.CanMoveTo(new Square(5, 5))) Assert.Fail();
 
-            var board = Game.Game.GetInstance().Board;
+            var board = Game.Game.GetInstance().Table;
 
             board.AddPieceToSquare(new Pawn(Enums.Color.White), 4, 6);
             if (!rook.CanMoveTo(new Square(4, 5))) Assert.Fail();

@@ -12,7 +12,7 @@
             Queen = 9,
             King
         }
-        
+
         public enum Color
         {
             Black,

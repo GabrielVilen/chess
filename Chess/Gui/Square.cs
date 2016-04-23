@@ -1,15 +1,17 @@
 ﻿using Chess.Pieces;
 using Chess.Util;
 
-namespace Chess.Game
+namespace Chess.Gui
 {
     public class Square
-    {
+    {      
+        public int Row { get; }
+        public int Column { get; }
+
         public Enums.Color Color { get; }
         public Piece CurrPiece { get; set; }
-        public string CurrUnicode { get; set; }
-        public int Row { get; }
-        public int Column { get; }        
+
+        public string CurrUnicode { get { return CurrPiece == null ? "" : CurrPiece.Unicode; } } 
 
         public Square(int row, int column)
         {

@@ -13,10 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Chess.Game;
+using Chess.Gui;
 using Chess.Util;
 using System.Data;
 using Chess.Pieces;
+
 
 namespace Chess
 {
@@ -27,19 +28,20 @@ namespace Chess
     {
         public static readonly int TotalRows = 8, TotalColumns = 8;
         private Player playerWhite, playerBlack;
-        private Game.Game game;
         private DataTable table;
+        private Game game;
 
         public MainWindow()
         {
-            InitializeComponent();
-            InitDataTable();
-            InitSquares();
+            game = Game.GetInstance();
+
+            InitializeComponent();           
         }
 
         private void NewGame()
         {
-            game = Game.Game.GetInstance();
+            InitDataTable();
+            InitSquares();
 
             playerWhite = new Player(white_textBox.Text, Enums.Color.White);
             playerBlack = new Player(black_textBox.Text, Enums.Color.Black);
@@ -63,8 +65,6 @@ namespace Chess
 
         private void InitSquares()
         {
-            List<Square> list = new List<Square>();
-            //var squares = game.Board.Squares;
             for (int row = 0; row < TotalRows; row++)
             {
                 bool evenRow = (row % 2 == 0);                
@@ -78,40 +78,25 @@ namespace Chess
                         color = Enums.Color.White;
                     else
                         color = Enums.Color.Black;
+                   
+                    Square square = new Square(row, column, color); // start at row and column +1 ?
 
-                    Square square = new Square(row + 1, column + 1, color); // start at row and column 1
-                    //squares[row, column] = square; 
 
-                    square.CurrUnicode = ("♔"); //♔
-                    table.Rows[row][column] = square;
-
-                    list.Add(square);                   
-
+                    table.Rows[row][column] = square;     
                 }
             }
-            
+            game.table = table;
             pieceDataGrid.ItemsSource = table.DefaultView;
 
-            ((Square)table.Rows[3][3]).CurrUnicode = "TEST";
-
-
-            PrintTable();
+            InitPieces();
         }
 
-
-        private void PrintTable()
+        private void InitPieces()
         {
-            for (int i = 0; i < TotalRows; i++)
-            {
-                Debug.WriteLine("");
-                for (int j = 0; j < TotalColumns; j++)
-                {
-                    Debug.Write(" " + ((Square)table.Rows[i][j]).Color);
-                }
-            }
-
-            Debug.WriteLine("\n");
-
+            game.AddPieceToSquare(new King(Enums.Color.Black), 1, 3);
+            game.AddPieceToSquare(new King(Enums.Color.White), 6, 4);
+            //  ((Square) table.Rows[0][4]).CurrPiece = new King(Enums.Color.Black);
+            //  ((Square) table.Rows[6][5]).CurrPiece = new King(Enums.Color.White);
         }
 
         private void pieceDataGrid_MouseDown(object sender, SelectionChangedEventArgs e)

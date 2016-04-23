@@ -51,8 +51,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Board\BoardTests.cs" />
     <Compile Include="Game\SquareTests.cs" />
+    <Compile Include="MainWindowTests.cs" />
     <Compile Include="Pieces\BishopTests.cs" />
     <Compile Include="Pieces\KingTests.cs" />
     <Compile Include="Pieces\KnightTests.cs" />

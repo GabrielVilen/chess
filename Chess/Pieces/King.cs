@@ -1,5 +1,5 @@
 ﻿using System;
-using Chess.Game;
+using Chess.Gui;
 using Chess.Util;
 
 namespace Chess.Pieces
@@ -8,6 +8,7 @@ namespace Chess.Pieces
     {
         public King(Enums.Color color) : base(Enums.PieceType.King, color)
         {
+            Unicode = (color == Enums.Color.Black ? Unicodes.King_black : Unicodes.King_white);
         }
 
         public override bool CanMoveTo(Square destSquare)

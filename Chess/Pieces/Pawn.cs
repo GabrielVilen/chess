@@ -1,5 +1,5 @@
 ﻿using System;
-using Chess.Game;
+using Chess.Gui;
 using Chess.Util;
 
 namespace Chess.Pieces
@@ -21,7 +21,8 @@ namespace Chess.Pieces
             if (Math.Abs(currColumn - destSquare.Column) != 0) return false;
             if (isFirstMove)
             {
-                if ((Math.Abs(currRow - destSquare.Row) > 2) || !board.GetSquare(currRow + next, currColumn).IsEmpty())
+                if ((Math.Abs(currRow - destSquare.Row) > 2) || 
+                    !Game.GetInstance().GetSquare(currRow + next, currColumn).IsEmpty())
                     return false;
             }
             else if (Math.Abs(currRow - destSquare.Row) > 1) return false;

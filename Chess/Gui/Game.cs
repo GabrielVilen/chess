@@ -1,19 +1,20 @@
 ﻿using System;
 using Chess.Pieces;
 using Chess.Util;
+using System.Data;
 
-namespace Chess.Game
+namespace Chess.Gui
 {
     public class Game
     {
-        private static Game instance;
+        public static readonly int TotalRows = 8, TotalColumns = 8;
+        private static Game instance;     
 
         private Player white, black;
         public Player White => white;
-        public Player Black => black;
+        public Player Black => black;        
 
-        private Board board;
-        public Board Board => board;
+        public DataTable table { get; set; }
 
         /// <summary>
         ///     Singleton that creates new game instance if current is null
@@ -36,9 +37,24 @@ namespace Chess.Game
             GetInstance();
 
             this.white = white;
-            this.black = black;
+            this.black = black;            
+        }
 
-            board = new Board();
+
+        public void AddPieceToSquare(Piece piece, int row, int column)
+        {
+            Square square = GetSquare(row, column);
+            if (square != null) square.CurrPiece = piece;
+        }
+
+        public Square GetSquare(int row, int column)
+        {
+            return (Square)table.Rows[row][column];
+        }
+
+        internal bool ClickSquare(int row, int column)
+        {
+            return table == null ? false : GetSquare(row, column).CurrPiece.Click();
         }
 
         public void Score(Piece destPiece)
@@ -64,11 +80,6 @@ namespace Chess.Game
             Player checkPlayer = (white.Color == color) ? white : black;
 
             return !checkPlayer.inCheck && !checkPlayer.CanCheck(destSquare);
-        }
-
-        internal bool ClickSquare(int row, int column)
-        {
-            return board == null ? false : board.ClickSquare(row, column);
         }
     }
 }

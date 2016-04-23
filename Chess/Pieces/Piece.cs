@@ -1,4 +1,4 @@
-﻿using Chess.Game;
+﻿using Chess.Gui;
 using Chess.Util;
 using System;
 using System.Windows.Controls;
@@ -9,19 +9,19 @@ namespace Chess.Pieces
     {
         protected int next;
         protected bool IsClicked { get; set; }
-        
-        public Uri ImageFilePath { get; internal set; }
-        public string PieceUnicode { get; set; }
-        public Image PieceImage { get; set; }
+        public string Unicode { get; protected set; } = ""; // default empty string
+
+      //  public Uri ImageFilePath { get; internal set; }
+      
+      //  public Image PieceImage { get; set; }
         public Enums.Color Color { get; set; }
         public Enums.PieceType PieceType { get; set; }
 
         protected int currColumn => CurrSquare.Column;
         protected int currRow => CurrSquare.Row;
-
-        protected Board board;
+        
         protected Square currSquare;
-        private Game.Game game;
+        private Game game;
 
         public Square CurrSquare
         {
@@ -35,8 +35,7 @@ namespace Chess.Pieces
             Color = color;
             next = (color == Enums.Color.White ? -1 : 1); // sets next square to positive or negative 
 
-            game = Game.Game.GetInstance();
-            board = game.Board;
+            game = Game.GetInstance();
         }
         
         // todo: transform pawn to queen
@@ -59,7 +58,7 @@ namespace Chess.Pieces
         }
 
         /// <summary>
-        ///     Loops the board by increasing by the given row and column offset.
+        ///     Loops the table by increasing by the given row and column offset.
         ///     Returns true if the piece can move to the destination square, and no pieces are blocking the path.
         ///     Can be overridden to replace with unique match pattern.
         /// </summary>
@@ -67,13 +66,13 @@ namespace Chess.Pieces
         {
             Square testSquare = currSquare;
 
-            for (int i = 1; i < Board.TotalColumns; i++)
+            for (int i = 1; i < Game.TotalColumns; i++)
             {
                 if (testSquare == null) continue;
                 if (testSquare.IsSame(destSquare)) return true;
                 if (!testSquare.IsEmpty()) return false;
 
-                testSquare = board.GetSquare(testSquare.Row + row, testSquare.Column + column);
+                testSquare = game.GetSquare(testSquare.Row + row, testSquare.Column + column);
             }
             return false;
         }
