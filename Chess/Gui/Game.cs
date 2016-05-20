@@ -49,12 +49,17 @@ namespace Chess.Gui
 
         public Square GetSquare(int row, int column)
         {
+            if (table == null) return null;
             return (Square)table.Rows[row][column];
         }
 
         internal bool ClickSquare(int row, int column)
         {
-            return table == null ? false : GetSquare(row, column).CurrPiece.Click();
+            Square square = GetSquare(row, column);
+            if (square == null || square.CurrPiece == null || square.CurrPiece.PieceType == Enums.PieceType.None)
+                return false;
+
+            return square.CurrPiece.Click();
         }
 
         public void Score(Piece destPiece)
