@@ -1,16 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
-  <Class Name="Chess.MainWindow" BaseTypeListCollapsed="true">
-    <Position X="12" Y="8.75" Width="3" />
-    <TypeIdentifier>
-      <HashCode>AAAQAAAAEIAwAABAAAAABFAQBAQAAAAIgAAAAAAQABQ=</HashCode>
-      <FileName>MainWindow.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Chess.Gui.Game">
     <Position X="5" Y="8.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAUAAAAAKAAAAhAAQAEBAAABABAACAAAAAAAAAABAA=</HashCode>
+      <HashCode>AAAUAAAAAKAAAAgAAQAEBAAABAREACAAAAAAAAAABAA=</HashCode>
       <FileName>Gui\Game.cs</FileName>
     </TypeIdentifier>
   </Class>

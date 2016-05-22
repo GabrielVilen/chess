@@ -14,7 +14,7 @@ namespace Chess.Gui
         public Player White => white;
         public Player Black => black;        
 
-        public DataTable table { get; set; }
+        public Square[,] squares { get; set; }
 
         /// <summary>
         ///     Singleton that creates new game instance if current is null
@@ -32,14 +32,42 @@ namespace Chess.Gui
         {
         }
 
-        public void NewGame(Player white, Player black)
+        public Game NewGame(Player white, Player black)
         {
-            GetInstance();
+            instance = new Game();           
 
             this.white = white;
-            this.black = black;            
+            this.black = black;
+
+            InitSquares();
+
+            return instance;
         }
 
+        private void InitSquares()
+        {
+            squares = new Square[TotalRows, TotalColumns];
+
+            for (int row = 0; row < TotalRows; row++)
+            {
+                bool evenRow = (row % 2 == 0);
+
+                for (int column = 0; column < TotalColumns; column++)
+                {
+                    bool evenColumn = (column % 2 == 0);
+
+                    Enums.Color color;
+                    if (evenRow && evenColumn || !evenRow && !evenColumn)
+                        color = Enums.Color.White;
+                    else
+                        color = Enums.Color.Black;
+
+                    Square square = new Square(row, column, color); // start at row and column +1 ?
+
+                    squares[row, column] = square;
+                }
+            }
+        }
 
         public void AddPieceToSquare(Piece piece, int row, int column)
         {
@@ -49,8 +77,8 @@ namespace Chess.Gui
 
         public Square GetSquare(int row, int column)
         {
-            if (table == null) return null;
-            return (Square)table.Rows[row][column];
+            if (squares == null) return null;
+            return squares[row, column];
         }
 
         internal bool ClickSquare(int row, int column)

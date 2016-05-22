@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Chess"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Chess.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="582" Width="800">
+        Title="MainWindow" Height="597" Width="800">
     <Grid Background="#FF7A3030">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25*"/>
@@ -14,6 +14,71 @@
         </Grid.ColumnDefinitions>
 
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="520" Margin="20,21,0,0" Stroke="Black" VerticalAlignment="Top" Width="521" Grid.ColumnSpan="2"/>
+        <Canvas x:Name="rectangles" Grid.ColumnSpan="2" Margin="30,30,251,18" Opacity="0.4" SnapsToDevicePixels="True" ClipToBounds="True" IsEnabled="False">
+            <Rectangle Width="65" Height="65" Fill="Black" Canvas.Left="64" Stroke="#FF040404"/>
+            <Rectangle Width="65" Height="65" Fill="Black" Canvas.Left="189" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="1" Canvas.Top="63" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="440" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="377" Canvas.Top="63" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="315" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="252" Canvas.Top="63" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="127" Canvas.Top="63" Stroke="#FF040404"/>
+            <Rectangle x:Name="white" Fill="White" Width="65" Height="65" Canvas.Left="1" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy" Fill="White" Width="65" Height="65" Canvas.Left="127" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy2" Fill="White" Width="65" Height="65" Canvas.Left="377" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy4" Fill="White" Width="65" Height="65" Canvas.Left="440" Canvas.Top="63" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy5" Fill="White" Width="65" Height="65" Canvas.Left="315" Canvas.Top="63" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy7" Fill="White" Width="65" Height="65" Canvas.Left="64" Canvas.Top="63" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy8" Fill="White" Width="65" Height="65" Canvas.Left="189" Canvas.Top="63" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="125" Canvas.Top="188" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="189" Canvas.Top="126" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Top="188" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="438" Canvas.Top="126" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="377" Canvas.Top="188" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="315" Canvas.Top="126" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="251" Canvas.Top="188" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="64" Canvas.Top="126" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy3" Fill="White" Width="65" Height="65" Canvas.Left="1" Canvas.Top="126" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy6" Fill="White" Width="65" Height="65" Canvas.Left="127" Canvas.Top="126" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy9" Fill="White" Width="65" Height="65" Canvas.Left="252" Canvas.Top="126" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy10" Fill="White" Width="65" Height="65" Canvas.Left="377" Canvas.Top="126" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy11" Fill="White" Width="65" Height="65" Canvas.Left="438" Canvas.Top="188" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy12" Fill="White" Width="65" Height="65" Canvas.Left="313" Canvas.Top="188" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy13" Fill="White" Width="65" Height="65" Canvas.Left="62" Canvas.Top="188" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy14" Fill="White" Width="65" Height="65" Canvas.Left="188" Canvas.Top="188" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="63" Canvas.Top="252" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="187" Canvas.Top="252" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Top="315" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="437" Canvas.Top="252" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="376" Canvas.Top="315" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="313" Canvas.Top="252" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="251" Canvas.Top="315" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy15" Fill="White" Width="65" Height="65" Canvas.Top="252" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="125" Canvas.Top="315" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy16" Fill="White" Width="65" Height="65" Canvas.Left="125" Canvas.Top="252" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy17" Fill="White" Width="65" Height="65" Canvas.Left="251" Canvas.Top="252" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy18" Fill="White" Width="65" Height="65" Canvas.Left="376" Canvas.Top="252" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy19" Fill="White" Width="65" Height="65" Canvas.Left="437" Canvas.Top="315" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy20" Fill="White" Width="65" Height="65" Canvas.Left="313" Canvas.Top="315" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy21" Fill="White" Width="65" Height="65" Canvas.Left="63" Canvas.Top="315" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy22" Fill="White" Width="65" Height="65" Canvas.Left="187" Canvas.Top="315" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="63" Canvas.Top="375" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="187" Canvas.Top="375" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Top="437" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="437" Canvas.Top="375" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="376" Canvas.Top="437" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="313" Canvas.Top="375" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="251" Canvas.Top="437" Stroke="#FF040404"/>
+            <Rectangle Fill="Black" Width="65" Height="65" Canvas.Left="126" Canvas.Top="437" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy23" Fill="White" Width="65" Height="65" Canvas.Top="375" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy24" Fill="White" Width="65" Height="65" Canvas.Left="126" Canvas.Top="375" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy25" Fill="White" Width="65" Height="65" Canvas.Left="251" Canvas.Top="375" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy26" Fill="White" Width="65" Height="65" Canvas.Left="376" Canvas.Top="375" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy27" Fill="White" Width="65" Height="65" Canvas.Left="437" Canvas.Top="437" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy28" Fill="White" Width="65" Height="65" Canvas.Left="313" Canvas.Top="437" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy29" Fill="White" Width="65" Height="65" Canvas.Left="63" Canvas.Top="437" Stroke="#FF040404"/>
+            <Rectangle x:Name="white_Copy30" Fill="White" Width="65" Height="65" Canvas.Left="187" Canvas.Top="437" Stroke="#FF040404"/>
+        </Canvas>
 
         <Button x:Name="new_game_button" Content="New game!" HorizontalAlignment="Left" Margin="385,450,0,0" VerticalAlignment="Top" Width="145" Height="50" FontSize="16" Click="newGameButton_Click" Foreground="Black" Grid.Column="1"/>
         <Label Content="White name:" HorizontalAlignment="Left" Margin="346,194,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.263,-0.385" FontSize="18.667" Foreground="White" Grid.Column="1"/>
@@ -30,14 +95,14 @@
         </Label>
         <Grid x:Name="chessGrid" HorizontalAlignment="Left" Width="500" Cursor="Hand" Margin="30,30,0,0" Height="500" VerticalAlignment="Top" UseLayoutRounding="False" MouseDown="chessGrid_MouseDown" Focusable="True" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Focusable="True"/>
+                <ColumnDefinition Focusable="True"/>
+                <ColumnDefinition Focusable="True"/>
+                <ColumnDefinition Focusable="True"/>
+                <ColumnDefinition Focusable="True"/>
+                <ColumnDefinition Focusable="True"/>
+                <ColumnDefinition Focusable="True"/>
+                <ColumnDefinition Focusable="True"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -49,151 +114,70 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <DataGrid x:Name="pieceDataGrid" HeadersVisibility="None" ItemsSource="{Binding CurrUnicode}" Margin="1,0,1.667,0"  RowHeight="65" CanUserResizeRows="False" CanUserReorderColumns="False" Opacity="0.6" ColumnWidth="65" CanUserSortColumns="False" FontSize="48" Grid.ColumnSpan="8" Grid.RowSpan="8" IsReadOnly="True" IsSynchronizedWithCurrentItem="True" HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" VerticalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderThickness="0" AreRowDetailsFrozen="True" RowBackground="White" CanUserResizeColumns="False" Background="{x:Null}" BorderBrush="#FFAF9568" SelectionMode="Single">
-                <!--     <DataGrid.Columns>
-                    <DataGridTemplateColumn CanUserResize="False">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Label Content="{Binding CurrUnicode}" FontSize="40" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>                   
-                </DataGrid.Columns>
-                -->
-
-            </DataGrid>
-            <Grid x:Name="rectangles" Grid.ColumnSpan="8" Margin="-1,0,-2.296,-1" Grid.RowSpan="8" Opacity="0.4" SnapsToDevicePixels="True" ClipToBounds="True" IsEnabled="False">
-                <Rectangle Stroke="Black" Width="65" Height="65" Fill="Black" Margin="64,0,374.296,436"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="189,0,249.296,436"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="1,63,437.296,373"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="440,0,-1.704,436"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="377,63,61.296,373"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="315,0,123.296,436"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="252,63,186.296,373"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="127,63,311.296,373"/>
-                <Rectangle x:Name="white" Fill="White" Stroke="Black" Width="65" Height="65" Margin="1,0,437.296,436"/>
-                <Rectangle x:Name="white_Copy" Fill="White" Stroke="Black" Width="65" Height="65" Margin="127,0,311.296,436"/>
-                <Rectangle x:Name="white_Copy1" Fill="White" Stroke="Black" Width="65" Height="65" Margin="252,0,186.296,436"/>
-                <Rectangle x:Name="white_Copy2" Fill="White" Stroke="Black" Width="65" Height="65" Margin="377,0,61.296,436"/>
-                <Rectangle x:Name="white_Copy4" Fill="White" Stroke="Black" Width="65" Height="65" Margin="440,63,-1.704,373"/>
-                <Rectangle x:Name="white_Copy5" Fill="White" Stroke="Black" Width="65" Height="65" Margin="315,63,123.296,373"/>
-                <Rectangle x:Name="white_Copy7" Fill="White" Stroke="Black" Width="65" Height="65" Margin="64,63,374.296,373"/>
-                <Rectangle x:Name="white_Copy8" Fill="White" Stroke="Black" Width="65" Height="65" Margin="189,63,249.296,373"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="125,188,313.296,247"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="189,126,249.296,310"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="0,188,438.296,248"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="438,126,0.296,310"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="377,188,61.296,248"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="315,126,123.296,310"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="251,188,187.296,248"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="64,126,374.296,310"/>
-                <Rectangle x:Name="white_Copy3" Fill="White" Stroke="Black" Width="65" Height="65" Margin="1,126,437.296,310"/>
-                <Rectangle x:Name="white_Copy6" Fill="White" Stroke="Black" Width="65" Height="65" Margin="127,126,311.296,310"/>
-                <Rectangle x:Name="white_Copy9" Fill="White" Stroke="Black" Width="65" Height="65" Margin="252,126,186.296,310"/>
-                <Rectangle x:Name="white_Copy10" Fill="White" Stroke="Black" Width="65" Height="65" Margin="377,126,61.296,310"/>
-                <Rectangle x:Name="white_Copy11" Fill="White" Stroke="Black" Width="65" Height="65" Margin="438,188,0.296,248"/>
-                <Rectangle x:Name="white_Copy12" Fill="White" Stroke="Black" Width="65" Height="65" Margin="313,188,125.296,248"/>
-                <Rectangle x:Name="white_Copy13" Fill="White" Stroke="Black" Width="65" Height="65" Margin="62,188,376.296,248"/>
-                <Rectangle x:Name="white_Copy14" Fill="White" Stroke="Black" Width="65" Height="65" Margin="188,188,250.296,248"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="63,252,375.296,183"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="187,252,251.296,183"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="0,315,438.296,121"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="437,252,1.296,183"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="376,315,62.296,121"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="313,252,125.296,183"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="251,315,187.296,121"/>
-                <Rectangle x:Name="white_Copy15" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0,252,438.296,183"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="125,315,313.296,121"/>
-                <Rectangle x:Name="white_Copy16" Fill="White" Stroke="Black" Width="65" Height="65" Margin="125,252,313.296,183"/>
-                <Rectangle x:Name="white_Copy17" Fill="White" Stroke="Black" Width="65" Height="65" Margin="251,252,187.296,183"/>
-                <Rectangle x:Name="white_Copy18" Fill="White" Stroke="Black" Width="65" Height="65" Margin="376,252,62.296,183"/>
-                <Rectangle x:Name="white_Copy19" Fill="White" Stroke="Black" Width="65" Height="65" Margin="437,315,1.296,121"/>
-                <Rectangle x:Name="white_Copy20" Fill="White" Stroke="Black" Width="65" Height="65" Margin="313,315,125.296,121"/>
-                <Rectangle x:Name="white_Copy21" Fill="White" Stroke="Black" Width="65" Height="65" Margin="63,315,375.296,121"/>
-                <Rectangle x:Name="white_Copy22" Fill="White" Stroke="Black" Width="65" Height="65" Margin="187,315,251.296,121"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="63,375,375.296,61"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="187,375,251.296,61"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="0,437,438.296,-1"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="437,375,1.296,61"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="376,437,62.296,-1"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="313,375,125.296,61"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="251,437,187.296,-1"/>
-                <Rectangle Fill="Black" Stroke="Black" Width="65" Height="65" Margin="126,437,312.296,-1"/>
-                <Rectangle x:Name="white_Copy23" Fill="White" Stroke="Black" Width="65" Height="65" Margin="0,375,438.296,61"/>
-                <Rectangle x:Name="white_Copy24" Fill="White" Stroke="Black" Width="65" Height="65" Margin="126,375,312.296,61"/>
-                <Rectangle x:Name="white_Copy25" Fill="White" Stroke="Black" Width="65" Height="65" Margin="251,375,187.296,61"/>
-                <Rectangle x:Name="white_Copy26" Fill="White" Stroke="Black" Width="65" Height="65" Margin="376,375,62.296,61"/>
-                <Rectangle x:Name="white_Copy27" Fill="White" Stroke="Black" Width="65" Height="65" Margin="437,437,1.296,-1"/>
-                <Rectangle x:Name="white_Copy28" Fill="White" Stroke="Black" Width="65" Height="65" Margin="313,437,125.296,-1"/>
-                <Rectangle x:Name="white_Copy29" Fill="White" Stroke="Black" Width="65" Height="65" Margin="63,437,375.296,-1"/>
-                <Rectangle x:Name="white_Copy30" Fill="White" Stroke="Black" Width="65" Height="65" Margin="187,437,251.296,-1"/>
-            </Grid>
-            <Grid x:Name="labels" Grid.ColumnSpan="8" Margin="-5,-4,-2,-2" Grid.RowSpan="8" >
-                <Label x:Name="label_35" Content="♔" Margin="318,192,127,248" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_21" Content="♔" Margin="70,126,375,312" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="68" Width="62" Foreground="Black"/>
-                <Label x:Name="label_20" Content="♔" Margin="9,126,436,314" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_17" Content="♔" Margin="443,64,2,374" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="68" Width="62" Foreground="Black"/>
-                <Label x:Name="label_16" Content="♔" Margin="382,64,63,374" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="68" Width="62" Foreground="Black"/>
-                <Label x:Name="label_15" Content="♔" Margin="319,66,126,374" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_14" Content="♔" Margin="255,64,190,374" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="68" Width="62" Foreground="Black"/>
-                <Label x:Name="label_13" Content="♔" Margin="191,65,254,374" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="62" Foreground="Black"/>
-                <Label x:Name="label_12" Content="♔" Margin="132,63,313,376" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="62" Foreground="Black"/>
-                <Label x:Name="label_11" Content="♔" Margin="70,63,375,376" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="62" Foreground="Black"/>
-                <Label x:Name="label_10" Content="♔" Margin="7,63,438,376" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="62" Foreground="Black"/>
-                <Label x:Name="label_07" Content="♔" Margin="443,0,2,439" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="62" Foreground="Black"/>
-                <Label x:Name="label_06" Content="♔" Margin="383,3,62,436" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="62" Foreground="Black"/>
-                <Label x:Name="label_05" Content="♔" Margin="318,0,127,439" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="62" Foreground="Black"/>
-                <Label x:Name="label_04" Content="♔" Margin="255,3,190,436" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="62" Foreground="Black"/>
-                <Label x:Name="label_03" Content="♔" Margin="193,0,252,439" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="62" Foreground="Black"/>
-                <Label x:Name="label_02" Content="♔" Margin="131,0,314,439" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="62" Foreground="Black"/>
-                <Label x:Name="label_01" Content="♔" Margin="68,0,377,439" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="62" Foreground="Black"/>
-                <Label x:Name="label_34" Content="♔" Margin="257,194,188,246" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_33" Content="♔" Margin="192,190,253,250" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_32" Content="♔" Margin="132,190,313,250" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_31" Content="♔" Margin="68,190,377,250" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_30" Content="♔" Margin="6,190,439,250" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_27" Content="♔" Margin="445,128,0,312" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_26" Content="♔" Margin="382,128,63,312" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_25" Content="♔" Margin="320,130,125,310" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_24" Content="♔" Margin="256,128,189,312" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_23" Content="♔" Margin="193,128,252,312" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_00" Content="♔" Margin="6,2,439,438" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_54" Content="♔" Margin="254,316,191,124" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_53" Content="♔" Margin="194,316,251,124" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_52" Content="♔" Margin="131,316,314,124" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_51" Content="♔" Margin="68,316,377,124" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_50" Content="♔" Margin="0,316,445,124" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_47" Content="♔" Margin="444,256,1,184" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_46" Content="♔" Margin="382,256,63,184" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_45" Content="♔" Margin="317,256,128,184" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_44" Content="♔" Margin="255,256,190,184" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_43" Content="♔" Margin="194,254,251,186" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_42" Content="♔" Margin="133,254,312,186" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_41" Content="♔" Margin="68,254,377,186" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_40" Content="♔" Margin="5,254,440,186" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_37" Content="♔" Margin="441,194,4,246" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_36" Content="♔" Margin="381,194,64,246" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_22" Content="♔" Margin="133,128,312,312" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_77" Content="♔" Margin="443,442,2,-2" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_76" Content="♔" Margin="379,440,66,0" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_75" Content="♔" Margin="317,440,128,0" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_74" Content="♔" Margin="257,440,188,0" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_73" Content="♔" Margin="194,438,251,2" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_72" Content="♔" Margin="129,440,316,0" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_71" Content="♔" Margin="66,438,379,2" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_70" Content="♔" Margin="4,438,441,2" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_60" Content="♔" Margin="9,376,436,64" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_61" Content="♔" Margin="68,378,377,62" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_62" Content="♔" Margin="130,378,315,62" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_63" Content="♔" Margin="194,380,251,60" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_64" Content="♔" Margin="261,378,184,62" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_65" Content="♔" Margin="318,380,127,60" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_66" Content="♔" Margin="386,376,59,64" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_67" Content="♔" Margin="445,378,0,62" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_57" Content="♔" Margin="444,314,1,126" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_56" Content="♔" Margin="379,316,66,124" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-                <Label x:Name="label_55" Content="♔" Margin="316,316,129,124" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black"/>
-            </Grid>
+            <Label x:Name="label_35" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="63" Grid.Column="5" Margin="4,1,58,60" Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_21" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black" Margin="0,61,1,61" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1"/>
+            <Label x:Name="label_20" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="63" Foreground="Black" Margin="-1,61,0,1" Grid.Row="1" Grid.RowSpan="2"/>
+            <Label x:Name="label_17" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="63" Foreground="Black" Grid.Column="7" Margin="0,61" Grid.RowSpan="3"/>
+            <Label x:Name="label_16" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="62" Foreground="Black" Grid.Column="6" Margin="4,61,59,61" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_15" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Grid.Column="5" Margin="4,61,58,0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_14" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="67" Width="62" Foreground="Black" Grid.Column="4" Margin="3,61,60,61" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_13" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="3" Margin="4,61,58,62" Grid.RowSpan="3"/>
+            <Label x:Name="label_12" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="2" Margin="2,61,60,62" Grid.RowSpan="3"/>
+            <Label x:Name="label_11" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black" Margin="0,61,1,62" Grid.RowSpan="3" Grid.Column="1"/>
+            <Label x:Name="label_10" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="63" Foreground="Black" Margin="-1,61,0,62" Grid.RowSpan="3"/>
+            <Label x:Name="label_07" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="63" Foreground="Black" Grid.Column="7" Margin="0,2,0,58" Grid.RowSpan="2"/>
+            <Label x:Name="label_06" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black" Grid.Column="6" Margin="4,2,59,58" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Label x:Name="label_05" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="63" Foreground="Black" Grid.Column="5" Margin="4,2,58,58" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Label x:Name="label_04" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black" Grid.Column="4" Margin="3,2,60,58" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Label x:Name="label_03" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="3" Margin="4,2,58,58" Grid.RowSpan="2"/>
+            <Label x:Name="label_02" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="2" Margin="2,2,60,58" Grid.RowSpan="2"/>
+            <Label x:Name="label_01" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black" Margin="0,2,1,58" Grid.Column="1" Grid.RowSpan="2"/>
+            <Label x:Name="label_34" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="62" Foreground="Black" Grid.Column="4" Margin="3,1,60,60" Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_33" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="3" Margin="4,1,58,60" Grid.Row="3" Grid.RowSpan="2"/>
+            <Label x:Name="label_32" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="2" Margin="2,1,60,60" Grid.Row="3" Grid.RowSpan="2"/>
+            <Label x:Name="label_31" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="62" Foreground="Black" Margin="0,1,1,60" Grid.Row="3" Grid.RowSpan="2" Grid.Column="1"/>
+            <Label x:Name="label_30" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="63" Foreground="Black" Margin="-1,1,0,60" Grid.Row="3" Grid.RowSpan="2"/>
+            <Label x:Name="label_27" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="63" Foreground="Black" Grid.Column="7" Margin="0,61,0,1" Grid.Row="1" Grid.RowSpan="2"/>
+            <Label x:Name="label_26" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="62" Foreground="Black" Grid.Column="6" Margin="4,61,59,1" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_25" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="63" Foreground="Black" Grid.Column="5" Margin="4,61,58,1" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_24" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="62" Foreground="Black" Grid.Column="4" Margin="3,61,60,1" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_23" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="3" Margin="4,61,58,1" Grid.Row="1" Grid.RowSpan="2"/>
+            <Label x:Name="label_00" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="63" Foreground="Black" Margin="-1,2,0,60" Grid.RowSpan="2"/>
+            <Label x:Name="label_54" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="62" Foreground="Black" Grid.Column="4" Margin="3,56,60,4" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_53" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="3" Margin="4,56,58,4" Grid.Row="4" Grid.RowSpan="2"/>
+            <Label x:Name="label_52" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="2" Margin="2,56,60,4" Grid.Row="4" Grid.RowSpan="2"/>
+            <Label x:Name="label_51" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="62" Foreground="Black" Margin="0,56,1,4" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1"/>
+            <Label x:Name="label_50" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="63" Foreground="Black" Margin="-1,56,0,4" Grid.Row="4" Grid.RowSpan="2"/>
+            <Label x:Name="label_47" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Grid.Column="7" Margin="0,0,0,59" Grid.Row="4" Grid.RowSpan="2"/>
+            <Label x:Name="label_46" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black" Grid.Column="6" Margin="4,0,59,58" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_45" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Grid.Column="5" Margin="4,0,58,59" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_44" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="62" Foreground="Black" Grid.Column="4" Margin="3,0,60,59" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_43" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="3" Margin="4,0,58,59" Grid.Row="4" Grid.RowSpan="2"/>
+            <Label x:Name="label_42" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="2" Margin="2,0,60,59" Grid.Row="4" Grid.RowSpan="2"/>
+            <Label x:Name="label_41" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="62" Foreground="Black" Margin="0,0,1,59" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1"/>
+            <Label x:Name="label_40" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Margin="-1,0,0,59" Grid.Row="4" Grid.RowSpan="2"/>
+            <Label x:Name="label_37" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="63" Foreground="Black" Grid.Column="7" Margin="0,1,0,58" Grid.Row="3" Grid.RowSpan="2"/>
+            <Label x:Name="label_36" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="66" Width="62" Foreground="Black" Grid.Column="6" Margin="4,1,59,58" Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_22" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="2" Margin="2,61,60,1" Grid.Row="1" Grid.RowSpan="2"/>
+            <Label x:Name="label_77" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Grid.Column="7" Margin="0,58,0,2" Grid.Row="6" Grid.RowSpan="2"/>
+            <Label x:Name="label_76" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="62" Foreground="Black" Grid.Column="6" Margin="4,60,59,0" Grid.Row="6" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_75" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Grid.Column="5" Margin="4,0,58,-2" Grid.Row="7" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_74" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="62" Foreground="Black" Grid.Column="4" Margin="3,0,60,-2" Grid.Row="7" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_73" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="3" Margin="4,0,58,-2" Grid.Row="7"/>
+            <Label x:Name="label_72" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="2" Margin="2,0,60,-2" Grid.Row="7"/>
+            <Label x:Name="label_71" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="62" Foreground="Black" Margin="0,0,1,-2" Grid.Row="7" Grid.Column="1"/>
+            <Label x:Name="label_70" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Margin="-1,61.722,0,-2.722" Grid.Row="6" Grid.RowSpan="2"/>
+            <Label x:Name="label_60" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Margin="-1,56,0,3" Grid.Row="5" Grid.RowSpan="2"/>
+            <Label x:Name="label_61" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="62" Foreground="Black" Margin="0,56,1,3" Grid.Row="5" Grid.RowSpan="2" Grid.Column="1"/>
+            <Label x:Name="label_62" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="2" Margin="2,56,60,3" Grid.Row="5" Grid.RowSpan="2"/>
+            <Label x:Name="label_63" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Grid.ColumnSpan="2" Grid.Column="3" Margin="4,56,58,3" Grid.Row="5" Grid.RowSpan="2"/>
+            <Label x:Name="label_64" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="62" Foreground="Black" Grid.Column="4" Margin="3,56,60,3" Grid.Row="5" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_65" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Grid.Column="5" Margin="4,56,58,3" Grid.Row="5" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_66" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="62" Foreground="Black" Grid.Column="6" Margin="4,56,59,3" Grid.Row="5" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_67" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Grid.Column="7" Margin="0,56,0,3" Grid.Row="5" Grid.RowSpan="2"/>
+            <Label x:Name="label_57" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="63" Foreground="Black" Grid.Column="7" Margin="0,56,0,3" Grid.Row="4" Grid.RowSpan="2"/>
+            <Label x:Name="label_56" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="62" Foreground="Black" Grid.Column="6" Margin="4,56,59,4" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_55" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64" Width="63" Foreground="Black" Grid.Column="5" Margin="4,56,58,4" Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
         </Grid>
 
