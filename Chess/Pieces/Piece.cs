@@ -9,11 +9,8 @@ namespace Chess.Pieces
     {
         protected int next;
         protected bool IsClicked { get; set; }
-        public string Unicode { get; protected set; } = ""; // default empty string
+        public string Unicode { get; protected set; }
 
-      //  public Uri ImageFilePath { get; internal set; }
-      
-      //  public Image PieceImage { get; set; }
         public Enums.Color Color { get; set; }
         public Enums.PieceType PieceType { get; set; }
 
@@ -66,7 +63,7 @@ namespace Chess.Pieces
         {
             Square testSquare = currSquare;
 
-            for (int i = 1; i < Game.TotalColumns; i++)
+            for (int i = 1; i < Game.MaxColumn; i++)
             {
                 if (testSquare == null) continue;
                 if (testSquare.IsSame(destSquare)) return true;
@@ -114,5 +111,11 @@ namespace Chess.Pieces
 
             return currType;
         }
+
+        public override string ToString()
+        {
+            return Unicode;
+        }
+
     }
 }

@@ -53,6 +53,7 @@ namespace Chess
 
         private void chessGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Debug.WriteLine("chessGrid_MouseDown");
             Label label = (Label)e.Source;
 
             int column = Grid.GetColumn(label);

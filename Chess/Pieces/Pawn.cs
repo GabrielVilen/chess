@@ -10,6 +10,7 @@ namespace Chess.Pieces
 
         public Pawn(Enums.Color color) : base(Enums.PieceType.Pawn, color)
         {
+            Unicode = (color == Enums.Color.Black ? Unicodes.Pawn_black : Unicodes.Pawn_white);
         }
 
         public override bool CanMoveTo(Square destSquare)

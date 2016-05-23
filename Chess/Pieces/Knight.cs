@@ -7,6 +7,7 @@ namespace Chess.Pieces
     {
         public Knight(Enums.Color color) : base(Enums.PieceType.Knight, color)
         {
+            Unicode = (color == Enums.Color.Black ? Unicodes.Knight_black : Unicodes.Knight_white);
         }
         
         public override bool CanMoveTo(Square destSquare)

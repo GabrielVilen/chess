@@ -4,14 +4,12 @@ using Chess.Util;
 namespace Chess.Gui
 {
     public class Square
-    {      
+    {
         public int Row { get; }
         public int Column { get; }
-
         public Enums.Color Color { get; }
-        public Piece CurrPiece { get; set; }
-
-        public string CurrUnicode { get { return CurrPiece == null ? "" : CurrPiece.Unicode; } } 
+        public Piece CurrPiece { get; private set; }
+        public string CurrUnicode { get; private set; }
 
         public Square(int row, int column)
         {
@@ -24,12 +22,20 @@ namespace Chess.Gui
             Row = row;
             Column = column;
             Color = color;
+
+            SetPiece(new None()); // todo look over
         }
 
         public bool CanPlace(Piece piece)
         {
             if (CurrPiece == null) return true;
             return CurrPiece.Color != piece.Color || CurrPiece.PieceType == Enums.PieceType.None;
+        }
+
+        public void SetPiece(Piece piece)
+        {
+            CurrPiece = piece;
+            CurrUnicode = piece.Unicode;
         }
 
         public Piece Move(Piece piece)
@@ -53,9 +59,7 @@ namespace Chess.Gui
 
         public override string ToString()
         {
-            return CurrUnicode;
+            return CurrPiece != null ? CurrPiece.Unicode : "X"; // todo not working with data binding
         }
-
-
     }
 }

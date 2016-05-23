@@ -8,6 +8,7 @@ namespace Chess
     {
         public None() : base(Util.Enums.PieceType.None, Util.Enums.Color.Black)
         {
+            Unicode = "";
         }
 
         public override bool CanMoveTo(Square destSquare)

@@ -7,7 +7,7 @@ namespace Chess.Gui
 {
     public class Game
     {
-        public static readonly int TotalRows = 8, TotalColumns = 8;
+        public static readonly int MaxRow = 8, MaxColumn = 8;
         private static Game instance;     
 
         private Player white, black;
@@ -39,40 +39,18 @@ namespace Chess.Gui
             this.white = white;
             this.black = black;
 
-            InitSquares();
+            //InitSquares();
 
             return instance;
-        }
-
-        private void InitSquares()
-        {
-            squares = new Square[TotalRows, TotalColumns];
-
-            for (int row = 0; row < TotalRows; row++)
-            {
-                bool evenRow = (row % 2 == 0);
-
-                for (int column = 0; column < TotalColumns; column++)
-                {
-                    bool evenColumn = (column % 2 == 0);
-
-                    Enums.Color color;
-                    if (evenRow && evenColumn || !evenRow && !evenColumn)
-                        color = Enums.Color.White;
-                    else
-                        color = Enums.Color.Black;
-
-                    Square square = new Square(row, column, color); // start at row and column +1 ?
-
-                    squares[row, column] = square;
-                }
-            }
         }
 
         public void AddPieceToSquare(Piece piece, int row, int column)
         {
             Square square = GetSquare(row, column);
-            if (square != null) square.CurrPiece = piece;
+            if (square != null)
+            {
+                square.SetPiece(piece);
+            }
         }
 
         public Square GetSquare(int row, int column)
