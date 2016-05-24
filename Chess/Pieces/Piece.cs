@@ -1,6 +1,7 @@
 ﻿using Chess.Gui;
 using Chess.Util;
 using System;
+using System.Diagnostics;
 using System.Windows.Controls;
 
 namespace Chess.Pieces
@@ -8,7 +9,7 @@ namespace Chess.Pieces
     public abstract class Piece
     {
         protected int next;
-        protected bool IsClicked { get; set; }
+        public bool IsClicked { get; set; }
         public string Unicode { get; protected set; }
 
         public Enums.Color Color { get; set; }
@@ -16,7 +17,7 @@ namespace Chess.Pieces
 
         protected int currColumn => CurrSquare.Column;
         protected int currRow => CurrSquare.Row;
-        
+
         protected Square currSquare;
         private Game game;
 
@@ -34,7 +35,7 @@ namespace Chess.Pieces
 
             game = Game.GetInstance();
         }
-        
+
         // todo: transform pawn to queen
         // todo: implement castling (sv. rockad)
         public bool TryMoveTo(Square destSquare)
@@ -42,13 +43,16 @@ namespace Chess.Pieces
             if (!IsValidSquare(destSquare) || !CanMoveTo(destSquare) || !destSquare.CanPlace(this))
                 return false;
 
-            Piece destPiece = destSquare.Move(this);
+            Piece newPiece = destSquare.Move(this);
 
-            if ((destPiece != null) && !IsSameColor(destPiece) && CanCapture(destPiece))
+            if (newPiece != null && newPiece.PieceType != Enums.PieceType.None && !IsSameColor(newPiece) && CanCapture(newPiece))
             {
-                destPiece.Capture();
-                game.Score(destPiece);
+                newPiece.Capture();
+                game.Score(newPiece);
             }
+
+            Debug.WriteLine("moved {0} @ [{1},{2}] to {3} @ [{4},{5}]", this, currSquare.Row, currSquare.Column, newPiece, destSquare.Row, destSquare.Column);
+
             currSquare = destSquare;
 
             return true;
@@ -96,7 +100,7 @@ namespace Chess.Pieces
         protected bool IsValidSquare(Square destSquare)
         {
             if (game.InCheck(Color, destSquare)) return false;
-            return currSquare == destSquare;
+            return currSquare != destSquare;
         }
 
         public bool Click()

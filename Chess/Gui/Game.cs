@@ -8,13 +8,15 @@ namespace Chess.Gui
     public class Game
     {
         public static readonly int MaxRow = 8, MaxColumn = 8;
-        private static Game instance;     
+        private static Game instance;
 
         private Player white, black;
-        public Player White => white;
-        public Player Black => black;        
+        public Player CurrPlayer { get; set; }
 
-        public Square[,] squares { get; set; }
+        //      public Player White => white;
+        //      public Player Black => black;        
+
+        public Square[,] Squares { get; set; }
 
         /// <summary>
         ///     Singleton that creates new game instance if current is null
@@ -34,29 +36,29 @@ namespace Chess.Gui
 
         public Game NewGame(Player white, Player black)
         {
-            instance = new Game();           
+            GetInstance();
 
-            this.white = white;
-            this.black = black;
-
-            //InitSquares();
+            instance.white = white;
+            instance.black = black;
+            instance.CurrPlayer = white;
 
             return instance;
         }
-
-        public void AddPieceToSquare(Piece piece, int row, int column)
+           
+        public void AddPiece(Piece piece, Player player, int row, int column)
         {
             Square square = GetSquare(row, column);
             if (square != null)
             {
                 square.SetPiece(piece);
+                player.AddPiece(piece);
+                piece.CurrSquare = square;
             }
         }
 
         public Square GetSquare(int row, int column)
         {
-            if (squares == null) return null;
-            return squares[row, column];
+            return Squares[row, column];
         }
 
         internal bool ClickSquare(int row, int column)
@@ -66,6 +68,23 @@ namespace Chess.Gui
                 return false;
 
             return square.CurrPiece.Click();
+        }
+
+        public void TryMove(Square fromSquare, Square destSquare)
+        {
+            bool hasMoved = CurrPlayer.TryMove(fromSquare, destSquare); 
+            if (hasMoved)
+            {
+                CurrPlayer = (CurrPlayer == white ? black : white);  // TODO UPDATE LABEL ON MOVE
+
+                //  destSquare.SetPiece(fromSquare.CurrPiece); // todo update label
+                //   fromSquare.CurrPiece.CurrSquare = destSquare;
+            }
+        }
+
+        public void TryMove(Square fromSquare, int toRow, int toCol)
+        {
+            TryMove(fromSquare, GetSquare(toRow, toCol));
         }
 
         public void Score(Piece destPiece)
@@ -82,7 +101,7 @@ namespace Chess.Gui
                 loser = black;
             }
 
-            scorer.Score += (int) destPiece.PieceType;
+            scorer.Score += (int)destPiece.PieceType;
             loser.RemovePiece(destPiece);
         }
 
@@ -90,7 +109,7 @@ namespace Chess.Gui
         {
             Player checkPlayer = (white.Color == color) ? white : black;
 
-            return !checkPlayer.inCheck && !checkPlayer.CanCheck(destSquare);
+            return checkPlayer.inCheck || checkPlayer.CanCheck(destSquare);
         }
     }
 }

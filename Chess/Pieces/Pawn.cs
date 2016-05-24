@@ -35,6 +35,7 @@ namespace Chess.Pieces
 
         public override bool CanCapture(Piece destPiece)
         {
+            if (destPiece.CurrSquare == null) return false;
             int destRow = destPiece.CurrSquare.Row;
             int destColumn = destPiece.CurrSquare.Column;
 

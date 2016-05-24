@@ -7,13 +7,14 @@ namespace Chess.Gui
 {
     public class Player
     {
-        public int Score { get; set; }      
-        public bool inCheck { get; set; }
-
+        public bool inCheck { get; private set; }
         public string Name { get; private set; }
         public Enums.Color Color { get; private set; }
 
-        private List<Piece> pieces = new List<Piece>();
+        public int Score { get; set; }
+
+        private List<Piece> myPieces = new List<Piece>();
+
 
         public Player(string name, Enums.Color color)
         {
@@ -23,23 +24,33 @@ namespace Chess.Gui
 
         public void AddPiece(Piece piece)
         {
-            pieces.Add(piece);
+            myPieces.Add(piece);
         }
 
         public void RemovePiece(Piece piece)
         {
-            if (pieces.Contains(piece))
-                pieces.Remove(piece);
+            if (myPieces.Contains(piece))
+                myPieces.Remove(piece);
 
             piece = null; // invoke GC
         }
 
- 
         // todo test
         public bool CanCheck(Square destSquare)
         {
-            Piece king = pieces.Find(p => p.PieceType == Enums.PieceType.King);
+            Piece king = myPieces.Find(p => p.PieceType == Enums.PieceType.King);
             return king.CanMoveTo(destSquare);
+        }
+
+        internal bool TryMove(Square fromSquare, Square destSquare)
+        {
+            Piece piece = fromSquare.CurrPiece;
+
+            if(myPieces.Contains(piece))
+            {
+                return piece.TryMoveTo(destSquare);
+            }
+            return false;
         }
     }
 }

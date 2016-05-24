@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Chess.Gui;
 using Chess.Util;
 using System.Windows.Media;
+using System;
 
 namespace Chess
 {
@@ -13,24 +14,29 @@ namespace Chess
     /// </summary>
     partial class MainWindow : Window
     {
-        private Player playerWhite, playerBlack;
+        private Player pWhite, pBlack;
         private Game game;
+        private Square currSquare;
+        private Label currLabel;
 
         public MainWindow()
         {
-            game = Game.GetInstance();
-
             InitializeComponent();
         }
 
         private void NewGame()
         {
-            playerWhite = new Player(white_textBox.Text, Enums.Color.White);
-            playerBlack = new Player(black_textBox.Text, Enums.Color.Black);
+            Debug.WriteLine("NEW GAME");
+            pWhite = new Player(white_textBox.Text, Enums.Color.White);
+            pBlack = new Player(black_textBox.Text, Enums.Color.Black);
 
-            game.NewGame(playerWhite, playerBlack);
+            if(game == null)
+            {
+                game = Game.GetInstance();
+            }
+            this.game = game.NewGame(pWhite, pBlack);
 
-            ClearGui();
+            //ClearGui();
             InitNewBoard();
         }
 
@@ -53,20 +59,34 @@ namespace Chess
 
         private void chessGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Debug.WriteLine("chessGrid_MouseDown");
-            Label label = (Label)e.Source;
+            if (game == null) return;
 
-            int column = Grid.GetColumn(label);
-            int row = Grid.GetRow(label);
+            Label newLabel = (Label)e.Source;
+            int column = Grid.GetColumn(newLabel);
+            int row = Grid.GetRow(newLabel);
 
-            Debug.WriteLine("label = " + label + "\n  column = " + column + " row = " + row);
+            if (currSquare != null && currLabel != null)
+            {
+                if(currSquare.IsClicked())
+                {
+                    game.TryMove(currSquare, row, column); 
+                }
+                Click(currSquare, currLabel);
+            } 
+            currSquare = game.GetSquare(row, column);
+            currLabel = newLabel;
 
-            bool isClicked = game.ClickSquare(row, column);
-
-            label.Foreground = isClicked ? new SolidColorBrush(Colors.Yellow) : new SolidColorBrush(Colors.Black);
+            Click(currSquare, currLabel);
+            
+            UpdateGui();
         }
 
-   
+        private void Click(Square currSquare, Label label)
+        {
+            bool isClicked = currSquare.Click();
+            label.Foreground = isClicked ? new SolidColorBrush(Colors.Gray) : new SolidColorBrush(Colors.Black);
+        }
+
         private void newGameButton_Click(object sender, RoutedEventArgs e)
         {
             NewGame();

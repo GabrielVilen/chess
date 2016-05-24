@@ -57,7 +57,6 @@
     </ApplicationDefinition>
     <Compile Include="Gui\BoardFactory.cs" />
     <Compile Include="Pieces\None.cs" />
-    <Compile Include="Util\DataGridExtension.cs" />
     <Compile Include="Util\Unicodes.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

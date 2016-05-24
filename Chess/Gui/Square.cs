@@ -1,4 +1,5 @@
-﻿using Chess.Pieces;
+﻿using System;
+using Chess.Pieces;
 using Chess.Util;
 
 namespace Chess.Gui
@@ -59,7 +60,17 @@ namespace Chess.Gui
 
         public override string ToString()
         {
-            return CurrPiece != null ? CurrPiece.Unicode : "X"; // todo not working with data binding
+            return CurrPiece != null ? CurrPiece.Unicode : "";
+        }
+
+        internal bool IsClicked()
+        {
+            return CurrPiece.IsClicked;
+        }
+
+        internal bool Click()
+        {
+            return CurrPiece.Click();
         }
     }
 }
