@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Chess.Pieces;
 using Chess.Util;
 
-namespace Chess.Gui
+namespace Chess.Logic
 {
     public class Player
     {

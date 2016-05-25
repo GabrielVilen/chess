@@ -1,8 +1,6 @@
-﻿using Chess.Gui;
+﻿using Chess.Logic;
 using Chess.Util;
-using System;
 using System.Diagnostics;
-using System.Windows.Controls;
 
 namespace Chess.Pieces
 {
@@ -51,7 +49,7 @@ namespace Chess.Pieces
                 game.Score(newPiece);
             }
 
-            Debug.WriteLine("moved {0} @ [{1},{2}] to {3} @ [{4},{5}]", this, currSquare.Row, currSquare.Column, newPiece, destSquare.Row, destSquare.Column);
+            Debug.WriteLine("moved {0} @ [{1},{2}] to {3} @ [{4},{5}] hash: {6}", this, currSquare.Row, currSquare.Column, newPiece, destSquare.Row, destSquare.Column, destSquare.GetHashCode());
 
             currSquare = destSquare;
 

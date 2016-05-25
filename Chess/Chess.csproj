@@ -55,7 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Gui\BoardFactory.cs" />
     <Compile Include="Pieces\None.cs" />
     <Compile Include="Util\Unicodes.cs" />
     <Page Include="MainWindow.xaml">
@@ -66,9 +65,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Gui\Game.cs" />
-    <Compile Include="Gui\Player.cs" />
-    <Compile Include="Gui\Square.cs" />
+    <Compile Include="Logic\Game.cs" />
+    <Compile Include="Logic\Player.cs" />
+    <Compile Include="Logic\Square.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

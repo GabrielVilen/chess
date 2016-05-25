@@ -1,6 +1,6 @@
 ﻿using System;
-using Chess.Gui;
 using Chess.Util;
+using Chess.Logic;
 
 namespace Chess.Pieces
 {

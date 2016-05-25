@@ -1,9 +1,7 @@
-﻿using System;
-using Chess.Pieces;
+﻿using Chess.Pieces;
 using Chess.Util;
-using System.Data;
 
-namespace Chess.Gui
+namespace Chess.Logic
 {
     public class Game
     {
@@ -36,7 +34,7 @@ namespace Chess.Gui
 
         public Game NewGame(Player white, Player black)
         {
-            GetInstance();
+            instance = new Game(); // todo look over
 
             instance.white = white;
             instance.black = black;
@@ -77,8 +75,8 @@ namespace Chess.Gui
             {
                 CurrPlayer = (CurrPlayer == white ? black : white);  // TODO UPDATE LABEL ON MOVE
 
-                //  destSquare.SetPiece(fromSquare.CurrPiece); // todo update label
-                //   fromSquare.CurrPiece.CurrSquare = destSquare;
+                destSquare.SetPiece(fromSquare.CurrPiece); // todo update label
+                fromSquare.RemovePiece();
             }
         }
 

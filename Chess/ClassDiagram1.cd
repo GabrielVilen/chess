@@ -1,25 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
-  <Class Name="Chess.Gui.Game">
+  <Class Name="Chess.Logic.Game">
     <Position X="5" Y="8.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAUAAAAAKAAAAgAAQAEBAAABAREACAAAAAAAAAABAA=</HashCode>
-      <FileName>Gui\Game.cs</FileName>
+      <HashCode>AAAAEAAAAJAAAAgAAQAEAAAABABAASIABAAAAAAABgA=</HashCode>
+      <FileName>Logic\Game.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Chess.Gui.Player">
+  <Class Name="Chess.Logic.Player">
     <Position X="7.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAgAAAIAAAQAIAAAAQggAAAAgAAAAAA=</HashCode>
-      <FileName>Gui\Player.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAgAAAIAAAQAIAAAAQgAAAQAgAAAAgA=</HashCode>
+      <FileName>Logic\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Chess.Gui.Square">
+  <Class Name="Chess.Logic.Square">
     <Position X="9" Y="8.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAIABAAAEAABAAAAAAAAAAgAAAAUAgAAQAAA=</HashCode>
-      <FileName>Gui\Square.cs</FileName>
+      <HashCode>AABAAAAACIABAAAEIABAAAAAgAACAgAAAAUAgAARAgA=</HashCode>
+      <FileName>Logic\Square.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Chess.Pieces.Bishop">
     <Position X="2.75" Y="6.25" Width="1.5" />
@@ -52,7 +53,7 @@
   <Class Name="Chess.Pieces.Piece">
     <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACEAAACAAAIAAAAAAEAAAARAAAEBAIABCAgAIAIoA=</HashCode>
+      <HashCode>AAACEAAACAAAIAAEAAAEAAAARAAAEBAIABCAgAIAIoA=</HashCode>
       <FileName>Pieces\Piece.cs</FileName>
     </TypeIdentifier>
   </Class>

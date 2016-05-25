@@ -1,5 +1,4 @@
-﻿using System;
-using Chess.Gui;
+﻿using Chess.Logic;
 using Chess.Pieces;
 
 namespace Chess
