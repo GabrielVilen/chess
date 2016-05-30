@@ -15,27 +15,35 @@ namespace Chess.Pieces
 
         public override bool CanMoveTo(Square clickedSquare)
         {
-            if (Color == Enums.Color.White && currRow <= clickedSquare.Row ||
-                Color == Enums.Color.Black && currRow >= clickedSquare.Row) // checks direction 
+            // cannot move to non empty or diagonal squares unless capture
+            if ((!clickedSquare.IsEmpty() || Math.Abs(currColumn - clickedSquare.Column) != 0) &&
+                !CanCapture(clickedSquare.CurrPiece))
                 return false;
 
-            if (Math.Abs(currColumn - clickedSquare.Column) != 0) return false;
+            // cannot move backwards        
+            if (Color == Enums.Color.White && currRow <= clickedSquare.Row ||
+                Color == Enums.Color.Black && currRow >= clickedSquare.Row)
+                return false;
+        
             if (isFirstMove)
             {
-                if ((Math.Abs(currRow - clickedSquare.Row) > 2) || 
+                // cannot move more than two steps
+                if ((Math.Abs(currRow - clickedSquare.Row) > 2) ||
                     !Game.GetInstance().GetSquare(currRow + next, currColumn).IsEmpty())
                     return false;
-            }
-            else if (Math.Abs(currRow - clickedSquare.Row) > 1) return false;
 
-            isFirstMove = false;
+                isFirstMove = false;
+            }
+            // cannot move more than one step
+            else if (Math.Abs(currRow - clickedSquare.Row) > 1)
+                return false;
 
             return true;
         }
 
         public override bool CanCapture(Piece destPiece)
         {
-            if (destPiece.CurrSquare == null) return false;
+            if (destPiece == null) return false;
             int destRow = destPiece.CurrSquare.Row;
             int destColumn = destPiece.CurrSquare.Column;
 

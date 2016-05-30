@@ -38,6 +38,7 @@ namespace Chess.Pieces
         // todo: implement castling (sv. rockad)
         public bool TryMoveTo(Square clickedSquare)
         {
+            Debug.WriteLine("trying to move {0} -> {1}", this, clickedSquare);
             if (!IsValidSquare(clickedSquare) || !CanMoveTo(clickedSquare) || !clickedSquare.CanPlace(this))
                 return false;
 
@@ -69,7 +70,7 @@ namespace Chess.Pieces
             {
                 if (testSquare == null) continue;
                 if (testSquare.IsSame(clickedSquare)) return true;
-                if (!testSquare.IsEmpty()) return false;
+                if (!testSquare.IsEmpty() && !testSquare.IsSame(currSquare)) return false;
 
                 testSquare = game.GetSquare(testSquare.Row + row, testSquare.Column + column);
             }

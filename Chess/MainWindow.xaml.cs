@@ -23,7 +23,7 @@ namespace Chess
         private Label currLabel;
         private Label[,] labels = new Label[8, 8];
         private BindingList<Label> bindings = new BindingList<Label>();
-        
+
 
         public MainWindow()
         {
@@ -42,8 +42,8 @@ namespace Chess
             Click(clickedSquare, clickedLabel);
 
             if (currSquare != null && currLabel != null)
-            {    
-                if (currSquare.IsClicked()) 
+            {
+                if (currSquare.IsClicked())
                 {
                     if (game.TryMove(currSquare, clickedSquare))
                     {
@@ -59,6 +59,21 @@ namespace Chess
             //Debug.WriteLine("currLabel = {0}", currLabel);
 
             UpdateGui();
+        }
+
+        private void Click(Square currSquare, Label label)
+        {
+            bool isClicked = currSquare.Click();
+            // TODO sometimes doesnt update
+            if (currSquare.CurrPiece != null && game.CurrPlayer.Color == currSquare.CurrPiece.Color)
+            {
+                label.Foreground = isClicked ? new SolidColorBrush(Colors.Gray) : new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void newGameButton_Click(object sender, RoutedEventArgs e)
+        {
+            NewGame();
         }
 
         private void ShowMove(Square currSquare, Label clickedLabel)
@@ -153,7 +168,7 @@ namespace Chess
 
                     Square square = new Square(row, column, color);
                     Label label = children[i++] as Label;
-                    
+
                     squares[row, column] = square;
                     labels[row, column] = label;
                     bindings.Add(label);
@@ -166,7 +181,7 @@ namespace Chess
 
         }
 
-        private void BindLabels(Square [,] squares)
+        private void BindLabels(Square[,] squares)
         {
             int r = 0, c = 0;
             foreach (Label label in bindings)
@@ -191,15 +206,6 @@ namespace Chess
             label.SetBinding(ContentProperty, binding);
         }
 
-        private void Click(Square currSquare, Label label)
-        {
-            bool isClicked = currSquare.Click();
-            label.Foreground = isClicked ? new SolidColorBrush(Colors.Gray) : new SolidColorBrush(Colors.Black);
-        }
 
-        private void newGameButton_Click(object sender, RoutedEventArgs e)
-        {
-            NewGame();
-        }
     }
 }

@@ -105,9 +105,9 @@ namespace Chess.Logic
 
         public bool InCheck(Enums.Color color, Square clickedSquare)
         {
-            Player checkPlayer = (white.Color == color) ? white : black;
+            Player checkPlayer = (white.Color == color) ? black : white;
 
-            return checkPlayer.inCheck || checkPlayer.CanCheck(clickedSquare);
+            return CurrPlayer.inCheck || checkPlayer.CanCheck(clickedSquare);
         }
     }
 }

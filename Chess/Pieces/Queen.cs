@@ -15,20 +15,21 @@ namespace Chess.Pieces
             int destColumn = clickedSquare.Column;
             int destRow = clickedSquare.Row;
 
-            // loop horizontal or vertical
+            // loop columns 
             if (destColumn == currColumn)
             {
-                if (destRow > currRow) return IsMatch(clickedSquare, 1, 0);
+                if (destRow > currRow) return IsMatch(clickedSquare,  1, 0);
                 if (destRow < currRow) return IsMatch(clickedSquare, -1, 0);
             }
+            // loop rows
             else if (destRow == currRow)
             {
-                if (destColumn > currColumn) return IsMatch(clickedSquare, 0, 1);
+                if (destColumn > currColumn) return IsMatch(clickedSquare, 0,  1);
                 if (destColumn < currColumn) return IsMatch(clickedSquare, 0, -1);
             }
 
             // loop diagonal
-            if (destRow > currRow) return IsMatch(clickedSquare, 1, 1) || IsMatch(clickedSquare, 1, -1);
+            if (destRow > currRow) return IsMatch(clickedSquare,  1, 1) || IsMatch(clickedSquare,  1, -1);
             if (destRow < currRow) return IsMatch(clickedSquare, -1, 1) || IsMatch(clickedSquare, -1, -1);
 
             return false;
