@@ -17,10 +17,9 @@
   <Class Name="Chess.Logic.Square">
     <Position X="9" Y="8.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AABAAAAACIABAAAEIABAAAAAgAACAgAAAAUAgAARAgA=</HashCode>
+      <HashCode>AABAAAAACIABAAAEAABAAAAAAAACAggAAAUAgAARAgA=</HashCode>
       <FileName>Logic\Square.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Chess.Pieces.Bishop">
     <Position X="2.75" Y="6.25" Width="1.5" />

@@ -10,15 +10,15 @@ namespace Chess.Pieces
             Unicode = (color == Enums.Color.Black ? Unicodes.Knight_black : Unicodes.Knight_white);
         }
         
-        public override bool CanMoveTo(Square destSquare)
+        public override bool CanMoveTo(Square clickedSquare)
         {
-            return IsMatch(destSquare, 2, 1) || IsMatch(destSquare, 1, 2);
+            return IsMatch(clickedSquare, 2, 1) || IsMatch(clickedSquare, 1, 2);
         }
 
-        protected override bool IsMatch(Square destSquare, int row, int column)
+        protected override bool IsMatch(Square clickedSquare, int row, int column)
         {
-            int destRow = destSquare.Row;
-            int toCol = destSquare.Column;
+            int destRow = clickedSquare.Row;
+            int toCol = clickedSquare.Column;
 
             if ((destRow == currRow + row) && (toCol == currColumn + column)) return true;
             if ((destRow == currRow + row) && (toCol == currColumn - column)) return true;

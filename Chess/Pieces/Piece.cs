@@ -36,12 +36,12 @@ namespace Chess.Pieces
 
         // todo: transform pawn to queen
         // todo: implement castling (sv. rockad)
-        public bool TryMoveTo(Square destSquare)
+        public bool TryMoveTo(Square clickedSquare)
         {
-            if (!IsValidSquare(destSquare) || !CanMoveTo(destSquare) || !destSquare.CanPlace(this))
+            if (!IsValidSquare(clickedSquare) || !CanMoveTo(clickedSquare) || !clickedSquare.CanPlace(this))
                 return false;
 
-            Piece newPiece = destSquare.Move(this);
+            Piece newPiece = clickedSquare.Move(this);
 
             if (newPiece != null && newPiece.PieceType != Enums.PieceType.None && !IsSameColor(newPiece) && CanCapture(newPiece))
             {
@@ -49,9 +49,9 @@ namespace Chess.Pieces
                 game.Score(newPiece);
             }
 
-            Debug.WriteLine("moved {0} @ [{1},{2}] to {3} @ [{4},{5}] hash: {6}", this, currSquare.Row, currSquare.Column, newPiece, destSquare.Row, destSquare.Column, destSquare.GetHashCode());
+            Debug.WriteLine("moved {0} @ [{1},{2}] to {3} @ [{4},{5}] hash: {6}", this, currSquare.Row, currSquare.Column, newPiece, clickedSquare.Row, clickedSquare.Column, clickedSquare.GetHashCode());
 
-            currSquare = destSquare;
+            currSquare = clickedSquare;
 
             return true;
         }
@@ -61,14 +61,14 @@ namespace Chess.Pieces
         ///     Returns true if the piece can move to the destination square, and no pieces are blocking the path.
         ///     Can be overridden to replace with unique match pattern.
         /// </summary>
-        protected virtual bool IsMatch(Square destSquare, int row, int column)
+        protected virtual bool IsMatch(Square clickedSquare, int row, int column)
         {
             Square testSquare = currSquare;
 
             for (int i = 1; i < Game.MaxColumn; i++)
             {
                 if (testSquare == null) continue;
-                if (testSquare.IsSame(destSquare)) return true;
+                if (testSquare.IsSame(clickedSquare)) return true;
                 if (!testSquare.IsEmpty()) return false;
 
                 testSquare = game.GetSquare(testSquare.Row + row, testSquare.Column + column);
@@ -85,7 +85,7 @@ namespace Chess.Pieces
         ///     Checks if the piece can move to the given destination square given the pice's movement pattern.
         ///     Override to implement movement pattern.
         /// </summary>
-        public abstract bool CanMoveTo(Square destSquare);
+        public abstract bool CanMoveTo(Square clickedSquare);
 
         /// <summary>
         ///     Should only be overridden by pieces that has a different capturing pattern (eg. Pawn; captures diagonal)
@@ -95,10 +95,10 @@ namespace Chess.Pieces
             return true;
         }
 
-        protected bool IsValidSquare(Square destSquare)
+        protected bool IsValidSquare(Square clickedSquare)
         {
-            if (game.InCheck(Color, destSquare)) return false;
-            return currSquare != destSquare;
+            if (game.InCheck(Color, clickedSquare)) return false;
+            return currSquare != clickedSquare;
         }
 
         public bool Click()

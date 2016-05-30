@@ -35,19 +35,19 @@ namespace Chess.Logic
         }
 
         // todo test
-        public bool CanCheck(Square destSquare)
+        public bool CanCheck(Square clickedSquare)
         {
             Piece king = myPieces.Find(p => p.PieceType == Enums.PieceType.King);
-            return king.CanMoveTo(destSquare);
+            return king.CanMoveTo(clickedSquare);
         }
 
-        internal bool TryMove(Square fromSquare, Square destSquare)
+        internal bool TryMove(Square fromSquare, Square clickedSquare)
         {
             Piece piece = fromSquare.CurrPiece;
 
             if(myPieces.Contains(piece))
             {
-                return piece.TryMoveTo(destSquare);
+                return piece.TryMoveTo(clickedSquare);
             }
             return false;
         }

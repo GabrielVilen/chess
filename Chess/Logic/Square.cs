@@ -6,7 +6,7 @@ using System;
 
 namespace Chess.Logic
 {
-    public class Square : INotifyPropertyChanged
+    public class Square
     {
         public int Row { get; }
         public int Column { get; }
@@ -20,7 +20,6 @@ namespace Chess.Logic
             set
             {
                 currUnicode = value;
-                OnPropertyChanged("CurrUnicode");
             }
         }
 
@@ -29,28 +28,6 @@ namespace Chess.Logic
             Row = row;
             Column = column;
             Color = color;
-
-            //SetPiece(new None()); // todo needed?
-          //  PropertyChanged += PropertyChanged;
-
-           // OnPropertyChanged("CurrUnicode"); // INotifyPropertyChanged
-        }
-
-
-        // INotifyPropertyChanged  stuff
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-
-            Debug.WriteLine("OnPropertyChanged({0}) handler = {1}", name, handler);
-
-            // TODO HANDLER ALWAYS NULL
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
         }
 
         public bool CanPlace(Piece piece)
@@ -77,9 +54,9 @@ namespace Chess.Logic
             return CurrPiece == null ? true : CurrPiece.PieceType == Enums.PieceType.None;
         }
 
-        public bool IsSame(Square destSquare)
+        public bool IsSame(Square clickedSquare)
         {
-            return (Row == destSquare.Row) && (Column == destSquare.Column);
+            return (Row == clickedSquare.Row) && (Column == clickedSquare.Column);
         }
 
         public override string ToString()

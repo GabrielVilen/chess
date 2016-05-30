@@ -11,9 +11,9 @@ namespace Chess.Pieces
             Unicode = (color == Enums.Color.Black ? Unicodes.King_black : Unicodes.King_white);
         }
 
-        public override bool CanMoveTo(Square destSquare)
+        public override bool CanMoveTo(Square clickedSquare)
         {
-            return (Math.Abs(currRow - destSquare.Row) < 2) && (Math.Abs(currColumn - destSquare.Column) < 2);
+            return (Math.Abs(currRow - clickedSquare.Row) < 2) && (Math.Abs(currColumn - clickedSquare.Column) < 2);
         }
     }
 }

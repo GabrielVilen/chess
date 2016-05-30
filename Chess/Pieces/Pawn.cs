@@ -13,20 +13,20 @@ namespace Chess.Pieces
             Unicode = (color == Enums.Color.Black ? Unicodes.Pawn_black : Unicodes.Pawn_white);
         }
 
-        public override bool CanMoveTo(Square destSquare)
+        public override bool CanMoveTo(Square clickedSquare)
         {
-            if (Color == Enums.Color.White && currRow <= destSquare.Row ||
-                Color == Enums.Color.Black && currRow >= destSquare.Row) // checks direction 
+            if (Color == Enums.Color.White && currRow <= clickedSquare.Row ||
+                Color == Enums.Color.Black && currRow >= clickedSquare.Row) // checks direction 
                 return false;
 
-            if (Math.Abs(currColumn - destSquare.Column) != 0) return false;
+            if (Math.Abs(currColumn - clickedSquare.Column) != 0) return false;
             if (isFirstMove)
             {
-                if ((Math.Abs(currRow - destSquare.Row) > 2) || 
+                if ((Math.Abs(currRow - clickedSquare.Row) > 2) || 
                     !Game.GetInstance().GetSquare(currRow + next, currColumn).IsEmpty())
                     return false;
             }
-            else if (Math.Abs(currRow - destSquare.Row) > 1) return false;
+            else if (Math.Abs(currRow - clickedSquare.Row) > 1) return false;
 
             isFirstMove = false;
 

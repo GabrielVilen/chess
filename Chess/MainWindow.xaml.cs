@@ -22,47 +22,54 @@ namespace Chess
         private Square currSquare;
         private Label currLabel;
         private Label[,] labels = new Label[8, 8];
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-
+        private BindingList<Label> bindings = new BindingList<Label>();
+        
 
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = "CurrUnicode";
-            // OnPropertyChanged("CurrUnicode");
         }
 
         private void chessGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (game == null) return;
+            Label clickedLabel = (Label)e.Source;
+            int column = Grid.GetColumn(clickedLabel);
+            int row = Grid.GetRow(clickedLabel);
 
-            Label newLabel = (Label)e.Source;
-            int column = Grid.GetColumn(newLabel);
-            int row = Grid.GetRow(newLabel);
+            Square clickedSquare = game.GetSquare(row, column);
 
-            //test
-            newLabel = labels[row, column];            
+            Click(clickedSquare, clickedLabel);
 
             if (currSquare != null && currLabel != null)
-            {
-                if (currSquare.IsClicked())
+            {    
+                if (currSquare.IsClicked()) 
                 {
-                    game.TryMove(currSquare, row, column);
+                    if (game.TryMove(currSquare, clickedSquare))
+                    {
+                        ShowMove(currSquare, clickedLabel);
+                    }
                 }
                 Click(currSquare, currLabel);
             }
-            currSquare = game.GetSquare(row, column);
-            currLabel = newLabel;
+            currSquare = clickedSquare;
+            currLabel = clickedLabel;
 
-            Click(currSquare, currLabel);
+            //Debug.WriteLine("currSquare =  {0}", currSquare);
+            //Debug.WriteLine("currLabel = {0}", currLabel);
 
             UpdateGui();
         }
 
+        private void ShowMove(Square currSquare, Label clickedLabel)
+        {
+            clickedLabel.Content = currSquare.CurrUnicode;
+            currLabel.Content = "";
+            currSquare.RemovePiece();
+        }
+
         private void NewGame()
         {
-            Debug.WriteLine("NEW GAME");
             pWhite = new Player(white_textBox.Text, Enums.Color.White);
             pBlack = new Player(black_textBox.Text, Enums.Color.Black);
 
@@ -82,7 +89,6 @@ namespace Chess
 
             SetupPositions(Enums.Color.Black, pBlack);
             SetupPositions(Enums.Color.White, pWhite);
-            // UpdateGui();
         }
 
         // todo: clear clicked etc 
@@ -147,45 +153,42 @@ namespace Chess
 
                     Square square = new Square(row, column, color);
                     Label label = children[i++] as Label;
-
-                    DataBind(square, label);
-
+                    
                     squares[row, column] = square;
                     labels[row, column] = label;
+                    bindings.Add(label);
                 }
             }
             game.Squares = squares;
+            chessGrid.DataContext = bindings;
+
+            BindLabels(squares);
+
+        }
+
+        private void BindLabels(Square [,] squares)
+        {
+            int r = 0, c = 0;
+            foreach (Label label in bindings)
+            {
+                if (r < 8)
+                    DataBind(squares[r, c], label);
+                c++;
+                if (c % 8 == 0)
+                {
+                    r++;
+                    c = 0;
+                }
+            }
         }
 
         private void DataBind(Square square, Label label)
         {
             var binding = new Binding(square.CurrUnicode);
-
-
-            binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-
-            binding.NotifyOnSourceUpdated = true;
-            binding.NotifyOnTargetUpdated = true;
-            //binding.XPath = square.CurrUnicode;
-            binding.Mode = BindingMode.OneWay;
-
             binding.Source = square;
 
             label.DataContext = square;
-            Debug.WriteLine("{0}.DataContext = {1}", label, label.DataContext);
-
             label.SetBinding(ContentProperty, binding);
-
-            //label.TargetUpdated += OnTargetUpdated; // todo called only once
-
-            Debug.WriteLine("binding: {0} --> {1},{2} hash: {3} ", label.Name, ((Square)binding.Source).Row, ((Square)binding.Source).Column, ((Square)binding.Source).GetHashCode());
-        }
-
-        // TODO: IS NEVER CALLED
-        private void OnTargetUpdated(object sender, DataTransferEventArgs args)
-        {
-            Debug.WriteLine("OnTargetUpdated(object {0}, DataTransferEventArgs {1})", sender.ToString(), args.ToString());
-
         }
 
         private void Click(Square currSquare, Label label)

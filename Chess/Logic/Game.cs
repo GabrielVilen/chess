@@ -68,21 +68,21 @@ namespace Chess.Logic
             return square.CurrPiece.Click();
         }
 
-        public void TryMove(Square fromSquare, Square destSquare)
+        public bool TryMove(Square fromSquare, Square clickedSquare)
         {
-            bool hasMoved = CurrPlayer.TryMove(fromSquare, destSquare); 
+            bool hasMoved = CurrPlayer.TryMove(fromSquare, clickedSquare); 
             if (hasMoved)
             {
-                CurrPlayer = (CurrPlayer == white ? black : white);  // TODO UPDATE LABEL ON MOVE
-
-                destSquare.SetPiece(fromSquare.CurrPiece); // todo update label
-                fromSquare.RemovePiece();
+                CurrPlayer = (CurrPlayer == white ? black : white);  
+                clickedSquare.SetPiece(fromSquare.CurrPiece);
             }
+
+            return hasMoved;
         }
 
-        public void TryMove(Square fromSquare, int toRow, int toCol)
+        public bool TryMove(Square fromSquare, int toRow, int toCol)
         {
-            TryMove(fromSquare, GetSquare(toRow, toCol));
+            return TryMove(fromSquare, GetSquare(toRow, toCol));
         }
 
         public void Score(Piece destPiece)
@@ -103,11 +103,11 @@ namespace Chess.Logic
             loser.RemovePiece(destPiece);
         }
 
-        public bool InCheck(Enums.Color color, Square destSquare)
+        public bool InCheck(Enums.Color color, Square clickedSquare)
         {
             Player checkPlayer = (white.Color == color) ? white : black;
 
-            return checkPlayer.inCheck || checkPlayer.CanCheck(destSquare);
+            return checkPlayer.inCheck || checkPlayer.CanCheck(clickedSquare);
         }
     }
 }
