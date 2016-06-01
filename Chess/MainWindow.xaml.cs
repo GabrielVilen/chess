@@ -34,6 +34,7 @@ namespace Chess
         private void chessGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Label clickedLabel = (Label)e.Source;
+
             int column = Grid.GetColumn(clickedLabel);
             int row = Grid.GetRow(clickedLabel);
 
@@ -55,19 +56,20 @@ namespace Chess
             currSquare = clickedSquare;
             currLabel = clickedLabel;
 
-            //Debug.WriteLine("currSquare =  {0}", currSquare);
-            //Debug.WriteLine("currLabel = {0}", currLabel);
-
             UpdateGui();
         }
 
         private void Click(Square currSquare, Label label)
         {
             bool isClicked = currSquare.Click();
-            // TODO sometimes doesnt update
+
             if (currSquare.CurrPiece != null && game.CurrPlayer.Color == currSquare.CurrPiece.Color)
             {
                 label.Foreground = isClicked ? new SolidColorBrush(Colors.Gray) : new SolidColorBrush(Colors.Black);
+            }
+            else
+            {
+                label.Foreground = new SolidColorBrush(Colors.Black);
             }
         }
 

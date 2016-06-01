@@ -1,6 +1,7 @@
 ﻿using Chess.Logic;
 using Chess.Util;
 using System.Diagnostics;
+using System;
 
 namespace Chess.Pieces
 {
@@ -33,28 +34,34 @@ namespace Chess.Pieces
 
             game = Game.GetInstance();
         }
+       
 
         // todo: transform pawn to queen
         // todo: implement castling (sv. rockad)
         public bool TryMoveTo(Square clickedSquare)
         {
-            Debug.WriteLine("trying to move {0} -> {1}", this, clickedSquare);
-            if (!IsValidSquare(clickedSquare) || !CanMoveTo(clickedSquare) || !clickedSquare.CanPlace(this))
-                return false;
+            if (!CanBeMovedTo(clickedSquare)) return false;
 
             Piece newPiece = clickedSquare.Move(this);
 
-            if (newPiece != null && newPiece.PieceType != Enums.PieceType.None && !IsSameColor(newPiece) && CanCapture(newPiece))
+            if (IsValidPiece(newPiece))
             {
                 newPiece.Capture();
                 game.Score(newPiece);
             }
-
-            Debug.WriteLine("moved {0} @ [{1},{2}] to {3} @ [{4},{5}] hash: {6}", this, currSquare.Row, currSquare.Column, newPiece, clickedSquare.Row, clickedSquare.Column, clickedSquare.GetHashCode());
-
             currSquare = clickedSquare;
 
             return true;
+        }
+
+        private bool IsValidPiece(Piece newPiece)
+        {
+            return newPiece != null && newPiece.PieceType != Enums.PieceType.None && !IsSameColor(newPiece) && CanCapture(newPiece);
+        }
+
+        private bool CanBeMovedTo(Square clickedSquare)
+        {
+            return IsValidSquare(clickedSquare) && CanMoveTo(clickedSquare) && clickedSquare.CanPlace(this);
         }
 
         /// <summary>
@@ -68,11 +75,11 @@ namespace Chess.Pieces
 
             for (int i = 1; i < Game.MaxColumn; i++)
             {
+                testSquare = game.GetSquare(testSquare.Row + row, testSquare.Column + column);
+
                 if (testSquare == null) continue;
                 if (testSquare.IsSame(clickedSquare)) return true;
                 if (!testSquare.IsEmpty() && !testSquare.IsSame(currSquare)) return false;
-
-                testSquare = game.GetSquare(testSquare.Row + row, testSquare.Column + column);
             }
             return false;
         }
@@ -96,10 +103,10 @@ namespace Chess.Pieces
             return true;
         }
 
-        protected bool IsValidSquare(Square clickedSquare)
+        // todo test
+        private bool IsValidSquare(Square clickedSquare)
         {
-            if (game.InCheck(Color, clickedSquare)) return false;
-            return currSquare != clickedSquare;
+            return !game.CurrPlayer.inCheck && currSquare != clickedSquare;
         }
 
         public bool Click()

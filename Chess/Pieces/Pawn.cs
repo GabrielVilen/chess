@@ -49,5 +49,13 @@ namespace Chess.Pieces
 
             return (currRow + next == destRow) && (currColumn + next == destColumn || currColumn - next == destColumn);
         }
+
+        public bool CanCapture(Square clickedSquare)
+        {
+            int destRow = clickedSquare.Row;
+            int destColumn = clickedSquare.Column;
+
+            return (currRow + next == destRow) && (currColumn + next == destColumn || currColumn - next == destColumn);
+        }
     }
 }

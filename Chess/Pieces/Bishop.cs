@@ -12,7 +12,6 @@ namespace Chess.Pieces
 
         public override bool CanMoveTo(Square clickedSquare)
         {
-            if (clickedSquare.Color != Color) return false;
             if (clickedSquare.Row > currRow) return IsMatch(clickedSquare, 1, 1)  || IsMatch(clickedSquare, 1, -1);
             if (clickedSquare.Row < currRow) return IsMatch(clickedSquare, -1, 1) || IsMatch(clickedSquare, -1, -1);
 

@@ -5,14 +5,12 @@ namespace Chess.Logic
 {
     public class Game
     {
-        public static readonly int MaxRow = 8, MaxColumn = 8;
+        public const int MaxRow = 8, MaxColumn = 8;
         private static Game instance;
 
         private Player white, black;
         public Player CurrPlayer { get; set; }
-
-        //      public Player White => white;
-        //      public Player Black => black;        
+        public Player Opponent { get { return CurrPlayer == white ? black : white; } }
 
         public Square[,] Squares { get; set; }
 
@@ -42,7 +40,7 @@ namespace Chess.Logic
 
             return instance;
         }
-           
+
         public void AddPiece(Piece piece, Player player, int row, int column)
         {
             Square square = GetSquare(row, column);
@@ -56,6 +54,11 @@ namespace Chess.Logic
 
         public Square GetSquare(int row, int column)
         {
+            if (row >= MaxRow) row--;
+            if (column >= MaxColumn) column--;
+            if (row < 0) row++;
+            if (column < 0) column++;
+
             return Squares[row, column];
         }
 
@@ -70,10 +73,10 @@ namespace Chess.Logic
 
         public bool TryMove(Square fromSquare, Square clickedSquare)
         {
-            bool hasMoved = CurrPlayer.TryMove(fromSquare, clickedSquare); 
+            bool hasMoved = CurrPlayer.TryMove(fromSquare, clickedSquare);
             if (hasMoved)
             {
-                CurrPlayer = (CurrPlayer == white ? black : white);  
+                CurrPlayer = (CurrPlayer == white ? black : white);
                 clickedSquare.SetPiece(fromSquare.CurrPiece);
             }
 
@@ -101,13 +104,6 @@ namespace Chess.Logic
 
             scorer.Score += (int)destPiece.PieceType;
             loser.RemovePiece(destPiece);
-        }
-
-        public bool InCheck(Enums.Color color, Square clickedSquare)
-        {
-            Player checkPlayer = (white.Color == color) ? black : white;
-
-            return CurrPlayer.inCheck || checkPlayer.CanCheck(clickedSquare);
         }
     }
 }

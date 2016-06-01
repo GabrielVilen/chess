@@ -12,8 +12,8 @@ namespace Chess.Logic
 
         public int Score { get; set; }
 
-        private List<Piece> myPieces = new List<Piece>();
-
+        private List<Piece> pieces = new List<Piece>();
+        public List<Piece> Pieces { get { return pieces; } }
 
         public Player(string name, Enums.Color color)
         {
@@ -23,29 +23,22 @@ namespace Chess.Logic
 
         public void AddPiece(Piece piece)
         {
-            myPieces.Add(piece);
+            pieces.Add(piece);
         }
 
         public void RemovePiece(Piece piece)
         {
-            if (myPieces.Contains(piece))
-                myPieces.Remove(piece);
+            if (pieces.Contains(piece))
+                pieces.Remove(piece);
 
             piece = null; // invoke GC
-        }
-
-        // todo test
-        public bool CanCheck(Square clickedSquare)
-        {
-            Piece king = myPieces.Find(p => p.PieceType == Enums.PieceType.King);
-            return king.CanMoveTo(clickedSquare);
         }
 
         internal bool TryMove(Square fromSquare, Square clickedSquare)
         {
             Piece piece = fromSquare.CurrPiece;
 
-            if(myPieces.Contains(piece))
+            if (pieces.Contains(piece))
             {
                 return piece.TryMoveTo(clickedSquare);
             }
