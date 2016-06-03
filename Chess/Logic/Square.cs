@@ -32,7 +32,7 @@ namespace Chess.Logic
 
         public bool CanPlace(Piece piece)
         {
-            return CurrPiece == null ? true : CurrPiece.Color != piece.Color || CurrPiece.PieceType == Enums.PieceType.None;
+            return CurrPiece == null || (CurrPiece.Color != piece.Color || CurrPiece.PieceType == Enums.PieceType.None);
         }
 
         public void SetPiece(Piece piece)
@@ -51,12 +51,12 @@ namespace Chess.Logic
 
         public bool IsEmpty()
         {
-            return CurrPiece == null ? true : CurrPiece.PieceType == Enums.PieceType.None;
+            return CurrPiece == null || CurrPiece.PieceType == Enums.PieceType.None;
         }
 
-        public bool IsSame(Square clickedSquare)
+        public bool IsSame(Square square)
         {
-            return (Row == clickedSquare.Row) && (Column == clickedSquare.Column);
+            return (Row == square.Row) && (Column == square.Column);
         }
 
         public override string ToString()
@@ -64,13 +64,15 @@ namespace Chess.Logic
             return CurrPiece != null ? CurrPiece.Unicode : "";
         }
 
-        internal void RemovePiece()
+        internal Piece RemovePiece()
         {
+            Piece oldPiece = CurrPiece;
             if(CurrPiece != null)
             {
                 CurrPiece = null;
                 CurrUnicode = "";
             }
+            return oldPiece;
         }
 
         internal bool IsClicked()

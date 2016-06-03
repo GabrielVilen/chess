@@ -10,10 +10,10 @@ namespace Chess.Pieces
             Unicode = (color == Enums.Color.Black ? Unicodes.Bishop_black : Unicodes.Bishop_white);
         }
 
-        public override bool CanMoveTo(Square clickedSquare)
+        public override bool CanMoveTo(Square square)
         {
-            if (clickedSquare.Row > currRow) return IsMatch(clickedSquare, 1, 1)  || IsMatch(clickedSquare, 1, -1);
-            if (clickedSquare.Row < currRow) return IsMatch(clickedSquare, -1, 1) || IsMatch(clickedSquare, -1, -1);
+            if (square.Row > currRow) return IsMatch(square, 1, 1)  || IsMatch(square, 1, -1);
+            if (square.Row < currRow) return IsMatch(square, -1, 1) || IsMatch(square, -1, -1);
 
             return false;
         }

@@ -1,5 +1,7 @@
-﻿using Chess.Pieces;
+﻿using System;
+using Chess.Pieces;
 using Chess.Util;
+using System.Diagnostics;
 
 namespace Chess.Logic
 {
@@ -62,6 +64,7 @@ namespace Chess.Logic
             return Squares[row, column];
         }
 
+
         internal bool ClickSquare(int row, int column)
         {
             Square square = GetSquare(row, column);
@@ -71,17 +74,18 @@ namespace Chess.Logic
             return square.CurrPiece.Click();
         }
 
-        public bool TryMove(Square fromSquare, Square clickedSquare)
+        public bool TryMove(Square fromSquare, Square square)
         {
-            bool hasMoved = CurrPlayer.TryMove(fromSquare, clickedSquare);
+            bool hasMoved = CurrPlayer.TryMove(fromSquare, square);
             if (hasMoved)
             {
                 CurrPlayer = (CurrPlayer == white ? black : white);
-                clickedSquare.SetPiece(fromSquare.CurrPiece);
+                square.SetPiece(fromSquare.CurrPiece);
             }
 
             return hasMoved;
         }
+
 
         public bool TryMove(Square fromSquare, int toRow, int toCol)
         {
@@ -104,6 +108,17 @@ namespace Chess.Logic
 
             scorer.Score += (int)destPiece.PieceType;
             loser.RemovePiece(destPiece);
+        }
+
+        /// <summary>
+        ///     Sets the opponent player of the given player to the given bool inCheck. 
+        ///     E.g. if the given player is white, the black player is set to inCheck. 
+        /// </summary>
+        internal void SetOpponentInCheck(Player player, bool inCheck)
+        {
+            Debug.WriteLine("SetOpponentInCheck({0},{1})", player, inCheck);
+            Player inCheckPlayer = (player == white ? black : white);
+            inCheckPlayer.InCheck = inCheck;
         }
     }
 }

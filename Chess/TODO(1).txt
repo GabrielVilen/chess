@@ -1,0 +1,8 @@
+﻿-man ska inte kunna flytta en pjäs om ens kung blir satt i shack efter flyttandet 
+
+-om man flyttar en pjäs som efter flytt kan ta motståndarens kung, så markeras motståndaren som i shack
+
+-om nuvarande spelare är i shack så måste han flytta kungen så den inte blir i shack 
+
+todo:
+allt låser sig n

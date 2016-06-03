@@ -10,7 +10,7 @@ namespace Chess
             Unicode = "";
         }
 
-        public override bool CanMoveTo(Square clickedSquare)
+        public override bool CanMoveTo(Square square)
         {
             return false;
         }

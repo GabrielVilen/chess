@@ -13,47 +13,43 @@ namespace Chess.Pieces
             Unicode = (color == Enums.Color.Black ? Unicodes.Pawn_black : Unicodes.Pawn_white);
         }
 
-        public override bool CanMoveTo(Square clickedSquare)
+        public override bool CanMoveTo(Square square)
         {
             // cannot move to non empty or diagonal squares unless capture
-            if ((!clickedSquare.IsEmpty() || Math.Abs(currColumn - clickedSquare.Column) != 0) &&
-                !CanCapture(clickedSquare.CurrPiece))
+            if ((!square.IsEmpty() || Math.Abs(currColumn - square.Column) != 0) &&
+                !CanCapture(square.CurrPiece))
                 return false;
 
             // cannot move backwards        
-            if (Color == Enums.Color.White && currRow <= clickedSquare.Row ||
-                Color == Enums.Color.Black && currRow >= clickedSquare.Row)
+            if (Color == Enums.Color.White && currRow <= square.Row ||
+                Color == Enums.Color.Black && currRow >= square.Row)
                 return false;
         
             if (isFirstMove)
             {
                 // cannot move more than two steps
-                if ((Math.Abs(currRow - clickedSquare.Row) > 2) ||
-                    !Game.GetInstance().GetSquare(currRow + next, currColumn).IsEmpty())
+                if ((Math.Abs(currRow - square.Row) > 2) ||
+                    !game.GetSquare(currRow + next, currColumn).IsEmpty())
                     return false;
 
                 isFirstMove = false;
             }
             // cannot move more than one step
-            else if (Math.Abs(currRow - clickedSquare.Row) > 1)
+            else if (Math.Abs(currRow - square.Row) > 1)
                 return false;
 
             return true;
         }
 
         public override bool CanCapture(Piece destPiece)
-        {
-            if (destPiece == null) return false;
-            int destRow = destPiece.CurrSquare.Row;
-            int destColumn = destPiece.CurrSquare.Column;
-
-            return (currRow + next == destRow) && (currColumn + next == destColumn || currColumn - next == destColumn);
+        {      
+            return destPiece == null ? false : CanCapture(destPiece.CurrSquare);
         }
 
-        public bool CanCapture(Square clickedSquare)
+        public bool CanCapture(Square square)
         {
-            int destRow = clickedSquare.Row;
-            int destColumn = clickedSquare.Column;
+            int destRow = square.Row;
+            int destColumn = square.Column;
 
             return (currRow + next == destRow) && (currColumn + next == destColumn || currColumn - next == destColumn);
         }

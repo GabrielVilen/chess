@@ -3,15 +3,8 @@
   <Class Name="Chess.Logic.Game">
     <Position X="5" Y="8.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAJAAAAgAAQAEAAAABABAASIABAAAAAAABgA=</HashCode>
+      <HashCode>AAAAEAAIAJAAAAgAAQBEAAAABABAAQIABAAAAAAABgA=</HashCode>
       <FileName>Logic\Game.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Chess.Logic.Player">
-    <Position X="7.25" Y="8.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAgAAAIAAAQAIAAAAQgAAAQAgAAAAgA=</HashCode>
-      <FileName>Logic\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Chess.Logic.Square">
@@ -31,7 +24,7 @@
   <Class Name="Chess.Pieces.King">
     <Position X="5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
       <FileName>Pieces\King.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -52,7 +45,7 @@
   <Class Name="Chess.Pieces.Piece">
     <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACEAAACAAAIAAEAAAEAAAARAAAEBAIABCAgAIAIoA=</HashCode>
+      <HashCode>AAACEIAACAAAIAAEAAAEQAAARAAAEBAIABCAgAIAIoA=</HashCode>
       <FileName>Pieces\Piece.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -97,6 +90,13 @@
     <TypeIdentifier>
       <HashCode>AAACAAAAACCGAAAAAgAAAAAAAIEgAAgAAAAAAAAAAQQ=</HashCode>
       <FileName>Util\Unicodes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.Logic.Player">
+    <Position X="7.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAgAAAAAAAQAAAAAASggAAAAoAAAAgA=</HashCode>
+      <FileName>Logic\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -13,31 +13,12 @@ namespace Chess.Pieces
             Unicode = (color == Enums.Color.Black ? Unicodes.King_black : Unicodes.King_white);
         }
 
-        public override bool CanMoveTo(Square clickedSquare)
+        public override bool CanMoveTo(Square square)
         {
-            return (Math.Abs(currRow - clickedSquare.Row) < 2) && (Math.Abs(currColumn - clickedSquare.Column) < 2)
-                && !IsInCheck(clickedSquare);
-        }
-        
-        // TODO: om i shack måste man flytta kungen, implementera shack 
-        private bool IsInCheck(Square clickedSquare)
-        {
-            var pieces = Game.GetInstance().Opponent.Pieces;
-            foreach (Piece piece in pieces)
-            {
-                if (piece is Pawn)
-                {
-                    if (((Pawn)piece).CanCapture(clickedSquare))
-                    {
-                        return true;
-                    }                  
-                }
-                else if (piece.CanMoveTo(clickedSquare))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+            return (Math.Abs(currRow - square.Row) < 2) && (Math.Abs(currColumn - square.Column) < 2)
+                && !CanCheck(game.Opponent, square);
+        }      
+
+
     }
 }

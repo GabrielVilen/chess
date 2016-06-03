@@ -33,30 +33,34 @@ namespace Chess
 
         private void chessGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Label clickedLabel = (Label)e.Source;
-
-            int column = Grid.GetColumn(clickedLabel);
-            int row = Grid.GetRow(clickedLabel);
-
-            Square clickedSquare = game.GetSquare(row, column);
-
-            Click(clickedSquare, clickedLabel);
-
-            if (currSquare != null && currLabel != null)
+            try
             {
-                if (currSquare.IsClicked())
-                {
-                    if (game.TryMove(currSquare, clickedSquare))
-                    {
-                        ShowMove(currSquare, clickedLabel);
-                    }
-                }
-                Click(currSquare, currLabel);
-            }
-            currSquare = clickedSquare;
-            currLabel = clickedLabel;
+                Label clickedLabel = (Label)e.Source;
 
-            UpdateGui();
+                int column = Grid.GetColumn(clickedLabel);
+                int row = Grid.GetRow(clickedLabel);
+
+                Square square = game.GetSquare(row, column);
+
+                Click(square, clickedLabel);
+
+                if (currSquare != null && currLabel != null)
+                {
+                    if (currSquare.IsClicked())
+                    {
+                        if (game.TryMove(currSquare, square))
+                        {
+                            ShowMove(currSquare, clickedLabel);
+                        }
+                    }
+                    Click(currSquare, currLabel);
+                }
+                currSquare = square;
+                currLabel = clickedLabel;
+
+                UpdateGui();
+            }
+            catch { }
         }
 
         private void Click(Square currSquare, Label label)

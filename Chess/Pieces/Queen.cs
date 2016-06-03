@@ -10,27 +10,27 @@ namespace Chess.Pieces
             Unicode = (color == Enums.Color.Black ? Unicodes.Queen_black : Unicodes.Queen_white);
         }
 
-        public override bool CanMoveTo(Square clickedSquare)
+        public override bool CanMoveTo(Square square)
         {
-            int destColumn = clickedSquare.Column;
-            int destRow = clickedSquare.Row;
+            int destColumn = square.Column;
+            int destRow = square.Row;
 
             // loop columns 
             if (destColumn == currColumn)
             {
-                if (destRow > currRow) return IsMatch(clickedSquare,  1, 0);
-                if (destRow < currRow) return IsMatch(clickedSquare, -1, 0);
+                if (destRow > currRow) return IsMatch(square,  1, 0);
+                if (destRow < currRow) return IsMatch(square, -1, 0);
             }
             // loop rows
             else if (destRow == currRow)
             {
-                if (destColumn > currColumn) return IsMatch(clickedSquare, 0,  1);
-                if (destColumn < currColumn) return IsMatch(clickedSquare, 0, -1);
+                if (destColumn > currColumn) return IsMatch(square, 0,  1);
+                if (destColumn < currColumn) return IsMatch(square, 0, -1);
             }
 
             // loop diagonal
-            if (destRow > currRow) return IsMatch(clickedSquare,  1, 1) || IsMatch(clickedSquare,  1, -1);
-            if (destRow < currRow) return IsMatch(clickedSquare, -1, 1) || IsMatch(clickedSquare, -1, -1);
+            if (destRow > currRow) return IsMatch(square,  1, 1) || IsMatch(square,  1, -1);
+            if (destRow < currRow) return IsMatch(square, -1, 1) || IsMatch(square, -1, -1);
 
             return false;
         }
