@@ -8,26 +8,26 @@ Developer: Gabriel Vilén
 namespace Chess.Util
 {
     /// <summary>
-    ///     Class containing the different unicodes, as static readonly strings, for displaying the different pieces on the GUI.
+    ///     Class containing the different unicodes, as constant strings, for displaying the different pieces on the GUI.
     /// </summary>
-    internal class Unicodes
+    internal static class Unicodes
     {
-        public static readonly string KingWhite = "♔";
-        public static readonly string KingBlack = "♚";
+        public const string KingWhite = "♔";
+        public const string KingBlack = "♚";
 
-        public static readonly string QueenWhite = "♕";
-        public static readonly string QueenBlack = "♛";
+        public const string QueenWhite = "♕";
+        public const string QueenBlack = "♛";
 
-        public static readonly string RookWhite = "♖";
-        public static readonly string RookBlack = "♜";
+        public const string RookWhite = "♖";
+        public const string RookBlack = "♜";
 
-        public static readonly string BishopWhite = "♗";
-        public static readonly string BishopBlack = "♝";
+        public const string BishopWhite = "♗";
+        public const string BishopBlack = "♝";
 
-        public static readonly string KnightWhite = "♘";
-        public static readonly string KnightBlack = "♞";
+        public const string KnightWhite = "♘";
+        public const string KnightBlack = "♞";
 
-        public static readonly string PawnWhite = "♙";
-        public static readonly string PawnBlack = "♟";
+        public const string PawnWhite = "♙";
+        public const string PawnBlack = "♟";
     }
 }

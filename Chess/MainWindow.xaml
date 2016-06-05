@@ -85,7 +85,7 @@
         <Label x:Name="label1" Content="Black name:" HorizontalAlignment="Left" Margin="346,255,0,0" VerticalAlignment="Top" FontSize="18.667" Foreground="White" Grid.Column="1"/>
         <TextBox x:Name="black_textBox" HorizontalAlignment="Left" Height="30" Margin="469,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" FontSize="16" Grid.Column="1"/>
         <TextBox x:Name="white_textBox" HorizontalAlignment="Left" Height="30" Margin="469,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" FontSize="16" Grid.Column="1"/>
-        <Label x:Name="label" Content="♚Chess♔" HorizontalAlignment="Left" Margin="341,30,0,0" VerticalAlignment="Top" Height="100" Width="251" FontSize="48" RenderTransformOrigin="0,0.316" IsTabStop="True" FontFamily="Segoe Script" FontStyle="Italic" Grid.Column="1">
+        <Label x:Name="label" Content="♚Chess♔" HorizontalAlignment="Left" Margin="341,21,0,0" VerticalAlignment="Top" Height="100" Width="251" FontSize="48" RenderTransformOrigin="0,0.316" IsTabStop="True" FontFamily="Segoe Script" FontStyle="Italic" Grid.Column="1">
             <Label.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFFFD413" Offset="0.99"/>
@@ -187,6 +187,15 @@
             <Label x:Name="label_77" Content="" FontSize="46.667" RenderTransformOrigin="0.311,0.439" HorizontalAlignment="Center" VerticalAlignment="Center" Height="65" Width="65" Foreground="Black" Grid.Column="7"  Grid.Row="7"/>
 
         </Grid>
+        <Label x:Name="label2" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy" Content="by Gabriel Vilén" HorizontalAlignment="Left" Margin="398,99,0,0" VerticalAlignment="Top" Height="32" Width="156" FontSize="16" RenderTransformOrigin="0,0.316" IsTabStop="True" FontFamily="Segoe Script" Grid.Column="1">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFFD413" Offset="0.99"/>
+                    <GradientStop Color="White"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
 
     </Grid>
 </Window>

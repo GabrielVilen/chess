@@ -130,8 +130,7 @@ namespace Chess
                 game = Game.GetInstance();
             }
             this.game = game.NewGame(pWhite, pBlack);
-
-            //ClearGui();
+            
             InitNewBoard();
         }
 
@@ -145,18 +144,7 @@ namespace Chess
             SetupPositions(Enums.Color.Black, pBlack);
             SetupPositions(Enums.Color.White, pWhite);
         }
-
-        // todo: clear clicked etc 
-        private void ClearGui()
-        {
-            foreach (var child in chessGrid.Children)
-            {
-                Label label = child as Label;
-                label.Content = "";
-            }
-            UpdateGui();
-        }
-
+        
         private void UpdateGui()
         {
             chessGrid.UpdateLayout();

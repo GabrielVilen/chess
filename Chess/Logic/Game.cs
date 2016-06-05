@@ -19,10 +19,10 @@ namespace Chess.Logic
         private static Game instance;
 
         private Player white, black;
-        public Player CurrPlayer { get; set; }
+        public Player CurrPlayer { get; private set; }
         public Player Opponent => CurrPlayer == white ? black : white;
 
-        public Square[,] Squares { get; set; }
+        public Square[,] Squares { private get; set; }
 
         /// <summary>
         ///     Singleton that creates new game instance if current is null
@@ -106,14 +106,6 @@ namespace Chess.Logic
             }
 
             return hasMoved;
-        }
-
-        /// <summary>
-        ///     Tries to move the current piece at the square "fromSquare" to the square at the given row and column.
-        /// </summary>
-        public bool TryMove(Square fromSquare, int toRow, int toCol)
-        {
-            return TryMove(fromSquare, GetSquare(toRow, toCol));
         }
 
         /// <summary>

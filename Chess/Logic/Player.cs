@@ -28,9 +28,10 @@ namespace Chess.Logic
         }
         public int Score { get; set; }
 
-        private List<Piece> pieces = new List<Piece>();
+        private readonly List<Piece> pieces = new List<Piece>();
 
-        public List<Piece> Pieces { get { return pieces; } }
+        public List<Piece> Pieces => pieces;
+
         public King King
         {
             get
@@ -63,11 +64,7 @@ namespace Chess.Logic
         {
             Piece piece = fromSquare.CurrPiece;
 
-            if (pieces.Contains(piece))
-            {
-                return piece.TryMoveTo(square);
-            }
-            return false;
+            return pieces.Contains(piece) && piece.TryMoveTo(square);
         }
     }
 }

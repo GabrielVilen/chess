@@ -17,10 +17,8 @@ namespace Chess.Logic
     {
         public int Row { get; }
         public int Column { get; }
-        public Enums.Color Color { get; }
         public Piece CurrPiece { get; private set; }
-
-        public string CurrUnicode { get; set; }
+        public string CurrUnicode { get; private set; }
 
         /// <summary>
         ///     Creates a new square with the given row and column number, and color.
@@ -29,7 +27,6 @@ namespace Chess.Logic
         {
             Row = row;
             Column = column;
-            Color = color;
         }
 
         /// <summary>

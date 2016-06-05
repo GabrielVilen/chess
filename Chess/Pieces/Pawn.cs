@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Chess.Util;
 using Chess.Logic;
 
@@ -37,7 +38,7 @@ namespace Chess.Pieces
             if (Color == Enums.Color.White && CurrRow <= square.Row ||
                 Color == Enums.Color.Black && CurrRow >= square.Row)
                 return false;
-        
+
             if (isFirstMove)
             {
                 // cannot move more than two steps

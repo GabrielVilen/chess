@@ -16,27 +16,22 @@ namespace Chess.Pieces
     /// </summary>
     public abstract class Piece
     {
-        protected int direction;
-        public bool IsClicked { get; set; }
+        protected readonly int direction;
+        public bool IsClicked { get; private set; }
         public string Unicode { get; protected set; }
 
-        public Enums.Color Color { get; set; }
-        public Enums.PieceType PieceType { get; set; }
+        public Enums.Color Color { get; private set; }
+        public Enums.PieceType PieceType { get; private set; }
 
-        protected int CurrColumn => currSquare.Column;
-        protected int CurrRow => currSquare.Row;
+        protected int CurrColumn => CurrSquare.Column;
+        protected int CurrRow => CurrSquare.Row;
 
-        protected Square currSquare;
         protected Game game;
 
-        private Player CurrPlayer => game.CurrPlayer;
-        private Player Opponent => game.Opponent;
+        protected Player CurrPlayer => game.CurrPlayer;
+        protected Player Opponent => game.Opponent;
 
-        public Square CurrSquare
-        {
-            get { return currSquare; }
-            set { currSquare = value; }
-        }
+        public Square CurrSquare { get; set; }
 
         /// <summary>
         ///     Creates a new piece of the given type with the given color.
@@ -51,8 +46,7 @@ namespace Chess.Pieces
 
             game = Game.GetInstance();
         }
-
-        // todo: implement shackmatt!
+        
         // todo: transform pawn to queen
         // todo: implement castling (sv. rockad)
         /// <summary>
@@ -74,9 +68,10 @@ namespace Chess.Pieces
                 newPiece.Capture();
                 game.Score(newPiece);
             }
-            currSquare = square;
+            CurrSquare = square;
 
             Opponent.InCheck = CanCheck(this, Opponent.King);
+
             return true;
         }
 
@@ -87,18 +82,18 @@ namespace Chess.Pieces
         private bool InCheckAfterMove(Square square)
         {
             // saves current state
-            Square saveSquare = currSquare;
+            Square saveSquare = CurrSquare;
             Piece oldPiece = square.Move(this);
-            Piece removedPiece = currSquare.RemovePiece();
-            currSquare = square;
+            Piece removedPiece = CurrSquare.RemovePiece();
+            CurrSquare = square;
 
             bool hasRemoved = Opponent.RemovePiece(oldPiece);
             bool inCheck = CanCheck(Opponent, CurrPlayer.King.CurrSquare);
 
             // restore state
             square.Move(oldPiece);
-            currSquare = saveSquare;
-            currSquare.SetPiece(removedPiece);
+            CurrSquare = saveSquare;
+            CurrSquare.SetPiece(removedPiece);
 
             if (hasRemoved) Opponent.AddPiece(oldPiece);
 
@@ -133,7 +128,7 @@ namespace Chess.Pieces
         /// </summary>
         protected virtual bool IsMatch(Square square, int row, int column)
         {
-            Square testSquare = currSquare;
+            Square testSquare = CurrSquare;
 
             for (int i = 1; i < Game.MaxColumn; i++)
             {
@@ -143,7 +138,7 @@ namespace Chess.Pieces
 
                     if (testSquare == null) continue;
                     if (testSquare.IsSame(square)) return true;
-                    if (!testSquare.IsEmpty() && !testSquare.IsSame(currSquare)) return false;
+                    if (!testSquare.IsEmpty() && !testSquare.IsSame(CurrSquare)) return false;
                 }
             }
             return false;

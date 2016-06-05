@@ -10,7 +10,7 @@ namespace Chess.Util
     /// <summary>
     ///     Class containng enums used in the chess game.
     /// </summary>
-    public class Enums
+    public static class Enums
     {
         /// <summary>
         ///     Represents the different type of pieces in the game, with their chess value as integers.
