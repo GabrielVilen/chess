@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Chess.Util;
@@ -8,12 +7,18 @@ using System.ComponentModel;
 using Chess.Pieces;
 using System.Windows.Data;
 using Chess.Logic;
-using System;
 
+/*
+
+Project: Chess
+Last edited date: 2016-06-05
+Developer: Gabriel Vilén
+
+*/
 namespace Chess
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    ///     Interaction logic for MainWindow.xaml
     /// </summary>
     partial class MainWindow : Window
     {
@@ -31,6 +36,11 @@ namespace Chess
             this.DataContext = "CurrUnicode";
         }
 
+        /// <summary>
+        ///     Called when the user clicks on the chess grid, the grid containg the chess game.
+        ///     Gets the currently clicked label and square, calls the method for clicking on it and 
+        ///     tries to move to the square. Finnaly updates the gui.
+        /// </summary>
         private void chessGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             try
@@ -43,31 +53,45 @@ namespace Chess
                 Square square = game.GetSquare(row, column);
 
                 Click(square, clickedLabel);
-
-                if (currSquare != null && currLabel != null)
-                {
-                    if (currSquare.IsClicked())
-                    {
-                        if (game.TryMove(currSquare, square))
-                        {
-                            ShowMove(currSquare, clickedLabel);
-                        }
-                    }
-                    Click(currSquare, currLabel);
-                }
-                currSquare = square;
-                currLabel = clickedLabel;
+                TryMoveTo(square, clickedLabel);
 
                 UpdateGui();
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
         }
 
-        private void Click(Square currSquare, Label label)
+        /// <summary>
+        ///     Tries to move to the given square, if succesful shows the changes on the gui. 
+        /// </summary>
+        private void TryMoveTo(Square square, Label clickedLabel)
         {
-            bool isClicked = currSquare.Click();
+            if (currSquare != null && currLabel != null)
+            {
+                if (currSquare.IsClicked())
+                {
+                    if (game.TryMove(currSquare, square))
+                    {
+                        ShowMove(clickedLabel, currSquare);
+                    }
+                }
+                Click(currSquare, currLabel);
+            }
+            currSquare = square;
+            currLabel = clickedLabel;
+        }
 
-            if (currSquare.CurrPiece != null && game.CurrPlayer.Color == currSquare.CurrPiece.Color)
+        /// <summary>
+        ///     Clicks on the given square and changes the color of the given label according to 
+        ///     if the square is clicked or not.
+        /// </summary>
+        private void Click(Square square, Label label)
+        {
+            bool isClicked = square.Click();
+
+            if (square.CurrPiece != null && game.CurrPlayer.Color == square.CurrPiece.Color)
             {
                 label.Foreground = isClicked ? new SolidColorBrush(Colors.Gray) : new SolidColorBrush(Colors.Black);
             }
@@ -82,13 +106,20 @@ namespace Chess
             NewGame();
         }
 
-        private void ShowMove(Square currSquare, Label clickedLabel)
+        /// <summary>
+        ///     Shows the move on the gui by changing the given label to the content of the given square. 
+        ///     Also removes the piece at the given square.
+        /// </summary>
+        private void ShowMove(Label clickedLabel, Square square)
         {
-            clickedLabel.Content = currSquare.CurrUnicode;
+            clickedLabel.Content = square.CurrUnicode;
             currLabel.Content = "";
-            currSquare.RemovePiece();
+            square.RemovePiece();
         }
 
+        /// <summary>
+        ///     Called when a new game is to be created. Gets a new instance of the game with the parameters.
+        /// </summary>
         private void NewGame()
         {
             pWhite = new Player(white_textBox.Text, Enums.Color.White);
@@ -104,6 +135,9 @@ namespace Chess
             InitNewBoard();
         }
 
+        /// <summary>
+        ///     Inits a new board by calling methods for setting up standard positions of the pieces.
+        /// </summary>
         private void InitNewBoard()
         {
             InitSquares();
@@ -128,6 +162,10 @@ namespace Chess
             chessGrid.UpdateLayout();
         }
 
+        /// <summary>
+        ///     Set up the positions of the pieces in the game to the standard chess setup.
+        ///     The pieces are created with the given color and added to the given player.
+        /// </summary>
         private void SetupPositions(Enums.Color color, Player player)
         {
             int col = 0;
@@ -149,6 +187,10 @@ namespace Chess
             }
         }
 
+        /// <summary>
+        ///     Loops and creates the squares in the game by alternating black and white color. 
+        ///     Also binds the squares to the labels with the same row and column number.
+        /// </summary>
         private void InitSquares()
         {
             int i = 0;
@@ -187,13 +229,17 @@ namespace Chess
 
         }
 
+        /// <summary>
+        ///     Loops through the given squares and binds them to the labels in the gui. 
+        /// </summary>
+        /// <param name="squares"></param>
         private void BindLabels(Square[,] squares)
         {
             int r = 0, c = 0;
             foreach (Label label in bindings)
             {
                 if (r < 8)
-                    DataBind(squares[r, c], label);
+                    DataBind(label, squares[r, c]);
                 c++;
                 if (c % 8 == 0)
                 {
@@ -203,7 +249,10 @@ namespace Chess
             }
         }
 
-        private void DataBind(Square square, Label label)
+        /// <summary>
+        ///     Data binds the given label to the unicode of the given square to enable dynamic view-model updates.
+        /// </summary>
+        private void DataBind(Label label, Square square)
         {
             var binding = new Binding(square.CurrUnicode);
             binding.Source = square;

@@ -1,25 +1,36 @@
 ﻿using Chess.Logic;
 using Chess.Util;
-using System.Diagnostics;
-using System;
 using System.Collections.Generic;
 
+/*
+
+Project: Chess
+Last edited date: 2016-06-05
+Developer: Gabriel Vilén
+
+*/
 namespace Chess.Pieces
 {
+    /// <summary>
+    ///     Superclass which represents a single piece in the game. Contains data and operations on the piece.
+    /// </summary>
     public abstract class Piece
     {
-        protected int next;
+        protected int direction;
         public bool IsClicked { get; set; }
         public string Unicode { get; protected set; }
 
         public Enums.Color Color { get; set; }
         public Enums.PieceType PieceType { get; set; }
 
-        protected int currColumn => CurrSquare.Column;
-        protected int currRow => CurrSquare.Row;
+        protected int CurrColumn => currSquare.Column;
+        protected int CurrRow => currSquare.Row;
 
         protected Square currSquare;
         protected Game game;
+
+        private Player CurrPlayer => game.CurrPlayer;
+        private Player Opponent => game.Opponent;
 
         public Square CurrSquare
         {
@@ -27,22 +38,33 @@ namespace Chess.Pieces
             set { currSquare = value; }
         }
 
+        /// <summary>
+        ///     Creates a new piece of the given type with the given color.
+        /// </summary>
+        /// <param name="pieceType"></param>
+        /// <param name="color"></param>
         protected Piece(Enums.PieceType pieceType, Enums.Color color)
         {
             PieceType = pieceType;
             Color = color;
-            next = (color == Enums.Color.White ? -1 : 1); // sets next square to positive or negative 
+            direction = (color == Enums.Color.White ? -1 : 1); // sets direction to up or down depening on piece color
 
             game = Game.GetInstance();
         }
 
-
+        // todo: implement shackmatt!
         // todo: transform pawn to queen
         // todo: implement castling (sv. rockad)
-        // todo: gui bugg? shackade förblir grå
+        /// <summary>
+        ///     Tries to move this piece to the given square by calling various method to check:  <para></para>
+        ///     - Piece can be moved to the square                                                <para></para>
+        ///     - Current player is not in check                                                  <para></para>
+        ///     - The move does not place the player in check.       <para></para>
+        ///     Returns true if the piece can be moved to the square.
+        /// </summary>
         public bool TryMoveTo(Square square)
         {
-            if (!CanBeMovedTo(square) || CanCheckRemoved(game.Opponent, currSquare, game.CurrPlayer.King))
+            if (!CanBeMovedTo(square))
                 return false;
 
             Piece newPiece = square.Move(this);
@@ -54,35 +76,54 @@ namespace Chess.Pieces
             }
             currSquare = square;
 
-            game.Opponent.InCheck = CanCheck(this, game.Opponent.King);  // kolla över om man ska ta bort incheck?
+            Opponent.InCheck = CanCheck(this, Opponent.King);
             return true;
         }
 
         /// <summary>
-        ///      Temporarily remove the current piece at the square.
-        ///      Returns true if if the player can capture the king after the piece has been removed.
+        ///     Tries to move this piece to the given square. 
+        ///     Returns true if the current player is in check after the move (opponent can check the king).
         /// </summary>
-        private bool CanCheckRemoved(Player player, Square square, King king)
+        private bool InCheckAfterMove(Square square)
         {
-            Piece piece = square.RemovePiece();
-            bool isCheck = CanCheck(player, king.currSquare);
+            // saves current state
+            Square saveSquare = currSquare;
+            Piece oldPiece = square.Move(this);
+            Piece removedPiece = currSquare.RemovePiece();
+            currSquare = square;
 
-            if (piece != null)
-                square.SetPiece(piece);
+            bool hasRemoved = Opponent.RemovePiece(oldPiece);
+            bool inCheck = CanCheck(Opponent, CurrPlayer.King.CurrSquare);
 
-           // game.SetOpponentInCheck(player, isCheck);
+            // restore state
+            square.Move(oldPiece);
+            currSquare = saveSquare;
+            currSquare.SetPiece(removedPiece);
 
-            return isCheck;
+            if (hasRemoved) Opponent.AddPiece(oldPiece);
+
+            return inCheck;
         }
 
+        /// <summary>
+        ///     Returns true if the piece is "valid"; it exists, does not have the same color as this piece, 
+        ///     and can be captured by this piece.
+        /// </summary>
         private bool IsValidPiece(Piece newPiece)
         {
-            return newPiece != null && newPiece.PieceType != Enums.PieceType.None && !IsSameColor(newPiece) && CanCapture(newPiece);
+            return newPiece != null
+                && newPiece.PieceType != Enums.PieceType.None
+                && !IsSameColor(newPiece)
+                && CanCapture(newPiece);
         }
 
+        /// <summary>
+        ///     Returns true if this piece can move to the given square and the player will not be placed in check 
+        ///     after the move. 
+        /// </summary>
         private bool CanBeMovedTo(Square square)
         {
-            return !IsInCheck(game.CurrPlayer) && CanMoveTo(square) && square.CanPlace(this);
+            return !InCheckAfterMove(square) && CanMoveTo(square) && square.CanPlace(this);
         }
 
         /// <summary>
@@ -96,15 +137,21 @@ namespace Chess.Pieces
 
             for (int i = 1; i < Game.MaxColumn; i++)
             {
-                testSquare = game.GetSquare(testSquare.Row + row, testSquare.Column + column);
+                if (testSquare != null)
+                {
+                    testSquare = game.GetSquare(testSquare.Row + row, testSquare.Column + column);
 
-                if (testSquare == null) continue;
-                if (testSquare.IsSame(square)) return true;
-                if (!testSquare.IsEmpty() && !testSquare.IsSame(currSquare)) return false;
+                    if (testSquare == null) continue;
+                    if (testSquare.IsSame(square)) return true;
+                    if (!testSquare.IsEmpty() && !testSquare.IsSame(currSquare)) return false;
+                }
             }
             return false;
         }
 
+        /// <summary>
+        ///     Returns true if the given piece is the same color as this piece.
+        /// </summary>
         private bool IsSameColor(Piece destPiece)
         {
             return Color == destPiece.Color;
@@ -125,29 +172,26 @@ namespace Chess.Pieces
         }
 
         /// <summary>
-        /// Returns true if the given player can check the given square
+        ///     Returns true if the given player can check the given square
         /// </summary>
         internal bool CanCheck(Player player, Square square)
         {
-            return CanCheck(player.Pieces, square); // removed king reqruiment
+            return CanCheck(player.Pieces, square);
         }
 
         /// <summary>
-        /// Returns true if the given piece can check the given king
+        ///     Returns true if the given piece can check the given king
         /// </summary>
         internal bool CanCheck(Piece piece, King king)
         {
-            var p = new List<Piece>();
-            p.Add(piece);
-
-            return CanCheck(p, king.CurrSquare);
+            return CanCheck(new List<Piece> { piece }, king.CurrSquare);
         }
 
-        // todo flytta CanCheck till game klassne?
-        private bool CanCheck(List<Piece> pieces, Square square)
+        /// <summary>
+        ///     Loops the given pieces and returns true if any of the pieces can check the given square.
+        /// </summary>
+        private bool CanCheck(IEnumerable<Piece> pieces, Square square)
         {
-            //Debug.WriteLine("CanCheck(list,{1})", pieces, square);
-
             foreach (Piece piece in pieces)
             {
                 if (piece is Pawn)
@@ -165,17 +209,17 @@ namespace Chess.Pieces
             return false;
         }
 
-        // todo testa
-        private bool IsInCheck(Player player)
-        {
-            return player.InCheck && !(this is King); //  && currSquare != square
-        }
-
+        /// <summary>
+        ///     Represents a GUI click on this piece. Returns true if the piece is clicked after the click.
+        /// </summary>
         public bool Click()
         {
             return IsClicked = !IsClicked;
         }
 
+        /// <summary>
+        ///     Captures this piece; sets the current piece type to none and returns the current type.
+        /// </summary>
         public Enums.PieceType Capture()
         {
             var currType = PieceType;
@@ -184,6 +228,9 @@ namespace Chess.Pieces
             return currType;
         }
 
+        /// <summary>
+        ///     Returns the chess unicode representing the piece. 
+        /// </summary>
         public override string ToString()
         {
             return Unicode;

@@ -1,10 +1,18 @@
-﻿using System;
-using Chess.Pieces;
+﻿using Chess.Pieces;
 using Chess.Util;
-using System.Diagnostics;
 
+/*
+
+Project: Chess
+Last edited date: 2016-06-05
+Developer: Gabriel Vilén
+
+*/
 namespace Chess.Logic
 {
+    /// <summary>
+    ///     Class that contains the main logic for interacting with the players and squares in the chess game.
+    /// </summary>
     public class Game
     {
         public const int MaxRow = 8, MaxColumn = 8;
@@ -12,14 +20,13 @@ namespace Chess.Logic
 
         private Player white, black;
         public Player CurrPlayer { get; set; }
-        public Player Opponent { get { return CurrPlayer == white ? black : white; } }
+        public Player Opponent => CurrPlayer == white ? black : white;
 
         public Square[,] Squares { get; set; }
 
         /// <summary>
         ///     Singleton that creates new game instance if current is null
         /// </summary>
-        /// <returns>Get singleton</returns>
         public static Game GetInstance()
         {
             if (instance == null)
@@ -32,6 +39,9 @@ namespace Chess.Logic
         {
         }
 
+        /// <summary>
+        ///     Creates a new instance of the game with the given white and black player.
+        /// </summary>
         public Game NewGame(Player white, Player black)
         {
             instance = new Game(); // todo look over
@@ -43,6 +53,9 @@ namespace Chess.Logic
             return instance;
         }
 
+        /// <summary>
+        ///     Adds the given piece to the given player at the given row and column.
+        /// </summary>
         public void AddPiece(Piece piece, Player player, int row, int column)
         {
             Square square = GetSquare(row, column);
@@ -54,6 +67,9 @@ namespace Chess.Logic
             }
         }
 
+        /// <summary>
+        ///     Returns the square at the given row and column in the current game.
+        /// </summary>
         public Square GetSquare(int row, int column)
         {
             if (row >= MaxRow) row--;
@@ -64,7 +80,9 @@ namespace Chess.Logic
             return Squares[row, column];
         }
 
-
+        /// <summary>
+        ///     Clicks the square at the given row and column, if it is not null and has an existing piece.
+        /// </summary>
         internal bool ClickSquare(int row, int column)
         {
             Square square = GetSquare(row, column);
@@ -74,24 +92,33 @@ namespace Chess.Logic
             return square.CurrPiece.Click();
         }
 
-        public bool TryMove(Square fromSquare, Square square)
+        /// <summary>
+        ///     Tries to move the current piece at the square "fromSquare" to the given square "toSquare".
+        /// </summary>
+        /// <returns></returns>
+        public bool TryMove(Square fromSquare, Square toSquare)
         {
-            bool hasMoved = CurrPlayer.TryMove(fromSquare, square);
+            bool hasMoved = CurrPlayer.TryMove(fromSquare, toSquare);
             if (hasMoved)
             {
                 CurrPlayer = (CurrPlayer == white ? black : white);
-                square.SetPiece(fromSquare.CurrPiece);
+                toSquare.SetPiece(fromSquare.CurrPiece);
             }
 
             return hasMoved;
         }
 
-
+        /// <summary>
+        ///     Tries to move the current piece at the square "fromSquare" to the square at the given row and column.
+        /// </summary>
         public bool TryMove(Square fromSquare, int toRow, int toCol)
         {
             return TryMove(fromSquare, GetSquare(toRow, toCol));
         }
 
+        /// <summary>
+        ///     Scores the given piece to the opponent of the piece (e.g. if piece is black, the white player scores).
+        /// </summary>
         public void Score(Piece destPiece)
         {
             Player scorer, loser;
@@ -116,9 +143,16 @@ namespace Chess.Logic
         /// </summary>
         internal void SetOpponentInCheck(Player player, bool inCheck)
         {
-            Debug.WriteLine("SetOpponentInCheck({0},{1})", player, inCheck);
             Player inCheckPlayer = (player == white ? black : white);
             inCheckPlayer.InCheck = inCheck;
+        }
+
+        /// <summary>
+        ///     Returns the opponent of the given player; if the given player is white, black is returned and vise verse. 
+        /// </summary>
+        public Player GetOpponent(Player player)
+        {
+            return (player == white ? black : white);
         }
     }
 }

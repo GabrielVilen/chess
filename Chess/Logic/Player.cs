@@ -3,6 +3,13 @@ using Chess.Pieces;
 using Chess.Util;
 using System.Diagnostics;
 
+/*
+
+Project: Chess
+Last edited date: 2016-06-05
+Developer: Gabriel Vilén
+
+*/
 namespace Chess.Logic
 {
     public class Player
@@ -43,12 +50,13 @@ namespace Chess.Logic
             pieces.Add(piece);
         }
 
-        public void RemovePiece(Piece piece)
+        /// <summary>
+        ///     Tries to remove the given piece from this player's piece list, if it exists in the list. 
+        ///     Returns true if the piece has been removed.
+        /// </summary>
+        public bool RemovePiece(Piece piece)
         {
-            if (pieces.Contains(piece))
-                pieces.Remove(piece);
-
-            piece = null; // invoke GC
+            return pieces.Remove(piece);
         }
 
         internal bool TryMove(Square fromSquare, Square square)
